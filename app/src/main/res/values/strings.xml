@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Report</string>
+    <string name="already_have_an_account">Already have an Account ?</string>
+    <string name="signup_msg">Create Account?</string>
+    <string name="signup">Signup</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="username">Username</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="login_msg">Already have an Account?</string>
+</resources>
