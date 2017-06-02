@@ -7,6 +7,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="110dp"
         android:gravity="center"
         android:paddingLeft="60dp"
         android:paddingRight="60dp">
@@ -165,6 +166,18 @@
             android:textColor="#FFFFFF"
             android:textStyle="bold" />
 
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="15dp"
+        android:gravity="bottom"
+        android:orientation="vertical"
+        android:paddingLeft="60dp"
+        android:paddingRight="60dp">
+
         <TextView
             android:id="@+id/user_login"
             android:layout_width="match_parent"
@@ -182,8 +195,8 @@
             android:letterSpacing="0.1"
             android:text="@string/login"
             android:textColor="#000000" />
-
     </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
