@@ -1,4 +1,9 @@
 package me.bobaikato.app.report;
+/**
+ * Author: Bobai Kato
+ * Date: 6/2/17
+ * Twitter, Instagram, Github, GitLab: @BobaiKato
+ */
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -8,14 +13,12 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class Signup extends AppCompatActivity
-{
-    EditText email,phoneno,password,username;
-    TextView login_msg,signup,login;
+public class Signup extends AppCompatActivity {
+    EditText email, phoneno, password, username;
+    TextView login_msg, signup, login;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
         login = (TextView) findViewById(R.id.login);
@@ -33,12 +36,10 @@ public class Signup extends AppCompatActivity
         login_msg.setTypeface(custom_font);
         username.setTypeface(custom_font);
         email.setTypeface(custom_font);
-        login.setOnClickListener(new View.OnClickListener()
-        {
+        login.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
-                Intent it = new Intent(Signup.this,Login.class);
+            public void onClick(View v) {
+                Intent it = new Intent(Signup.this, Login.class);
                 startActivity(it);
             }
         });

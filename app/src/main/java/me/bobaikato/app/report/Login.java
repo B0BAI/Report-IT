@@ -1,4 +1,9 @@
 package me.bobaikato.app.report;
+/**
+ * Author: Bobai Kato
+ * Date: 6/2/17
+ * Twitter, Instagram, Github, GitLab: @BobaiKato
+ */
 
 import android.content.Intent;
 import android.graphics.Typeface;
