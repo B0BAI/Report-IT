@@ -17,4 +17,6 @@
     <string name="crime">Crime</string>
     <string name="natural_disaster">Natural Disaster</string>
     <string name="home_msg">Select Required Report</string>
+    <string name="upload_category">Test Title</string>
+    <string name="cam_msg">Take a Picture</string>
 </resources>
