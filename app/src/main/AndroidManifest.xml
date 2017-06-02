@@ -25,10 +25,10 @@
         </activity>
         <activity android:name=".Signup" />
         <activity
-            android:name=".Home"
+            android:name=".Category"
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme" />
-        <activity android:name=".Category"></activity>
+        <activity android:name=".CategoryDetails"></activity>
     </application>
 
 </manifest>

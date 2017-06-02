@@ -54,9 +54,9 @@ public class Login extends AppCompatActivity {
         new InternetConnection(findViewById(android.R.id.content), Login.this);
     }
 
-    /*handles Login validation and redirection to Home*/
+    /*handles Login validation and redirection to Category*/
     public void userLogin(View view) {
-        Intent intent = new Intent(this, Home.class);
+        Intent intent = new Intent(this, Category.class);
         startActivity(intent);
     }
 }
