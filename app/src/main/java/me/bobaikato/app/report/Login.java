@@ -14,24 +14,24 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class Login extends AppCompatActivity {
-    EditText pswd, usrusr;
-    TextView signup_msg, lin, signup;
+    EditText password, username;
+    TextView signup_msg, login, signup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        lin = (TextView) findViewById(R.id.user_login);
-        usrusr = (EditText) findViewById(R.id.username);
-        pswd = (EditText) findViewById(R.id.password);
+        login = (TextView) findViewById(R.id.user_login);
+        username = (EditText) findViewById(R.id.username);
+        password = (EditText) findViewById(R.id.password);
         signup_msg = (TextView) findViewById(R.id.user_signup);
         signup = (TextView) findViewById(R.id.signup);
         Typeface custom_font = Typeface.createFromAsset(getAssets(), "fonts/LatoLight.ttf");
         Typeface custom_font1 = Typeface.createFromAsset(getAssets(), "fonts/LatoRegular.ttf");
-        lin.setTypeface(custom_font1);
+        login.setTypeface(custom_font1);
         signup_msg.setTypeface(custom_font);
-        usrusr.setTypeface(custom_font);
-        pswd.setTypeface(custom_font);
+        username.setTypeface(custom_font);
+        password.setTypeface(custom_font);
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -39,6 +39,14 @@ public class Login extends AppCompatActivity {
                 startActivity(it);
             }
         });
+         /*Check InternetConnection Connection*/
+        new InternetConnection(findViewById(android.R.id.content), Login.this);
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+         /*Check InternetConnection Connection*/
+        new InternetConnection(findViewById(android.R.id.content), Login.this);
     }
 }

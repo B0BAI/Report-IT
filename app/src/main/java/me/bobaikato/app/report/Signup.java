@@ -43,5 +43,14 @@ public class Signup extends AppCompatActivity {
                 startActivity(it);
             }
         });
+             /*Check InternetConnection Connection*/
+        new InternetConnection(findViewById(android.R.id.content), Signup.this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+         /*Check InternetConnection Connection*/
+        new InternetConnection(findViewById(android.R.id.content), Signup.this);
     }
 }
