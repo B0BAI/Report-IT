@@ -21,14 +21,18 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        /*Font*/
+        Typeface custom_font = Typeface.createFromAsset(getAssets(), "fonts/LatoLight.ttf");
+        Typeface custom_font_1 = Typeface.createFromAsset(getAssets(), "fonts/LatoRegular.ttf");
+
         login = (TextView) findViewById(R.id.user_login);
         username = (EditText) findViewById(R.id.username);
         password = (EditText) findViewById(R.id.password);
         signup_msg = (TextView) findViewById(R.id.user_signup);
         signup = (TextView) findViewById(R.id.signup);
-        Typeface custom_font = Typeface.createFromAsset(getAssets(), "fonts/LatoLight.ttf");
-        Typeface custom_font1 = Typeface.createFromAsset(getAssets(), "fonts/LatoRegular.ttf");
-        login.setTypeface(custom_font1);
+
+        login.setTypeface(custom_font_1);
         signup_msg.setTypeface(custom_font);
         username.setTypeface(custom_font);
         password.setTypeface(custom_font);
@@ -48,5 +52,11 @@ public class Login extends AppCompatActivity {
         super.onResume();
          /*Check InternetConnection Connection*/
         new InternetConnection(findViewById(android.R.id.content), Login.this);
+    }
+
+
+    public void userLogin(View view){
+        Intent intent  = new Intent(this, Home.class);
+        startActivity(intent);
     }
 }

@@ -14,24 +14,28 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class Signup extends AppCompatActivity {
-    EditText email, phoneno, password, username;
+    EditText email, phone_no, password, username;
     TextView login_msg, signup, login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+
+                /*Font*/
+        Typeface custom_font = Typeface.createFromAsset(getAssets(), "fonts/LatoLight.ttf");
+        Typeface custom_font_1 = Typeface.createFromAsset(getAssets(), "fonts/LatoRegular.ttf");
+
         login = (TextView) findViewById(R.id.login);
         signup = (TextView) findViewById(R.id.user_signup);
         login_msg = (TextView) findViewById(R.id.user_login);
         username = (EditText) findViewById(R.id.username);
         password = (EditText) findViewById(R.id.password);
         email = (EditText) findViewById(R.id.email);
-        phoneno = (EditText) findViewById(R.id.mobphone);
-        Typeface custom_font = Typeface.createFromAsset(getAssets(), "fonts/LatoLight.ttf");
-        Typeface custom_font1 = Typeface.createFromAsset(getAssets(), "fonts/LatoRegular.ttf");
-        phoneno.setTypeface(custom_font);
-        signup.setTypeface(custom_font1);
+        phone_no = (EditText) findViewById(R.id.mobphone);
+
+        phone_no.setTypeface(custom_font);
+        signup.setTypeface(custom_font_1);
         password.setTypeface(custom_font);
         login_msg.setTypeface(custom_font);
         username.setTypeface(custom_font);
