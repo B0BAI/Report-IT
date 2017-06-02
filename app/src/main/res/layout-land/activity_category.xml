@@ -6,69 +6,112 @@
     android:background="@drawable/grdnt">
 
     <TextView
-        android:id="@+id/upload_title"
+        android:id="@+id/report_msg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="30dp"
         android:gravity="center"
         android:letterSpacing="0.1"
-        android:text="@string/upload_title"
+        android:text="@string/home_msg"
         android:textColor="#000000"
-        android:textSize="30sp"
-        tools:ignore="UnusedAttribute" />
+        android:textSize="23dp" />
+
 
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_marginTop="15dp">
+        android:layout_marginTop="80dp">
 
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:gravity="bottom"
             android:orientation="vertical"
-            android:paddingLeft="40dp"
-            android:paddingRight="40dp">
+            android:paddingLeft="60dp"
+            android:paddingRight="60dp">
 
             <TextView
-                android:id="@+id/cat_title"
+                android:id="@+id/report_accident"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="155dp"
+                android:layout_gravity="fill_horizontal"
+                android:layout_marginBottom="25dp"
+                android:background="#000000"
                 android:gravity="center"
-                android:letterSpacing="0.1"
-                android:text="@string/cam_msg"
-                android:textColor="#720326"
-                android:textSize="15sp"
+                android:letterSpacing="0.2"
+                android:padding="16dp"
+                android:text="@string/accident"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:ignore="UnusedAttribute" />
+
+            <TextView
+                android:id="@+id/report_crime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="25dp"
+                android:background="#000000"
+                android:gravity="center"
+                android:letterSpacing="0.2"
+                android:padding="16dp"
+                android:text="@string/crime"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold"
                 tools:ignore="UnusedAttribute" />
 
 
             <TextView
-                android:id="@+id/cat_details"
+                android:id="@+id/report_fire_ourbreak"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="25dp"
+                android:background="#000000"
                 android:gravity="center"
-                android:letterSpacing="0.1"
-                android:text="@string/cat_msg"
-                android:textColor="#000000"
-                android:textSize="16sp"
+                android:letterSpacing="0.2"
+                android:padding="16dp"
+                android:text="@string/fire_outbreak"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold"
                 tools:ignore="UnusedAttribute" />
+
+            <TextView
+                android:id="@+id/report_garbage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="25dp"
+                android:background="#000000"
+                android:gravity="center"
+                android:letterSpacing="0.2"
+                android:padding="16dp"
+                android:text="@string/garbage"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:ignore="UnusedAttribute" />
+
+            <TextView
+                android:id="@+id/report_natural_disaster"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="25dp"
+                android:background="#000000"
+                android:gravity="center"
+                android:letterSpacing="0.2"
+                android:padding="16dp"
+                android:text="@string/natural_disaster"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:ignore="UnusedAttribute" />
+
         </LinearLayout>
-
     </ScrollView>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="155dp"
-        android:gravity="center">
-
-        <ImageView
-            android:layout_width="110dp"
-            android:layout_height="110dp"
-            android:src="@drawable/camera_icon4"
-            tools:ignore="ContentDescription" />
-    </LinearLayout>
 </RelativeLayout>

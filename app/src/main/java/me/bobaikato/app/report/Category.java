@@ -1,30 +1,46 @@
 package me.bobaikato.app.report;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.TextView;
 
 public class Category extends AppCompatActivity {
-    TextView title, cameraTitle, categoryDetails;
+    TextView acccident, crime, fireOutbreak, garbage, naturalDisaster, msg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
 
-                /*Font*/
+        /*Custome font*/
         Typeface custom_font = Typeface.createFromAsset(getAssets(), "fonts/LatoLight.ttf");
         Typeface custom_font_1 = Typeface.createFromAsset(getAssets(), "fonts/LatoRegular.ttf");
 
-        title = (TextView) findViewById(R.id.upload_title);
-        cameraTitle = (TextView) findViewById(R.id.cat_title);
-        categoryDetails  = (TextView) findViewById(R.id.cat_details);
+        acccident = (TextView) findViewById(R.id.report_accident);
+        crime = (TextView) findViewById(R.id.report_crime);
+        fireOutbreak = (TextView) findViewById(R.id.report_fire_ourbreak);
+        garbage = (TextView) findViewById(R.id.report_garbage);
+        naturalDisaster = (TextView) findViewById(R.id.report_natural_disaster);
+        msg = (TextView) findViewById(R.id.report_msg);
 
-        /*Custom font*/
-        title.setTypeface(custom_font_1);
-        categoryDetails.setTypeface(custom_font_1);
+        /*Set Custom Font*/
+        acccident.setTypeface(custom_font);
+        crime.setTypeface(custom_font);
+        fireOutbreak.setTypeface(custom_font);
+        garbage.setTypeface(custom_font);
+        naturalDisaster.setTypeface(custom_font);
+        msg.setTypeface(custom_font_1);
+
+                     /*Check InternetConnection Connection*/
+        new InternetConnection(findViewById(android.R.id.content), Category.this);
     }
 
+    public void uploadPicture(View view) {
+        Intent intent = new Intent(this, CategoryDetails.class);
+        startActivity(intent);
+    }
 
 }
