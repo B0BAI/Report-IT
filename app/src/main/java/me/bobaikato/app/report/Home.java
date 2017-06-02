@@ -1,12 +1,14 @@
 package me.bobaikato.app.report;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.TextView;
 
 public class Home extends AppCompatActivity {
-    TextView acccident, crime, fireOutbreak, garbage, naturalDisaster,msg;
+    TextView acccident, crime, fireOutbreak, garbage, naturalDisaster, msg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,11 @@ public class Home extends AppCompatActivity {
 
                      /*Check InternetConnection Connection*/
         new InternetConnection(findViewById(android.R.id.content), Home.this);
+    }
+
+    public void uploadPicture(View view) {
+        Intent intent = new Intent(this, Category.class);
+        startActivity(intent);
     }
 
 }

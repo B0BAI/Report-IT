@@ -28,7 +28,7 @@
             android:name=".Home"
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme" />
-        <activity android:name=".Upload"></activity>
+        <activity android:name=".Category"></activity>
     </application>
 
 </manifest>
