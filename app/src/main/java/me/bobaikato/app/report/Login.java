@@ -50,6 +50,7 @@ public class Login extends AppCompatActivity {
         checkNetwork(findViewById(android.R.id.content), Login.this);
     }
 
+
     @Override
     protected void onResume() {
         super.onResume();

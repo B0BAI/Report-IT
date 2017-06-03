@@ -8,8 +8,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
         android:layout_marginBottom="70dp"
+        android:gravity="center"
         android:paddingLeft="60dp"
         android:paddingRight="60dp">
 
@@ -29,8 +29,8 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/user_icon"
                     android:contentDescription=""
+                    android:src="@drawable/user_icon"
                     tools:ignore="ContentDescription" />
 
                 <EditText
@@ -78,8 +78,8 @@
                     android:textColor="#000000"
                     android:textColorHint="#000000"
                     android:textSize="16sp"
-                    tools:targetApi="lollipop"
-                    tools:ignore="RtlHardcoded" />
+                    tools:ignore="RtlHardcoded"
+                    tools:targetApi="lollipop" />
             </LinearLayout>
 
             <LinearLayout
@@ -90,14 +90,14 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="25dp"
         android:gravity="bottom"
         android:orientation="vertical"
         android:paddingLeft="60dp"
-        android:paddingRight="60dp"
-        android:id="@+id/linearLayout">
+        android:paddingRight="60dp">
 
         <TextView
             android:id="@+id/user_login"
@@ -108,24 +108,23 @@
             android:background="#000000"
             android:gravity="center"
             android:letterSpacing="0.2"
+            android:onClick="userLogin"
             android:padding="16dp"
             android:text="@string/login"
             android:textColor="#FFFFFF"
-            android:textStyle="bold"
-            tools:targetApi="lollipop" />
-
+            android:textStyle="bold" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_marginBottom="10dp"
         android:layout_height="match_parent"
+        android:layout_alignBottom="@+id/linearLayout"
+        android:layout_marginBottom="10dp"
         android:gravity="bottom"
         android:orientation="vertical"
         android:paddingLeft="60dp"
-        android:paddingRight="60dp"
-        android:layout_alignBottom="@+id/linearLayout">
+        android:paddingRight="60dp">
 
         <TextView
             android:id="@+id/user_signup"
@@ -134,8 +133,7 @@
             android:gravity="center"
             android:letterSpacing="0.1"
             android:text="@string/signup_msg"
-            android:textColor="#000000"
-            tools:targetApi="lollipop" />
+            android:textColor="#000000" />
 
         <TextView
             android:id="@+id/signup"
@@ -144,8 +142,7 @@
             android:gravity="center"
             android:letterSpacing="0.1"
             android:text="@string/signup"
-            android:textColor="#000000"
-            tools:targetApi="lollipop" />
+            android:textColor="#000000" />
 
     </LinearLayout>
 
