@@ -47,14 +47,14 @@ public class Login extends AppCompatActivity {
             }
         });
          /*Check Permissions Connection*/
-        checkNetwork(findViewById(android.R.id.content),Login.this);
+        checkNetwork(findViewById(android.R.id.content), Login.this);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
          /*Check Permissions Connection*/
-        checkNetwork(findViewById(android.R.id.content),Login.this);
+        checkNetwork(findViewById(android.R.id.content), Login.this);
     }
 
 
@@ -66,17 +66,16 @@ public class Login extends AppCompatActivity {
         progressDialog.setMessage("Authenticating...");
         progressDialog.show();
 
+        /*Delays*/
         new android.os.Handler().postDelayed(
                 new Runnable() {
                     public void run() {
                         // On complete call either onLoginSuccess or onLoginFailed
-
                         Intent intent = new Intent(Login.this, Category.class);
                         startActivity(intent);
                         // onLoginFailed();
                         progressDialog.dismiss();
                     }
                 }, 3000);
-
     }
 }
