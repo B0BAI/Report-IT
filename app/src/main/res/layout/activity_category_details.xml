@@ -3,17 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/grdnt">
+    android:background="@color/custom_report_details">
 
     <TextView
         android:id="@+id/upload_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="295dp"
         android:gravity="center"
         android:letterSpacing="0.1"
         android:text="@string/upload_title"
-        android:textColor="#000000"
+        android:textColor="#000"
         android:textSize="26dp" />
 
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -34,7 +34,7 @@
                 android:id="@+id/cat_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="155dp"
+                android:layout_marginTop="140dp"
                 android:gravity="center"
                 android:letterSpacing="0.1"
                 android:text="@string/cam_msg"
@@ -46,11 +46,11 @@
                 android:id="@+id/cat_details"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="70dp"
                 android:gravity="center"
                 android:letterSpacing="0.1"
                 android:text="@string/cat_msg"
-                android:textColor="#000000"
+                android:textColor="#000"
                 android:textSize="16dp" />
         </LinearLayout>
 
@@ -59,7 +59,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="220dp"
+        android:layout_marginBottom="260dp"
         android:gravity="center">
 
         <ImageView
