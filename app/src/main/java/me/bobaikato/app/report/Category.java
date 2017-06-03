@@ -1,11 +1,16 @@
 package me.bobaikato.app.report;
 
+import android.Manifest;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
+
+import static me.bobaikato.app.report.Permissions.checkLocation;
 
 public class Category extends AppCompatActivity {
     TextView acccident, crime, fireOutbreak, garbage, naturalDisaster, msg;
@@ -34,10 +39,32 @@ public class Category extends AppCompatActivity {
         naturalDisaster.setTypeface(custom_font);
         msg.setTypeface(custom_font_1);
 
-                     /*Check InternetConnection Connection*/
-        new InternetConnection(findViewById(android.R.id.content), Category.this);
+        /*Check Location*/
+        locationCheck();
+
     }
 
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+         /*Check Location*/
+        locationCheck();
+    }
+
+    private void locationCheck() {
+            /*Check Location*/
+        if (checkLocation(this) == false) {
+            /*Snackbar*/
+            Snackbar.make(findViewById(android.R.id.content), "ALLOW LOCATION TO CONTINUE!", Snackbar.LENGTH_LONG).show();
+
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 1001);
+
+        }
+    }
+
+
+    /*Validate Location before you continue*/
     public void uploadPicture(View view) {
         Intent intent = new Intent(this, CategoryDetails.class);
         startActivity(intent);

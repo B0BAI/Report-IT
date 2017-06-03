@@ -13,6 +13,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import static me.bobaikato.app.report.Permissions.checkNetwork;
+
 public class Signup extends AppCompatActivity {
     EditText email, phone_no, password, username;
     TextView login_msg, signup, login;
@@ -47,14 +49,14 @@ public class Signup extends AppCompatActivity {
                 startActivity(it);
             }
         });
-             /*Check InternetConnection Connection*/
-        new InternetConnection(findViewById(android.R.id.content), Signup.this);
+             /*Check Permissions Connection*/
+        checkNetwork(findViewById(android.R.id.content),Signup.this);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-         /*Check InternetConnection Connection*/
-        new InternetConnection(findViewById(android.R.id.content), Signup.this);
+         /*Check Permissions Connection*/
+        checkNetwork(findViewById(android.R.id.content),Signup.this);
     }
 }

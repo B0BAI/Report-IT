@@ -5,6 +5,7 @@ package me.bobaikato.app.report;
  * Twitter, Instagram, Github, GitLab: @BobaiKato
  */
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -12,6 +13,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import static me.bobaikato.app.report.Permissions.checkNetwork;
 
 public class Login extends AppCompatActivity {
     EditText password, username;
@@ -43,20 +46,37 @@ public class Login extends AppCompatActivity {
                 startActivity(it);
             }
         });
-         /*Check InternetConnection Connection*/
-        new InternetConnection(findViewById(android.R.id.content), Login.this);
+         /*Check Permissions Connection*/
+        checkNetwork(findViewById(android.R.id.content),Login.this);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-         /*Check InternetConnection Connection*/
-        new InternetConnection(findViewById(android.R.id.content), Login.this);
+         /*Check Permissions Connection*/
+        checkNetwork(findViewById(android.R.id.content),Login.this);
     }
+
 
     /*handles Login validation and redirection to Category*/
     public void userLogin(View view) {
-        Intent intent = new Intent(this, Category.class);
-        startActivity(intent);
+        final ProgressDialog progressDialog = new ProgressDialog(Login.this,
+                R.style.AppTheme_Dark_Dialog);
+        progressDialog.setIndeterminate(true);
+        progressDialog.setMessage("Authenticating...");
+        progressDialog.show();
+
+        new android.os.Handler().postDelayed(
+                new Runnable() {
+                    public void run() {
+                        // On complete call either onLoginSuccess or onLoginFailed
+
+                        Intent intent = new Intent(Login.this, Category.class);
+                        startActivity(intent);
+                        // onLoginFailed();
+                        progressDialog.dismiss();
+                    }
+                }, 3000);
+
     }
 }
