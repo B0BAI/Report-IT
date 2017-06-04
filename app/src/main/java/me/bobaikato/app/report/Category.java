@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
+import static me.bobaikato.app.report.CategoryDetails.setView_id;
 import static me.bobaikato.app.report.Permissions.checkLocation;
 
 public class Category extends AppCompatActivity {
@@ -65,9 +66,8 @@ public class Category extends AppCompatActivity {
 
 
     /*Validate Location before you continue*/
-    public void uploadPicture(View view) {
-        Intent intent = new Intent(this, CategoryDetails.class);
-        startActivity(intent);
+    public void setReportCategoryDetails(View v) {
+        setView_id(v.getId());
+        startActivity(new Intent(Category.this, CategoryDetails.class));
     }
-
 }

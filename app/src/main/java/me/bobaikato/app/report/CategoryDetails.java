@@ -6,25 +6,45 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 public class CategoryDetails extends AppCompatActivity {
-    TextView title, cameraTitle, categoryDetails;
+
+    private static Integer view_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category_details);
 
-                /*Font*/
-        Typeface custom_font = Typeface.createFromAsset(getAssets(), "fonts/LatoLight.ttf");
-        Typeface custom_font_1 = Typeface.createFromAsset(getAssets(), "fonts/LatoRegular.ttf");
 
-        title = (TextView) findViewById(R.id.upload_title);
-        cameraTitle = (TextView) findViewById(R.id.cat_title);
-        categoryDetails  = (TextView) findViewById(R.id.cat_details);
+          /*Font*/
+        Typeface custom_font = Typeface.createFromAsset(getAssets(), "fonts/LatoRegular.ttf");
+
+        TextView title = (TextView) findViewById(R.id.report_title);
+        TextView details = (TextView) findViewById(R.id.report_details);
 
         /*Custom font*/
-        title.setTypeface(custom_font_1);
-        categoryDetails.setTypeface(custom_font_1);
+        if (view_id == R.id.report_accident) {
+            title.setText(getString(R.string.accident));
+            details.setText(getString(R.string.accident_cat_det));
+        } else if (view_id == R.id.report_crime) {
+            title.setText(getString(R.string.crime));
+            details.setText(getString(R.string.crime_cat_det));
+        } else if (view_id == R.id.report_fire_ourbreak) {
+            title.setText(getString(R.string.fire_outbreak));
+            details.setText(getString(R.string.fire_outbreak_cat_det));
+        } else if (view_id == R.id.report_garbage) {
+            title.setText(getString(R.string.garbage));
+            details.setText(getString(R.string.garbage_cat_det));
+        } else if (view_id == R.id.report_natural_disaster) {
+            title.setText(getString(R.string.natural_disaster));
+            details.setText(getString(R.string.natural_disaster_cat_det));
+        }
+        title.setTypeface(custom_font);
+        details.setTypeface(custom_font);
     }
 
+
+    public static void setView_id(Integer view_id) {
+        CategoryDetails.view_id = view_id;
+    }
 
 }
