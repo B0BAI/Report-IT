@@ -16,7 +16,7 @@ import android.widget.TextView;
 import static me.bobaikato.app.report.Permissions.checkNetwork;
 
 public class Signup extends AppCompatActivity {
-    EditText email, phone_no, password, username;
+    EditText email, ppsnumber, password, username;
     TextView login_msg, signup, login;
 
     @Override
@@ -34,9 +34,9 @@ public class Signup extends AppCompatActivity {
         username = (EditText) findViewById(R.id.username);
         password = (EditText) findViewById(R.id.password);
         email = (EditText) findViewById(R.id.email);
-        phone_no = (EditText) findViewById(R.id.mobphone);
+        ppsnumber = (EditText) findViewById(R.id.ppsno);
 
-        phone_no.setTypeface(custom_font);
+        ppsnumber.setTypeface(custom_font);
         signup.setTypeface(custom_font_1);
         password.setTypeface(custom_font);
         login_msg.setTypeface(custom_font);
@@ -50,13 +50,13 @@ public class Signup extends AppCompatActivity {
             }
         });
              /*Check Permissions Connection*/
-        checkNetwork(findViewById(android.R.id.content),Signup.this);
+        checkNetwork(findViewById(android.R.id.content), Signup.this);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
          /*Check Permissions Connection*/
-        checkNetwork(findViewById(android.R.id.content),Signup.this);
+        checkNetwork(findViewById(android.R.id.content), Signup.this);
     }
 }

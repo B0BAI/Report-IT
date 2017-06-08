@@ -121,15 +121,15 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/phonemo" />
+                    android:src="@drawable/ppsn" />
 
                 <EditText
-                    android:id="@+id/mobphone"
+                    android:id="@+id/ppsno"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:background="#00000000"
-                    android:hint="Mobile Number"
+                    android:hint="PPS Number"
                     android:inputType="number"
                     android:letterSpacing="0.1"
                     android:textColor="#000000"
