@@ -24,6 +24,8 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import okhttp3.Call;
+import okhttp3.Callback;
 import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -148,35 +150,45 @@ public class Signup extends AppCompatActivity {
 
         @Override
         protected Object doInBackground(Object[] params) {
-            try {
-                OkHttpClient client = new OkHttpClient();
-                RequestBody formBody = new FormBody.Builder()
-                        .add("email", email_val)
-                        .add("username", username_val)
-                        .add("password", password_val)
-                        .add("ppsno", ppsnumber_val)
-                        .build();
-                Request request = new Request.Builder()
-                        .url(URL)
-                        .post(formBody)
-                        .build();
-                Response responses = null;
 
-                try {
-                    responses = client.newCall(request).execute();
-                } catch (IOException e) {
-                    e.printStackTrace();
+            String success = null, warning = null, failed = null;
+            OkHttpClient client = new OkHttpClient();
+            RequestBody formBody = new FormBody.Builder()
+                    .add("email", email_val)
+                    .add("username", username_val)
+                    .add("password", password_val)
+                    .add("ppsno", ppsnumber_val)
+                    .build();
+            Request request = new Request.Builder()
+                    .url(URL)
+                    .post(formBody)
+                    .build();
+            Response responses = null;
+
+            client.newCall(request).enqueue(new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    msg.add("Failed");
                 }
 
-                String resStr = responses.body().string();
-                JSONObject json = new JSONObject(resStr);
-                msg.add(json.getString("success"));//adding to arralist
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    String resStr = response.body().string();
+                    JSONObject json = null;
+                    try {
+                        json = new JSONObject(resStr);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    String success = null;
+                    try {
+                        success = json.getString("message").trim();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    msg.add(success);
+                }
+            });
             return null;
         }
     }
