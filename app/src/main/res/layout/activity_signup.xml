@@ -32,19 +32,19 @@
                     tools:ignore="ContentDescription" />
 
                 <EditText
-                    android:id="@+id/email"
+                    android:id="@+id/email_add"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:background="#00000000"
                     android:hint="@string/email_address"
-                    android:inputType=""
+                    android:inputType="textEmailAddress"
                     android:letterSpacing="0.1"
                     android:textColor="#000000"
                     android:textColorHint="#000000"
                     android:textSize="16dp"
-                    tools:targetApi="lollipop"
-                    tools:ignore="RtlHardcoded,SpUsage,TextFields" />
+                    tools:ignore="RtlHardcoded,SpUsage,TextFields"
+                    />
             </LinearLayout>
 
             <LinearLayout
@@ -110,8 +110,8 @@
                     android:textColor="#000000"
                     android:textColorHint="#000000"
                     android:textSize="16dp"
-                    tools:targetApi="lollipop"
-                    tools:ignore="RtlHardcoded,SpUsage" />
+                    tools:ignore="RtlHardcoded,SpUsage"
+                     />
             </LinearLayout>
 
             <LinearLayout
@@ -139,13 +139,13 @@
                     android:layout_marginLeft="15dp"
                     android:background="#00000000"
                     android:hint="@string/pps_number"
-                    android:inputType="number"
+                    android:inputType="text"
                     android:letterSpacing="0.1"
                     android:textColor="#000000"
                     android:textColorHint="#000000"
                     android:textSize="16dp"
-                    tools:targetApi="lollipop"
-                    tools:ignore="RtlHardcoded,SpUsage" />
+                    tools:ignore="RtlHardcoded,SpUsage"
+                    tools:targetApi="lollipop" />
             </LinearLayout>
 
             <LinearLayout

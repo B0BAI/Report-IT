@@ -12,6 +12,24 @@
     </item>
     <item
         is-multidex="true"
+        jar="/Users/bobaikato/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.11.0/840897fcd7223a8143f1d9b6f69714e7be34fd50/okio-1.11.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="840897fcd7223a8143f1d9b6f69714e7be34fd50">
+        <dex dex="/Users/bobaikato/Git/Report/app/build/intermediates/transforms/dex/debug/folders/1000/10/okio-1.11.0_7644d2c66ae4de41258fb02d2f0a36afcc792256/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/bobaikato/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/3.6.0/69edde9fc4b01c9fd51d25b83428837478c27254/okhttp-3.6.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="69edde9fc4b01c9fd51d25b83428837478c27254">
+        <dex dex="/Users/bobaikato/Git/Report/app/build/intermediates/transforms/dex/debug/folders/1000/10/okhttp-3.6.0_240a8515142b0e979a153dda6cd0266791a19b04/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/Users/bobaikato/Git/Report/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
         jumboMode="true"
         optimize="true"
