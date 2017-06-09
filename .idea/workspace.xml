@@ -10,12 +10,11 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="205bf954-0002-41c7-a171-1af961c4697a" name="Default" comment="Neatly checking Internet connection before making use of it + Little recatoring and cleanup">
+    <list default="true" id="205bf954-0002-41c7-a171-1af961c4697a" name="Default" comment="Optimized Message from the system to user.">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileSnapshots.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -103,11 +102,11 @@
       <file leaf-file-name="Signup.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/me/bobaikato/app/report/Signup.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="170" column="35" selection-start-line="170" selection-start-column="35" selection-end-line="170" selection-end-column="35" />
+            <state relative-caret-position="397">
+              <caret line="154" column="33" selection-start-line="154" selection-start-column="33" selection-end-line="154" selection-end-column="33" />
               <folding>
-                <element signature="e#5522#5711#0" expanded="true" />
-                <element signature="e#5710#5711#0" expanded="true" />
+                <element signature="e#5914#6189#0" expanded="true" />
+                <element signature="e#6188#6189#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -2920,7 +2919,14 @@
       <option name="project" value="LOCAL" />
       <updated>1497045188222</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Optimized Message from the system to user.">
+      <created>1497049531420</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1497049531420</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TodoView">
@@ -3003,7 +3009,8 @@
     <MESSAGE value="Sign up refactoring" />
     <MESSAGE value="JSON response correctly Read!" />
     <MESSAGE value="Neatly checking Internet connection before making use of it + Little recatoring and cleanup" />
-    <option name="LAST_COMMIT_MESSAGE" value="Neatly checking Internet connection before making use of it + Little recatoring and cleanup" />
+    <MESSAGE value="Optimized Message from the system to user." />
+    <option name="LAST_COMMIT_MESSAGE" value="Optimized Message from the system to user." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -3348,11 +3355,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/me/bobaikato/app/report/Signup.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="170" column="35" selection-start-line="170" selection-start-column="35" selection-end-line="170" selection-end-column="35" />
+        <state relative-caret-position="397">
+          <caret line="154" column="33" selection-start-line="154" selection-start-column="33" selection-end-line="154" selection-end-column="33" />
           <folding>
-            <element signature="e#5522#5711#0" expanded="true" />
-            <element signature="e#5710#5711#0" expanded="true" />
+            <element signature="e#5914#6189#0" expanded="true" />
+            <element signature="e#6188#6189#0" expanded="true" />
           </folding>
         </state>
       </provider>

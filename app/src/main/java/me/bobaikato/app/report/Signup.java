@@ -137,13 +137,24 @@ public class Signup extends AppCompatActivity {
         @Override
         protected void onPostExecute(Object o) {
             super.onPostExecute(o);
+            String user_msg = null;
+            final String resp = msg.get(0);
+            if (resp.equals("1")) {
+                user_msg = "Account Created Successfully!";
+            } else if (resp.equals("0")) {
+                user_msg = "Sorry! this User already exist.";
+            } else if (resp.equals("2")) {
+                user_msg = "Sorry! an error occurred.";
+            }
             progressDialog.dismiss();
-            Toast.makeText(Signup.this, msg.get(0), Toast.LENGTH_LONG).show();
+            Toast.makeText(Signup.this, user_msg, Toast.LENGTH_LONG).show();
                /*Delays*/
             new android.os.Handler().postDelayed(
                     new Runnable() {
                         public void run() {
-                            startActivity(new Intent(Signup.this, Login.class));
+                            if (resp.equals("1")) {
+                                startActivity(new Intent(Signup.this, Login.class));
+                            }
                         }
                     }, 2000);
         }
@@ -180,13 +191,13 @@ public class Signup extends AppCompatActivity {
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                    String success = null;
+                    String message = null;
                     try {
-                        success = json.getString("message").trim();
+                        message = json.getString("message").trim();
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                    msg.add(success);
+                    msg.add(message);
                 }
             });
             return null;
