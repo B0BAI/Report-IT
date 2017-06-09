@@ -15,7 +15,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            tools:ignore="UselessParent">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -27,7 +28,8 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/message" />
+                    android:src="@drawable/message"
+                    tools:ignore="ContentDescription" />
 
                 <EditText
                     android:id="@+id/email"
@@ -35,12 +37,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:background="#00000000"
-                    android:hint="Email Address"
-                    android:inputType="text"
+                    android:hint="@string/email_address"
+                    android:inputType=""
                     android:letterSpacing="0.1"
                     android:textColor="#000000"
                     android:textColorHint="#000000"
-                    android:textSize="16dp" />
+                    android:textSize="16dp"
+                    tools:targetApi="lollipop"
+                    tools:ignore="RtlHardcoded,SpUsage,TextFields" />
             </LinearLayout>
 
             <LinearLayout
@@ -58,7 +62,8 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/user_icon" />
+                    android:src="@drawable/user_icon"
+                    tools:ignore="ContentDescription" />
 
                 <EditText
                     android:id="@+id/username"
@@ -66,13 +71,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:background="#00000000"
-                    android:hint="Username"
+                    android:hint="@string/username"
                     android:inputType="text"
                     android:letterSpacing="0.1"
                     android:textColor="#000000"
                     android:textColorHint="#000000"
                     android:textSize="16dp"
-                    tools:ignore="UnusedAttribute" />
+                    tools:ignore="RtlHardcoded,SpUsage,UnusedAttribute" />
             </LinearLayout>
 
             <LinearLayout
@@ -90,7 +95,8 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/lock_password" />
+                    android:src="@drawable/lock_password"
+                    tools:ignore="ContentDescription" />
 
                 <EditText
                     android:id="@+id/password"
@@ -98,12 +104,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:background="#00000000"
-                    android:hint="Password"
+                    android:hint="@string/password"
                     android:inputType="textPassword"
                     android:letterSpacing="0.1"
                     android:textColor="#000000"
                     android:textColorHint="#000000"
-                    android:textSize="16dp" />
+                    android:textSize="16dp"
+                    tools:targetApi="lollipop"
+                    tools:ignore="RtlHardcoded,SpUsage" />
             </LinearLayout>
 
             <LinearLayout
@@ -121,7 +129,8 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/ppsn" />
+                    android:src="@drawable/ppsn"
+                    tools:ignore="ContentDescription" />
 
                 <EditText
                     android:id="@+id/ppsno"
@@ -129,12 +138,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:background="#00000000"
-                    android:hint="PPS Number"
+                    android:hint="@string/pps_number"
                     android:inputType="number"
                     android:letterSpacing="0.1"
                     android:textColor="#000000"
                     android:textColorHint="#000000"
-                    android:textSize="16dp" />
+                    android:textSize="16dp"
+                    tools:targetApi="lollipop"
+                    tools:ignore="RtlHardcoded,SpUsage" />
             </LinearLayout>
 
             <LinearLayout
@@ -165,7 +176,8 @@
             android:padding="16dp"
             android:text="@string/signup"
             android:textColor="#FFFFFF"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:targetApi="lollipop" />
 
         <TextView
             android:id="@+id/user_login"
@@ -174,7 +186,8 @@
             android:gravity="center"
             android:letterSpacing="0.1"
             android:text="@string/login_msg"
-            android:textColor="#000000" />
+            android:textColor="#000000"
+            tools:targetApi="lollipop" />
 
         <TextView
             android:id="@+id/login"
@@ -183,7 +196,8 @@
             android:gravity="center"
             android:letterSpacing="0.1"
             android:text="@string/login"
-            android:textColor="#000000" />
+            android:textColor="#000000"
+            tools:targetApi="lollipop" />
 
     </LinearLayout>
 
@@ -196,6 +210,7 @@
         <ImageView
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:src="@drawable/report_logo" />
+            android:src="@drawable/report_logo"
+            tools:ignore="ContentDescription" />
     </LinearLayout>
 </RelativeLayout>

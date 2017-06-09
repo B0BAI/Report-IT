@@ -19,6 +19,8 @@ public class Signup extends AppCompatActivity {
     EditText email, ppsnumber, password, username;
     TextView login_msg, signup, login;
 
+    String email_val, ppsnumber_val, password_val, username_val;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +30,7 @@ public class Signup extends AppCompatActivity {
         Typeface custom_font = Typeface.createFromAsset(getAssets(), "fonts/LatoLight.ttf");
         Typeface custom_font_1 = Typeface.createFromAsset(getAssets(), "fonts/LatoRegular.ttf");
 
+        /*IDs*/
         login = (TextView) findViewById(R.id.login);
         signup = (TextView) findViewById(R.id.user_signup);
         login_msg = (TextView) findViewById(R.id.user_login);
@@ -35,6 +38,14 @@ public class Signup extends AppCompatActivity {
         password = (EditText) findViewById(R.id.password);
         email = (EditText) findViewById(R.id.email);
         ppsnumber = (EditText) findViewById(R.id.ppsno);
+
+
+        /*Values*/
+        username_val = username.getText().toString().trim();
+        password_val = password.getText().toString();
+        email_val = email.getText().toString().trim();
+        ppsnumber_val = ppsnumber.getText().toString().trim();
+
 
         ppsnumber.setTypeface(custom_font);
         signup.setTypeface(custom_font_1);
@@ -45,6 +56,14 @@ public class Signup extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if (!username_val.isEmpty() || username_val.length() != 0 || !username_val.equals("") || username_val != null) {
+
+                } else {
+
+                }
+
+
                 Intent it = new Intent(Signup.this, Login.class);
                 startActivity(it);
             }

@@ -23,4 +23,5 @@
     <string name="fire_outbreak_cat_det">A fire prevention strategy and a fire risk assessment should include detail and a full consideration of all of the issues - including issues arising from heat, oxygen and fuel. Advice on these three elements follows. This advice is not exhaustive and is given in no particular order.</string>
     <string name="garbage_cat_det">Illegal dumping is when material (bags, construction debris, appliances, etc.) is dumped from a vehicle onto public or private property. You can report chronic illegal dumping. The Department of Sanitation will monitor the location and remove the garbage. P.S. Only Outdoor Garbage.</string>
     <string name="natural_disaster_cat_det">Disasters should include only natural events such as earthquakes, volcanic eruptions and hurricanes, and situations sparked by human actions, such as oil spills, radiation leaks and chemical accidents.</string>
+    <string name="pps_number">PPS Number</string>
 </resources>
