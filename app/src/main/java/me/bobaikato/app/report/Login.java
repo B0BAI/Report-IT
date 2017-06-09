@@ -48,6 +48,7 @@ public class Login extends AppCompatActivity {
         });
          /*Check Permissions Connection*/
         checkNetwork(findViewById(android.R.id.content), Login.this);
+
     }
 
 

@@ -7,26 +7,8 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.3"
-        sha1="293c0d09e496e1ebc95f0443a12ac3aa23d05286">
+        sha1="22c7c872ab43808600343df22d2de5c1a7c05a4c">
         <dex dex="/Users/bobaikato/Git/Report/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_79d86ebff705267dfce4c6cdaecc2666c0ae90fc/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/bobaikato/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.11.0/840897fcd7223a8143f1d9b6f69714e7be34fd50/okio-1.11.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="840897fcd7223a8143f1d9b6f69714e7be34fd50">
-        <dex dex="/Users/bobaikato/Git/Report/app/build/intermediates/transforms/dex/debug/folders/1000/10/okio-1.11.0_7644d2c66ae4de41258fb02d2f0a36afcc792256/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/bobaikato/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/3.6.0/69edde9fc4b01c9fd51d25b83428837478c27254/okhttp-3.6.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="69edde9fc4b01c9fd51d25b83428837478c27254">
-        <dex dex="/Users/bobaikato/Git/Report/app/build/intermediates/transforms/dex/debug/folders/1000/10/okhttp-3.6.0_240a8515142b0e979a153dda6cd0266791a19b04/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -34,7 +16,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.3"
-        sha1="caff8e51a24901cfc9cd7e1cf83d84f4cb0c103b">
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
         <dex dex="/Users/bobaikato/Git/Report/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_a73c35e09bfdf10c9be7b758780958fdaed4d395/classes.dex" />
     </item>
 

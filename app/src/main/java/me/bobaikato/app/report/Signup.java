@@ -15,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.IOException;
 
@@ -91,13 +92,6 @@ public class Signup extends AppCompatActivity {
                 } else if (ppsnumber_val.isEmpty() || ppsnumber_val.length() == 0 || ppsnumber_val.equals("") || ppsnumber_val == null) {
                     Snackbar.make(v, "PPS Number is invalid", Snackbar.LENGTH_LONG).show();
                 } else {
-
-                    progressDialog = new ProgressDialog(Signup.this,
-                            R.style.AppTheme_Dark_Dialog);
-                    progressDialog.setIndeterminate(true);
-                    progressDialog.setMessage("Authenticating...");
-                    progressDialog.show();
-
                     new Action().execute();
                     try {
                         Thread.sleep(1000);
@@ -110,6 +104,43 @@ public class Signup extends AppCompatActivity {
     }
 
     class Action extends AsyncTask {
+
+        ProgressDialog dialog;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+            /*Reset Fields*/
+            email.setText("");
+            username.setText("");
+            password.setText("");
+            ppsnumber.setText("");
+            /**
+             * Progress Dialog for User Interaction
+             */
+            progressDialog = new ProgressDialog(Signup.this,
+                    R.style.AppTheme_Dark_Dialog);
+            progressDialog.setIndeterminate(true);
+            progressDialog.setMessage("Authenticating...");
+            progressDialog.show();
+        }
+
+        @Override
+        protected void onPostExecute(Object o) {
+            super.onPostExecute(o);
+            progressDialog.dismiss();
+            Toast.makeText(Signup.this, "Account was created Successfully!", Toast.LENGTH_LONG).show();
+               /*Delays*/
+            new android.os.Handler().postDelayed(
+                    new Runnable() {
+                        public void run() {
+                            // On complete call either onLoginSuccess or onLoginFailed
+                            startActivity(new Intent(Signup.this, Login.class));
+                        }
+                    }, 2000);
+        }
+
         @Override
         protected Object doInBackground(Object[] params) {
             RequestBody formBody = new FormBody.Builder()
@@ -131,22 +162,8 @@ public class Signup extends AppCompatActivity {
 
                 @Override
                 public void onResponse(Call call, Response response) throws IOException {
-                    //progressDialog.dismiss();
-                    try {
-                        String resp = response.body().string();
-//                    Log.v(TAG_REGISTER, resp);
-                        System.out.println(resp);
-                        if (response.isSuccessful()) {
-                        } else {
-
-                        }
-                    } catch (IOException e) {
-                        // Log.e(TAG_REGISTER, "Exception caught: ", e);
-                        System.out.println("Exception caught" + e.getMessage());
-                    }
                 }
             });
-
             return null;
         }
     }
