@@ -1,5 +1,6 @@
 package me.bobaikato.app.report;
-/**
+
+/*
  * Author: Bobai Kato
  * Date: 6/2/17
  * Twitter, Instagram, Github, GitLab: @BobaiKato
@@ -17,10 +18,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.IOException;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-import okhttp3.Call;
-import okhttp3.Callback;
+import java.io.IOException;
+import java.util.ArrayList;
+
 import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -28,12 +31,11 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class Signup extends AppCompatActivity {
+    private static final String URL = "https://www.report.lastdaysmusic.com/user/signup.php";
     EditText email, ppsnumber, password, username;
     TextView login_msg, signup, login;
+    ArrayList<String> msg = new ArrayList<>();
     private String email_val, ppsnumber_val, password_val, username_val;
-
-    OkHttpClient client = new OkHttpClient();
-    private static final String URL = "https://www.report.lastdaysmusic.com/user/signup.php";
     private ProgressDialog progressDialog;
 
     @Override
@@ -103,7 +105,7 @@ public class Signup extends AppCompatActivity {
         });
     }
 
-    class Action extends AsyncTask {
+    private class Action extends AsyncTask {
 
         ProgressDialog dialog;
 
@@ -130,7 +132,8 @@ public class Signup extends AppCompatActivity {
         protected void onPostExecute(Object o) {
             super.onPostExecute(o);
             progressDialog.dismiss();
-            Toast.makeText(Signup.this, "Account was created Successfully!", Toast.LENGTH_LONG).show();
+            String x = msg.get(0);
+            Toast.makeText(Signup.this, "Account was created Successfully! " + x, Toast.LENGTH_LONG).show();
                /*Delays*/
             new android.os.Handler().postDelayed(
                     new Runnable() {
@@ -143,27 +146,38 @@ public class Signup extends AppCompatActivity {
 
         @Override
         protected Object doInBackground(Object[] params) {
-            RequestBody formBody = new FormBody.Builder()
-                    .add("email", email_val)
-                    .add("username", username_val)
-                    .add("password", password_val)
-                    .add("ppsno", ppsnumber_val)
-                    .build();
-            Request request = new Request.Builder()
-                    .url(URL)
-                    .post(formBody)
-                    .build();
-            Call call = client.newCall(request);
-            call.enqueue(new Callback() {
-                @Override
-                public void onFailure(Call call, IOException e) {
-                    progressDialog.dismiss();
+            try {
+                OkHttpClient client = new OkHttpClient();
+                RequestBody formBody = new FormBody.Builder()
+                        .add("email", email_val)
+                        .add("username", username_val)
+                        .add("password", password_val)
+                        .add("ppsno", ppsnumber_val)
+                        .build();
+                Request request = new Request.Builder()
+                        .url(URL)
+                        .post(formBody)
+                        .build();
+                Response responses = null;
+
+                try {
+                    responses = client.newCall(request).execute();
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
 
-                @Override
-                public void onResponse(Call call, Response response) throws IOException {
-                }
-            });
+
+                // notice string() call
+                String resStr = responses.body().string();
+                JSONObject json = new JSONObject(resStr);
+                String resp = json.getString("success");
+                msg.add(resp);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             return null;
         }
     }
