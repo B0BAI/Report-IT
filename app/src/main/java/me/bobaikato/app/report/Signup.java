@@ -30,6 +30,8 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
+import static me.bobaikato.app.report.Permissions.checkNetwork;
+
 public class Signup extends AppCompatActivity {
     private static final String URL = "https://www.report.lastdaysmusic.com/user/signup.php";
     EditText email, ppsnumber, password, username;
@@ -94,11 +96,13 @@ public class Signup extends AppCompatActivity {
                 } else if (ppsnumber_val.isEmpty() || ppsnumber_val.length() == 0 || ppsnumber_val.equals("") || ppsnumber_val == null) {
                     Snackbar.make(v, "PPS Number is invalid", Snackbar.LENGTH_LONG).show();
                 } else {
-                    new Action().execute();
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
+                    if (checkNetwork(findViewById(android.R.id.content), getApplicationContext())) {
+                        new Action().execute();
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
             }
@@ -132,13 +136,11 @@ public class Signup extends AppCompatActivity {
         protected void onPostExecute(Object o) {
             super.onPostExecute(o);
             progressDialog.dismiss();
-            String x = msg.get(0);
-            Toast.makeText(Signup.this, "Account was created Successfully! " + x, Toast.LENGTH_LONG).show();
+            Toast.makeText(Signup.this, msg.get(0), Toast.LENGTH_LONG).show();
                /*Delays*/
             new android.os.Handler().postDelayed(
                     new Runnable() {
                         public void run() {
-                            // On complete call either onLoginSuccess or onLoginFailed
                             startActivity(new Intent(Signup.this, Login.class));
                         }
                     }, 2000);
@@ -166,12 +168,9 @@ public class Signup extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-
-                // notice string() call
                 String resStr = responses.body().string();
                 JSONObject json = new JSONObject(resStr);
-                String resp = json.getString("success");
-                msg.add(resp);
+                msg.add(json.getString("success"));//adding to arralist
 
             } catch (JSONException e) {
                 e.printStackTrace();
