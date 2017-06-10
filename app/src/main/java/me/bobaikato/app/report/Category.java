@@ -9,8 +9,10 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import static me.bobaikato.app.report.CategoryDetails.setView_id;
+import static me.bobaikato.app.report.Login.session;
 import static me.bobaikato.app.report.Permissions.checkLocation;
 
 public class Category extends AppCompatActivity {
@@ -39,6 +41,13 @@ public class Category extends AppCompatActivity {
         garbage.setTypeface(custom_font);
         naturalDisaster.setTypeface(custom_font);
         msg.setTypeface(custom_font_1);
+
+        new android.os.Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(Category.this, session.getIdentity(), Toast.LENGTH_LONG).show();
+            }
+        }, 2000);
 
         /*Check Location*/
         locationCheck();

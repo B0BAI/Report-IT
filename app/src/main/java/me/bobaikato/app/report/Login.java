@@ -38,6 +38,7 @@ import static me.bobaikato.app.report.Permissions.checkNetwork;
 public class Login extends AppCompatActivity {
     private static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
     private static final String URL = "https://www.report.lastdaysmusic.com/user/login.php";
+    public static Session session;
     private EditText password, username;
     private TextView signup_msg, login, signup;
     private ProgressDialog progressDialog;
@@ -45,12 +46,11 @@ public class Login extends AppCompatActivity {
     private String username_val;
     private String password_val;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        session = new Session(getApplicationContext());
         /*Check Location approval*/
         if (!checkLocation(getApplicationContext())) {
             ActivityCompat.requestPermissions(this,
@@ -143,13 +143,14 @@ public class Login extends AppCompatActivity {
                         public void run() {
                             progressDialog.dismiss();
                             if (!requestResponse.equals("invalid")) {
-
+                                /*Set pref*/
+                                session.setIdentity(requestResponse);
                                 /*Reset Field*/
                                 username.setText("");
                                 password.setText("");
 
                                 startActivity(new Intent(Login.this, Category.class));
-                                Toast.makeText(Login.this, "You've successfully logged in." + requestResponse, Toast.LENGTH_LONG).show();
+                                Toast.makeText(Login.this, "You've successfully logged in.", Toast.LENGTH_LONG).show();
                             } else {
                                 Toast.makeText(Login.this, "Sorry User doesn't exist.", Toast.LENGTH_SHORT).show();
                             }
