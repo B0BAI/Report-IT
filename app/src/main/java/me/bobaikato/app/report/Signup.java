@@ -37,7 +37,7 @@ public class Signup extends AppCompatActivity {
     private static final String URL = "https://www.report.lastdaysmusic.com/user/signup.php";
     EditText email, ppsnumber, password, username;
     TextView login_msg, signup, login;
-
+    String requestResponse;
     private String email_val, ppsnumber_val, password_val, username_val;
     private ProgressDialog progressDialog;
 
@@ -113,8 +113,6 @@ public class Signup extends AppCompatActivity {
     private class Action extends AsyncTask {
 
         ProgressDialog dialog;
-        String requestResponse;
-
 
 
         @Override
@@ -185,6 +183,7 @@ public class Signup extends AppCompatActivity {
 
                 @Override
                 public void onResponse(Call call, Response response) throws IOException {
+
                     String resStr = response.body().string();
                     JSONObject json = null;
                     try {
