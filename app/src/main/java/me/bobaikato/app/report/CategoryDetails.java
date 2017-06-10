@@ -9,10 +9,15 @@ public class CategoryDetails extends AppCompatActivity {
 
     private static Integer view_id;
 
+    public static void setView_id(Integer view_id) {
+        CategoryDetails.view_id = view_id;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category_details);
+        overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
 
 
           /*Font*/
@@ -40,11 +45,6 @@ public class CategoryDetails extends AppCompatActivity {
         }
         title.setTypeface(custom_font);
         details.setTypeface(custom_font);
-    }
-
-
-    public static void setView_id(Integer view_id) {
-        CategoryDetails.view_id = view_id;
     }
 
 }

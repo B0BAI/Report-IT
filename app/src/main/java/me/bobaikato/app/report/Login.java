@@ -50,7 +50,11 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
         session = new Session(getApplicationContext());
+
+        handleSession();
+
         /*Check Location approval*/
         if (!checkLocation(getApplicationContext())) {
             ActivityCompat.requestPermissions(this,
@@ -88,9 +92,17 @@ public class Login extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
          /*Check Permissions Connection*/
+        handleSession();
         checkNetwork(findViewById(android.R.id.content), Login.this);
     }
 
+    /*Handle session Redirect*/
+    private void handleSession() {
+        /*Check Session and redirect to Category*/
+        if (session.isIdentity()) {
+            startActivity(new Intent(Login.this, Category.class));
+        }
+    }
 
     /*handles Login validation and redirection to Category*/
     public void userLogin(View view) {
@@ -197,6 +209,5 @@ public class Login extends AppCompatActivity {
             return null;
         }
     }
-
 
 }
