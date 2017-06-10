@@ -22,7 +22,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -38,7 +37,7 @@ public class Signup extends AppCompatActivity {
     private static final String URL = "https://www.report.lastdaysmusic.com/user/signup.php";
     EditText email, ppsnumber, password, username;
     TextView login_msg, signup, login;
-    ArrayList<String> msg = new ArrayList<>();
+
     private String email_val, ppsnumber_val, password_val, username_val;
     private ProgressDialog progressDialog;
 
@@ -114,6 +113,9 @@ public class Signup extends AppCompatActivity {
     private class Action extends AsyncTask {
 
         ProgressDialog dialog;
+        String requestResponse;
+
+
 
         @Override
         protected void onPreExecute() {
@@ -124,7 +126,7 @@ public class Signup extends AppCompatActivity {
             username.setText("");
             password.setText("");
             ppsnumber.setText("");
-            /**
+            /*
              * Progress Dialog for User Interaction
              */
             progressDialog = new ProgressDialog(Signup.this,
@@ -138,31 +140,30 @@ public class Signup extends AppCompatActivity {
         protected void onPostExecute(Object o) {
             super.onPostExecute(o);
             String user_msg = null;
-            final String resp = msg.get(0);
-            if (resp.equals("1")) {
+
+            if (requestResponse.equals("1")) {
                 user_msg = "Account Created Successfully!";
-            } else if (resp.equals("0")) {
+            } else if (requestResponse.equals("0")) {
                 user_msg = "Sorry! this User already exist.";
-            } else if (resp.equals("2")) {
+            } else if (requestResponse.equals("2")) {
                 user_msg = "Sorry! an error occurred.";
             }
             progressDialog.dismiss();
-            Toast.makeText(Signup.this, user_msg, Toast.LENGTH_LONG).show();
+            Toast.makeText(Signup.this, user_msg, Toast.LENGTH_SHORT).show();
                /*Delays*/
             new android.os.Handler().postDelayed(
                     new Runnable() {
                         public void run() {
-                            if (resp.equals("1")) {
+                            if (requestResponse.equals("1")) {
                                 startActivity(new Intent(Signup.this, Login.class));
                             }
                         }
-                    }, 2000);
+                    }, 3000);
         }
 
         @Override
         protected Object doInBackground(Object[] params) {
 
-            String success = null, warning = null, failed = null;
             OkHttpClient client = new OkHttpClient();
             RequestBody formBody = new FormBody.Builder()
                     .add("email", email_val)
@@ -179,7 +180,7 @@ public class Signup extends AppCompatActivity {
             client.newCall(request).enqueue(new Callback() {
                 @Override
                 public void onFailure(Call call, IOException e) {
-                    msg.add("Failed");
+                    requestResponse = "0";
                 }
 
                 @Override
@@ -191,13 +192,11 @@ public class Signup extends AppCompatActivity {
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                    String message = null;
                     try {
-                        message = json.getString("message").trim();
+                        requestResponse = json.getString("message").trim();
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                    msg.add(message);
                 }
             });
             return null;
