@@ -100,7 +100,7 @@ public class Login extends AppCompatActivity {
         if (username_val.isEmpty() || username_val.length() == 0) {
             Snackbar.make(view, "Username cannot be empty.", Snackbar.LENGTH_LONG).show();
         } else if (password_val.isEmpty() || password_val.length() == 0) {
-            Snackbar.make(view, "Username cannot be empty.", Snackbar.LENGTH_LONG).show();
+            Snackbar.make(view, "Password cannot be empty.", Snackbar.LENGTH_LONG).show();
         } else {
 
         /*Dialog*/
