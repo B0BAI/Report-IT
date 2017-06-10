@@ -17,4 +17,5 @@
     <color name="iron">#CCCCCC</color>
     <color name="white">#FFFFFF</color>
     <color name="custom_report_details">#E8E8E9</color>
+    <color name="logout">#6F1502</color>
 </resources>

@@ -24,4 +24,5 @@
     <string name="garbage_cat_det">Illegal dumping is when material (bags, construction debris, appliances, etc.) is dumped from a vehicle onto public or private property. You can report chronic illegal dumping. The Department of Sanitation will monitor the location and remove the garbage. P.S. Only Outdoor Garbage.</string>
     <string name="natural_disaster_cat_det">Disasters should include only natural events such as earthquakes, volcanic eruptions and hurricanes, and situations sparked by human actions, such as oil spills, radiation leaks and chemical accidents.</string>
     <string name="pps_number">PPS Number</string>
+    <string name="logout">LOGOUT</string>
 </resources>
