@@ -23,13 +23,13 @@ public class Session {
     public Session() {
     }
 
+    public void logout(String ppsno) {
+        sharedPreferences.edit().remove(ppsno).commit();
+    }
+
     public String getIdentity() {
         this.ppsno = sharedPreferences.getString("ppsno", "");
         return ppsno;
-    }
-
-    public void logout(String ppsno) {
-        sharedPreferences.edit().remove(ppsno).commit();
     }
 
     public boolean isIdentity() {
@@ -39,4 +39,6 @@ public class Session {
     public void setIdentity(String ppsno) {
         sharedPreferences.edit().putString("ppsno", ppsno).commit();
     }
+
+
 }
