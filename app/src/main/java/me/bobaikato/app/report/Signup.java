@@ -37,7 +37,7 @@ public class Signup extends AppCompatActivity {
     private static final String URL = "https://www.report.lastdaysmusic.com/user/signup.php";
     EditText email, ppsnumber, password, username;
     TextView login_msg, signup, login;
-    String requestResponse;
+    private String requestResponse;
     private String email_val, ppsnumber_val, password_val, username_val;
     private ProgressDialog progressDialog;
 
@@ -87,7 +87,7 @@ public class Signup extends AppCompatActivity {
                 email_val = email.getText().toString().trim();
                 ppsnumber_val = ppsnumber.getText().toString().trim();
 
-                //Toast.makeText(getApplicationContext(), "SIGNUP Clicked", Toast.LENGTH_SHORT).show();
+
                 if (email_val.isEmpty() || email_val.length() == 0 || email_val.equals("") || email_val == null) {
                     Snackbar.make(v, "Email is invalid ", Snackbar.LENGTH_LONG).show();
                 } else if (username_val.isEmpty() || username_val.length() == 0 || username_val.equals("") || username_val == null) {
