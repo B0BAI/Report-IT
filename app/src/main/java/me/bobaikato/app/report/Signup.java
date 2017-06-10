@@ -173,7 +173,6 @@ public class Signup extends AppCompatActivity {
                     .url(URL)
                     .post(formBody)
                     .build();
-            Response responses = null;
 
             client.newCall(request).enqueue(new Callback() {
                 @Override

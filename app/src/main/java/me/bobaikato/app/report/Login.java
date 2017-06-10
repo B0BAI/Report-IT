@@ -32,12 +32,12 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-import static android.provider.ContactsContract.CommonDataKinds.Website.URL;
 import static me.bobaikato.app.report.Permissions.checkLocation;
 import static me.bobaikato.app.report.Permissions.checkNetwork;
 
 public class Login extends AppCompatActivity {
     private static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
+    private static final String URL = "https://www.report.lastdaysmusic.com/user/login.php";
     private EditText password, username;
     private TextView signup_msg, login, signup;
     private ProgressDialog progressDialog;
@@ -104,29 +104,20 @@ public class Login extends AppCompatActivity {
         } else {
 
         /*Dialog*/
-            progressDialog = new ProgressDialog(Login.this,
-                    R.style.AppTheme_Dark_Dialog);
-            progressDialog.setIndeterminate(true);
-            progressDialog.setMessage("Authenticating...");
-            progressDialog.show();
-
-
-        /*Delays*/
-            new android.os.Handler().postDelayed(
-                    new Runnable() {
-                        public void run() {
-                            // On complete call either onLoginSuccess or onLoginFailed
-                            Intent intent = new Intent(Login.this, Category.class);
-                            startActivity(intent);
-                            // onLoginFailed();
-                            progressDialog.dismiss();
-                        }
-                    }, 1000);
+            if (checkNetwork(findViewById(android.R.id.content), getApplicationContext())) {
+                new Action().execute();
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 
     private class Action extends AsyncTask {
         ProgressDialog dialog;
+
 
         @Override
         protected void onPreExecute() {
@@ -145,23 +136,22 @@ public class Login extends AppCompatActivity {
         @Override
         protected void onPostExecute(Object o) {
             super.onPostExecute(o);
-            String user_msg = null;
 
-            if (requestResponse.equals("1")) {
-                user_msg = "Account Created Successfully!";
-            } else if (requestResponse.equals("0")) {
-                user_msg = "Sorry! this User already exist.";
-            } else if (requestResponse.equals("2")) {
-                user_msg = "Sorry! an error occurred.";
-            }
-            progressDialog.dismiss();
-            Toast.makeText(Login.this, user_msg, Toast.LENGTH_SHORT).show();
-               /*Delays*/
+                /*Delays*/
             new android.os.Handler().postDelayed(
                     new Runnable() {
                         public void run() {
-                            if (requestResponse.equals("1")) {
-                                startActivity(new Intent(Login.this, Login.class));
+                            progressDialog.dismiss();
+                            if (!requestResponse.equals("invalid")) {
+
+                                /*Reset Field*/
+                                username.setText("");
+                                password.setText("");
+
+                                startActivity(new Intent(Login.this, Category.class));
+                                Toast.makeText(Login.this, "You've successfully logged in." + requestResponse, Toast.LENGTH_LONG).show();
+                            } else {
+                                Toast.makeText(Login.this, "Sorry User doesn't exist.", Toast.LENGTH_SHORT).show();
                             }
                         }
                     }, 3000);
@@ -179,12 +169,11 @@ public class Login extends AppCompatActivity {
                     .url(URL)
                     .post(formBody)
                     .build();
-            Response responses = null;
 
             client.newCall(request).enqueue(new Callback() {
                 @Override
                 public void onFailure(Call call, IOException e) {
-                    requestResponse = "0";
+                    requestResponse = "invalid";
                 }
 
                 @Override
