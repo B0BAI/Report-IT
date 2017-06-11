@@ -120,7 +120,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:layout_marginBottom="40dp"
+                android:layout_marginBottom="20dp"
                 android:background="@drawable/round_button"
                 android:gravity="center"
                 android:letterSpacing="0.2"
@@ -130,7 +130,6 @@
                 android:textColor="#FFFFFF"
                 android:textSize="16sp"
                 android:textStyle="bold" />
-
         </LinearLayout>
     </ScrollView>
 
@@ -140,8 +139,8 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:letterSpacing="0.1"
-        android:text="ID: 4534853845"
-        android:textColor="@color/logout"
-        android:textSize="13dp" />
+        android:text=""
+        android:textColor="@color/dark_red"
+        android:textSize="12dp" />
 
 </RelativeLayout>

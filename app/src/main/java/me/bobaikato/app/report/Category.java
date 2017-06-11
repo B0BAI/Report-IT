@@ -9,20 +9,22 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import static me.bobaikato.app.report.CategoryDetails.setView_id;
 import static me.bobaikato.app.report.Login.session;
 import static me.bobaikato.app.report.Permissions.checkLocation;
 
 public class Category extends AppCompatActivity {
-    TextView acccident, crime, fireOutbreak, garbage, naturalDisaster, msg;
+    TextView acccident, crime, fireOutbreak, garbage, naturalDisaster, msg, ppsno_id, logout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
         overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
+
+        /*Check Location*/
+        locationCheck();
 
         /*Custome font*/
         Typeface custom_font = Typeface.createFromAsset(getAssets(), "fonts/LatoLight.ttf");
@@ -34,6 +36,8 @@ public class Category extends AppCompatActivity {
         garbage = (TextView) findViewById(R.id.report_garbage);
         naturalDisaster = (TextView) findViewById(R.id.report_natural_disaster);
         msg = (TextView) findViewById(R.id.report_msg);
+        ppsno_id = (TextView) findViewById(R.id.ppsno_id);
+        logout = (TextView) findViewById(R.id.logout);
 
         /*Set Custom Font*/
         acccident.setTypeface(custom_font);
@@ -42,17 +46,16 @@ public class Category extends AppCompatActivity {
         garbage.setTypeface(custom_font);
         naturalDisaster.setTypeface(custom_font);
         msg.setTypeface(custom_font_1);
+        ppsno_id.setTypeface(custom_font);
+        ppsno_id.setText("ID: " + session.getIdentity().toUpperCase());
 
-        new android.os.Handler().postDelayed(new Runnable() {
+
+        logout.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void run() {
-                Toast.makeText(Category.this, session.getIdentity(), Toast.LENGTH_LONG).show();
+            public void onClick(View v) {
+                session.logout("ppsno");
             }
-        }, 2000);
-
-        /*Check Location*/
-        locationCheck();
-
+        });
     }
 
 

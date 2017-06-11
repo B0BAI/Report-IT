@@ -157,7 +157,7 @@ public class Signup extends AppCompatActivity {
                                 startActivity(new Intent(Signup.this, Login.class));
                             }
                         }
-                    }, 3000);
+                    }, 1000);
         }
 
         @Override
@@ -165,10 +165,10 @@ public class Signup extends AppCompatActivity {
 
             OkHttpClient client = new OkHttpClient();
             RequestBody formBody = new FormBody.Builder()
-                    .add("email", email_val)
-                    .add("username", username_val)
-                    .add("password", password_val)
-                    .add("ppsno", ppsnumber_val)
+                    .add("email", email_val.toLowerCase())
+                    .add("username", username_val.toLowerCase())
+                    .add("password", password_val.toLowerCase())
+                    .add("ppsno", ppsnumber_val.toLowerCase())
                     .build();
             Request request = new Request.Builder()
                     .url(URL)

@@ -135,7 +135,6 @@
 
         </LinearLayout>
     </ScrollView>
-
     <TextView
         android:id="@+id/ppsno_id"
         android:layout_width="match_parent"
@@ -143,7 +142,7 @@
         android:gravity="center"
         android:letterSpacing="0.1"
         android:text="ID: 4534853845"
-        android:textColor="@color/logout"
-        android:textSize="13dp"
+        android:textColor="@color/dark_red"
+        android:textSize="12dp"
         tools:targetApi="lollipop" />
 </RelativeLayout>
