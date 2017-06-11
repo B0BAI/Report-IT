@@ -1,6 +1,5 @@
 package me.bobaikato.app.report;
 
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
@@ -8,6 +7,7 @@ import android.widget.TextView;
 public class CategoryDetails extends AppCompatActivity {
 
     private static Integer view_id;
+    private Fonts fonts;
 
     public static void setView_id(Integer view_id) {
         CategoryDetails.view_id = view_id;
@@ -21,7 +21,7 @@ public class CategoryDetails extends AppCompatActivity {
 
 
           /*Font*/
-        Typeface custom_font = Typeface.createFromAsset(getAssets(), "fonts/LatoRegular.ttf");
+        fonts = new Fonts(getApplicationContext());
 
         TextView title = (TextView) findViewById(R.id.report_title);
         TextView details = (TextView) findViewById(R.id.report_details);
@@ -43,8 +43,7 @@ public class CategoryDetails extends AppCompatActivity {
             title.setText(getString(R.string.natural_disaster));
             details.setText(getString(R.string.natural_disaster_cat_det));
         }
-        title.setTypeface(custom_font);
-        details.setTypeface(custom_font);
+        title.setTypeface(fonts.getCustom_font());
+        details.setTypeface(fonts.getCustom_font());
     }
-
 }

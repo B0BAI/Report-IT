@@ -8,7 +8,6 @@ package me.bobaikato.app.report;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -40,6 +39,7 @@ public class Signup extends AppCompatActivity {
     private String requestResponse;
     private String email_val, ppsnumber_val, password_val, username_val;
     private ProgressDialog progressDialog;
+    private Fonts fonts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +48,7 @@ public class Signup extends AppCompatActivity {
         overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
 
                 /*Font*/
-        Typeface custom_font = Typeface.createFromAsset(getAssets(), "fonts/LatoLight.ttf");
-        Typeface custom_font_1 = Typeface.createFromAsset(getAssets(), "fonts/LatoRegular.ttf");
+        fonts = new Fonts(getApplicationContext());
 
         /*IDs*/
         login = (TextView) findViewById(R.id.login);
@@ -61,12 +60,12 @@ public class Signup extends AppCompatActivity {
         ppsnumber = (EditText) findViewById(R.id.ppsno);
 
 
-        ppsnumber.setTypeface(custom_font);
-        signup.setTypeface(custom_font_1);
-        password.setTypeface(custom_font);
-        login_msg.setTypeface(custom_font);
-        username.setTypeface(custom_font);
-        email.setTypeface(custom_font);
+        ppsnumber.setTypeface(fonts.getCustom_font());
+        signup.setTypeface(fonts.getCustom_font_1());
+        password.setTypeface(fonts.getCustom_font());
+        login_msg.setTypeface(fonts.getCustom_font());
+        username.setTypeface(fonts.getCustom_font());
+        email.setTypeface(fonts.getCustom_font());
 
           /*Logging text click listener*/
         login.setOnClickListener(new View.OnClickListener() {

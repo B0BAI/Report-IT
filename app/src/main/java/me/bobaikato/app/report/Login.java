@@ -8,7 +8,6 @@ package me.bobaikato.app.report;
 import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -45,6 +44,7 @@ public class Login extends AppCompatActivity {
     private String requestResponse;
     private String username_val;
     private String password_val;
+    private Fonts fonts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +52,7 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
         session = new Session(getApplicationContext());
+
 
         handleSession();
 
@@ -63,8 +64,7 @@ public class Login extends AppCompatActivity {
         }
 
         /*Font*/
-        Typeface custom_font = Typeface.createFromAsset(getAssets(), "fonts/LatoLight.ttf");
-        Typeface custom_font_1 = Typeface.createFromAsset(getAssets(), "fonts/LatoRegular.ttf");
+        fonts = new Fonts(getApplicationContext());
 
         login = (TextView) findViewById(R.id.user_login);
         username = (EditText) findViewById(R.id.username);
@@ -72,10 +72,10 @@ public class Login extends AppCompatActivity {
         signup_msg = (TextView) findViewById(R.id.user_signup);
         signup = (TextView) findViewById(R.id.signup);
 
-        login.setTypeface(custom_font_1);
-        signup_msg.setTypeface(custom_font);
-        username.setTypeface(custom_font);
-        password.setTypeface(custom_font);
+        login.setTypeface(fonts.getCustom_font_1());
+        signup_msg.setTypeface(fonts.getCustom_font());
+        username.setTypeface(fonts.getCustom_font());
+        password.setTypeface(fonts.getCustom_font());
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
