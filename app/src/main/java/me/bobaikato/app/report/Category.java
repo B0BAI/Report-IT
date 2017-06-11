@@ -9,6 +9,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import static me.bobaikato.app.report.CategoryDetails.setView_id;
 import static me.bobaikato.app.report.Login.session;
@@ -22,7 +23,7 @@ public class Category extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
         overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
-
+        handleSession();
         /*Check Location*/
         locationCheck();
 
@@ -54,14 +55,24 @@ public class Category extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 session.logout("ppsno");
+                startActivity(new Intent(Category.this, Login.class));
+                Toast.makeText(Category.this, "You've successfully Logged out.", Toast.LENGTH_LONG).show();
             }
         });
     }
 
+    /*Handle session Redirect*/
+    private void handleSession() {
+        /*Check Session and redirect to Category*/
+        if (!session.isIdentity()) {
+            startActivity(new Intent(Category.this, Login.class));
+        }
+    }
 
     @Override
     protected void onResume() {
         super.onResume();
+        handleSession();
          /*Check Location*/
         locationCheck();
     }
@@ -71,9 +82,7 @@ public class Category extends AppCompatActivity {
         if (checkLocation(this) == false) {
             /*Snackbar*/
             Snackbar.make(findViewById(android.R.id.content), "ALLOW LOCATION TO CONTINUE!", Snackbar.LENGTH_LONG).show();
-
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 1001);
-
         }
     }
 
