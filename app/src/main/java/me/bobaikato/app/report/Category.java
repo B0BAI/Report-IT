@@ -24,6 +24,7 @@ public class Category extends AppCompatActivity {
         setContentView(R.layout.activity_category);
         overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
         handleSession();
+
         /*Check Location*/
         locationCheck();
 
@@ -54,7 +55,7 @@ public class Category extends AppCompatActivity {
             public void onClick(View v) {
                 session.logout("ppsno");
                 startActivity(new Intent(Category.this, Login.class));
-                Toast.makeText(Category.this, "You've successfully Logged out.", Toast.LENGTH_LONG).show();
+                Toast.makeText(Category.this, R.string.logout_msg, Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -79,11 +80,10 @@ public class Category extends AppCompatActivity {
             /*Check Location*/
         if (!checkLocation(this)) {
             /*Snackbar*/
-            Snackbar.make(findViewById(android.R.id.content), "ALLOW LOCATION TO CONTINUE!", Snackbar.LENGTH_LONG).show();
+            Snackbar.make(findViewById(android.R.id.content), R.string.allow_location_msg, Snackbar.LENGTH_LONG).show();
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 1001);
         }
     }
-
 
     /*Validate Location before you continue*/
     public void setReportCategoryDetails(View v) {

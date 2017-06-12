@@ -3,11 +3,38 @@
 
     <item
         is-multidex="true"
+        jar="/Users/bobaikato/.android/build-cache/c0e632cf337dbc167e91bb377315de7d7ee89207/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="372295458f730b0715898d4b477a85aa1a777504">
+        <dex dex="/Users/bobaikato/Git/Report/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_5712aea271669eb30e31e1961b9d537241adcf8f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/bobaikato/Git/Report/app/libs/ImageBase64Encoder.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="63acf287fc4ae8ad3bd4e5561d254ed89412b981">
+        <dex dex="/Users/bobaikato/Git/Report/app/build/intermediates/transforms/dex/debug/folders/1000/2/ImageBase64Encoder_0948fdcd31bb048cf5a42d9d2411f2ef8458c1ae/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/bobaikato/Git/Report/app/libs/PhotoUtil.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="6e6b2be10f6247cd3852c8a02f582da8fe1da662">
+        <dex dex="/Users/bobaikato/Git/Report/app/build/intermediates/transforms/dex/debug/folders/1000/2/PhotoUtil_64de962ee3a1ad62c7041d9b489fc264b2576f20/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/Users/bobaikato/Git/Report/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.3"
-        sha1="22c7c872ab43808600343df22d2de5c1a7c05a4c">
+        sha1="ef1568159ffa413059c325c49e979e9d484a7d99">
         <dex dex="/Users/bobaikato/Git/Report/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_79d86ebff705267dfce4c6cdaecc2666c0ae90fc/classes.dex" />
     </item>
     <item

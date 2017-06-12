@@ -18,6 +18,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -41,10 +42,12 @@ public class Login extends AppCompatActivity {
     private EditText password, username;
     private TextView signup_msg, login, signup;
     private ProgressDialog progressDialog;
-    private String requestResponse;
     private String username_val;
     private String password_val;
     private Fonts fonts;
+    private JSONArray jsonarray;
+    private String ppsno_resp = null;
+    private String type_resp = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -127,6 +130,7 @@ public class Login extends AppCompatActivity {
         }
     }
 
+
     private class Action extends AsyncTask {
         ProgressDialog dialog;
 
@@ -141,33 +145,31 @@ public class Login extends AppCompatActivity {
             progressDialog = new ProgressDialog(Login.this,
                     R.style.AppTheme_Dark_Dialog);
             progressDialog.setIndeterminate(true);
-            progressDialog.setMessage("Authenticating...");
+            progressDialog.setMessage(getString(R.string.authenticating));
             progressDialog.show();
         }
 
         @Override
         protected void onPostExecute(Object o) {
             super.onPostExecute(o);
-
-                /*Delays*/
+                   /*Delays*/
             new android.os.Handler().postDelayed(
                     new Runnable() {
                         public void run() {
                             progressDialog.dismiss();
-                            if (!requestResponse.equals("invalid")) {
+                            if (!ppsno_resp.equals(getString(R.string.invalid))) {
                                 /*Set pref*/
-                                session.setIdentity(requestResponse);
+                                session.setIdentity(ppsno_resp);
                                 /*Reset Field*/
                                 username.setText("");
                                 password.setText("");
-
                                 startActivity(new Intent(Login.this, Category.class));
-                                Toast.makeText(Login.this, "You've successfully logged in.", Toast.LENGTH_LONG).show();
+                                Toast.makeText(Login.this, R.string.login_success_msg, Toast.LENGTH_LONG).show();
                             } else {
-                                Toast.makeText(Login.this, "Sorry User doesn't exist.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Login.this, R.string.login_failed_msg, Toast.LENGTH_SHORT).show();
                             }
                         }
-                    }, 3000);
+                    }, 1000);
         }
 
         @Override
@@ -186,21 +188,19 @@ public class Login extends AppCompatActivity {
             client.newCall(request).enqueue(new Callback() {
                 @Override
                 public void onFailure(Call call, IOException e) {
-                    requestResponse = "invalid";
+                    //requestResponse = "invalid";
                 }
 
                 @Override
                 public void onResponse(Call call, Response response) throws IOException {
-
+                    JSONObject ppsno_JSON, user_Type_JSON;
                     String resStr = response.body().string();
-                    JSONObject json = null;
                     try {
-                        json = new JSONObject(resStr);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                    try {
-                        requestResponse = json.getString("message").trim();
+                        jsonarray = new JSONArray(resStr);
+                        ppsno_JSON = jsonarray.getJSONObject(0);
+                        user_Type_JSON = jsonarray.getJSONObject(0);
+                        type_resp = user_Type_JSON.getString("type").toString();
+                        ppsno_resp = ppsno_JSON.getString("ppsno").toString();
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }

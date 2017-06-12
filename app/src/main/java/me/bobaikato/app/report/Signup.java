@@ -34,8 +34,8 @@ import static me.bobaikato.app.report.Permissions.checkNetwork;
 
 public class Signup extends AppCompatActivity {
     private static final String URL = "https://www.report.lastdaysmusic.com/user/signup.php";
-    EditText email, ppsnumber, password, username;
-    TextView login_msg, signup, login;
+    private EditText email, ppsnumber, password, username;
+    private TextView login_msg, signup, login;
     private String requestResponse;
     private String email_val, ppsnumber_val, password_val, username_val;
     private ProgressDialog progressDialog;
@@ -130,7 +130,7 @@ public class Signup extends AppCompatActivity {
             progressDialog = new ProgressDialog(Signup.this,
                     R.style.AppTheme_Dark_Dialog);
             progressDialog.setIndeterminate(true);
-            progressDialog.setMessage("Authenticating...");
+            progressDialog.setMessage(getString(R.string.authenticating));
             progressDialog.show();
         }
 
@@ -140,11 +140,11 @@ public class Signup extends AppCompatActivity {
             String user_msg = null;
 
             if (requestResponse.equals("1")) {
-                user_msg = "Account Created Successfully!";
+                user_msg = getString(R.string.create_acc_success_msg);
             } else if (requestResponse.equals("0")) {
-                user_msg = "Sorry! this User already exist.";
+                user_msg = getString(R.string.acct_create_fail_msg);
             } else if (requestResponse.equals("2")) {
-                user_msg = "Sorry! an error occurred.";
+                user_msg = getString(R.string.accnt_create_error_msg);
             }
             progressDialog.dismiss();
             Toast.makeText(Signup.this, user_msg, Toast.LENGTH_SHORT).show();

@@ -67,7 +67,7 @@
         <ImageView
             android:layout_width="110dp"
             android:layout_height="110dp"
-            android:src="@drawable/camera_icon4"
+            android:src="@drawable/camera_icon"
             tools:ignore="ContentDescription" />
     </LinearLayout>
 </RelativeLayout>

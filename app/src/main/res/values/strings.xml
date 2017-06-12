@@ -26,4 +26,15 @@
     <string name="natural_disaster_cat_det">Disasters should include only natural events such as earthquakes, volcanic eruptions and hurricanes, and situations sparked by human actions, such as oil spills, radiation leaks and chemical accidents.</string>
     <string name="pps_number">PPS Number</string>
     <string name="logout">LOGOUT</string>
+    <string name="invalid">invalid</string>
+    <string name="login_success_msg">You\'ve successfully logged in.</string>
+    <string name="login_failed_msg">Sorry this User doesn\'t exist.</string>
+    <string name="authenticating">Authenticating...</string>
+    <string name="logout_msg">You\'ve successfully Logged out.</string>
+    <string name="allow_location_msg">ALLOW LOCATION TO CONTINUE!</string>
+    <string name="cam_support_msg">Camera not supported</string>
+    <string name="gps_msg">Your phone GPS is off</string>
+    <string name="create_acc_success_msg">Account Created Successfully!</string>
+    <string name="acct_create_fail_msg">Sorry! this User already exist.</string>
+    <string name="accnt_create_error_msg">Sorry! an error occurred.</string>
 </resources>
