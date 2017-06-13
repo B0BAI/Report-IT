@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
@@ -20,8 +19,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.ceylonlabs.imageviewpopup.ImagePopup;
 
 import java.io.ByteArrayOutputStream;
 
@@ -40,7 +37,6 @@ public class CategoryDetails extends AppCompatActivity {
     private Bitmap bitmap;
     private Uri file_uri;
     private Session session;
-    private ImagePopup imagePopup;
 
 
     public static void setView_id(Integer view_id) {
@@ -61,7 +57,6 @@ public class CategoryDetails extends AppCompatActivity {
         title = (TextView) findViewById(R.id.report_title);
         details = (TextView) findViewById(R.id.report_details);
         camera_icon = (ImageView) findViewById(R.id.upload_camera);
-        cam_shot = (ImageView) findViewById(R.id.camera_shot);
         continue_btn = (TextView) findViewById(R.id.continue_btn);
         continue_btn.setVisibility(View.INVISIBLE);
 
@@ -89,22 +84,6 @@ public class CategoryDetails extends AppCompatActivity {
 
         }
 
-
-        imagePopup = new ImagePopup(this);
-        imagePopup.setWindowHeight(1000); // Optional
-        imagePopup.setWindowWidth(1000); // Optional
-        imagePopup.setBackgroundColor(Color.BLACK);  // Optional
-        imagePopup.setHideCloseIcon(false);  // Optional
-        imagePopup.setImageOnClickClose(false);  // Optional
-
-
-        cam_shot.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                /** Initiate Popup view **/
-                imagePopup.initiatePopup(cam_shot.getDrawable());
-            }
-        });
 
         camera_icon.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.M)
@@ -167,7 +146,6 @@ public class CategoryDetails extends AppCompatActivity {
             // get the base 64 string
             encoded_image = Base64.encodeToString(byteFormat, Base64.NO_WRAP);
             // new Upload(encoded_image);
-            cam_shot.setImageBitmap(bitmap);
             continue_btn.setVisibility(View.VISIBLE);
             set_sum_properties(picturePath, encoded_image, bitmap);
         }
