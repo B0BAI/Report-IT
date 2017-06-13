@@ -9,7 +9,6 @@ import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.provider.MediaStore;
 import android.provider.Settings;
 import android.support.annotation.RequiresApi;
@@ -23,20 +22,18 @@ import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
 
-import static me.bobaikato.app.report.Login.session;
-
 public class CategoryDetails extends AppCompatActivity {
 
 
     private static Integer view_id;
-    String picturePath;
+    String picturePath, encoded_image;
     private Fonts fonts;
     private ImageView camera_icon;
     private TextView title, details, continue_btn;
     private LocationManager manager;
     private Bitmap bitmap;
     private Uri file_uri;
-    private Integer continue_btn_flag = 0;
+    private Session session;
 
 
     public static void setView_id(Integer view_id) {
@@ -48,7 +45,7 @@ public class CategoryDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category_details);
         overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
-
+        session = new Session(getApplicationContext());
         manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         checkGPS();
           /*Font*/
@@ -123,15 +120,6 @@ public class CategoryDetails extends AppCompatActivity {
         });
     }
 
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-    }
-
-    @Override
-    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
-        super.onSaveInstanceState(outState, outPersistentState);
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -158,20 +146,16 @@ public class CategoryDetails extends AppCompatActivity {
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
             byte[] byteFormat = stream.toByteArray();
             // get the base 64 string
-            String imgString = Base64.encodeToString(byteFormat, Base64.NO_WRAP);
-            new Upload(imgString);
-            Toast.makeText(getApplication(), "PASSED", Toast.LENGTH_LONG).show();
+            encoded_image = Base64.encodeToString(byteFormat, Base64.NO_WRAP);
+            new Upload(encoded_image);
             camera_icon.setImageBitmap(bitmap);
 
             //startActivity(new Intent(CategoryDetails.this, Summary.class));
             continue_btn.setVisibility(View.VISIBLE);
-            continue_btn_flag = 1; //on
-            session.set_encoded_string(imgString); //set
-
         }
     }
 
-//    private String encodeImage(String path) {
+    //    private String encodeImage(String path) {
 //        Toast.makeText(CategoryDetails.this, "I in", Toast.LENGTH_LONG).show();
 //
 //        bitmap = BitmapFactory.decodeFile(path);
@@ -183,6 +167,14 @@ public class CategoryDetails extends AppCompatActivity {
 //        Toast.makeText(CategoryDetails.this, "I OUT", Toast.LENGTH_LONG).show();
 //        return encoded_string;
 //    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+    }
+
 
     private boolean checkGPS() {
         if (!manager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
