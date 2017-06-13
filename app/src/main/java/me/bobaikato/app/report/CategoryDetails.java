@@ -32,7 +32,7 @@ public class CategoryDetails extends AppCompatActivity {
     String picturePath, encoded_image;
     private Fonts fonts;
     private ImageView camera_icon, cam_shot;
-    private TextView title, details, continue_btn;
+    private TextView title, details, continue_btn, continueBTN;
     private LocationManager manager;
     private Bitmap bitmap;
     private Uri file_uri;
@@ -58,6 +58,7 @@ public class CategoryDetails extends AppCompatActivity {
         details = (TextView) findViewById(R.id.report_details);
         camera_icon = (ImageView) findViewById(R.id.upload_camera);
         continue_btn = (TextView) findViewById(R.id.continue_btn);
+        continueBTN = (TextView) findViewById(R.id.continue_btn);
         continue_btn.setVisibility(View.INVISIBLE);
 
         /*Custom font*/
@@ -79,6 +80,7 @@ public class CategoryDetails extends AppCompatActivity {
         }
         title.setTypeface(fonts.getCustom_font_1());
         details.setTypeface(fonts.getCustom_font());
+        continueBTN.setTypeface(fonts.getCustom_font_1());
 
         if (savedInstanceState == null) {
 

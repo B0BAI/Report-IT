@@ -24,7 +24,6 @@ public class Category extends AppCompatActivity {
         setContentView(R.layout.activity_category);
         overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
         handleSession();
-
         /*Check Location*/
         locationCheck();
 
@@ -47,6 +46,7 @@ public class Category extends AppCompatActivity {
         garbage.setTypeface(fonts.getCustom_font());
         naturalDisaster.setTypeface(fonts.getCustom_font());
         msg.setTypeface(fonts.getCustom_font_1());
+        logout.setTypeface(fonts.getCustom_font_1());
         ppsno_id.setTypeface(fonts.getCustom_font());
         ppsno_id.setText(getString(R.string.id) + session.getIdentity().toUpperCase());
         /*Logout*/

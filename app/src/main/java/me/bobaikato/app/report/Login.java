@@ -66,7 +66,7 @@ public class Login extends AppCompatActivity {
                     MY_PERMISSIONS_REQUEST_LOCATION);
         }
 
-        /*Font*/
+        /*Custom Font*/
         fonts = new Fonts(getApplicationContext());
 
         login = (TextView) findViewById(R.id.user_login);
