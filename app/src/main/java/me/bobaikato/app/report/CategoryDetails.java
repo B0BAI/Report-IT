@@ -88,8 +88,8 @@ public class CategoryDetails extends AppCompatActivity {
 
 
         imagePopup = new ImagePopup(this);
-//        imagePopup.setWindowHeight(800); // Optional
-//        imagePopup.setWindowWidth(800); // Optional
+        imagePopup.setWindowHeight(1000); // Optional
+        imagePopup.setWindowWidth(1000); // Optional
         imagePopup.setBackgroundColor(Color.BLACK);  // Optional
         imagePopup.setHideCloseIcon(false);  // Optional
         imagePopup.setImageOnClickClose(true);  // Optional
@@ -110,6 +110,8 @@ public class CategoryDetails extends AppCompatActivity {
                 if (checkGPS()) {
                     if (getApplicationContext().getPackageManager().hasSystemFeature(
                             PackageManager.FEATURE_CAMERA)) {
+                        Bitmap bitmap = null;
+                        Uri file_uri = null;
                         // Open default camera
                         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                         intent.putExtra(MediaStore.EXTRA_OUTPUT, file_uri);
