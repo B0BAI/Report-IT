@@ -151,8 +151,12 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#4a5a71"></LinearLayout>
+                android:background="#4a5a71">
+
+            </LinearLayout>
         </LinearLayout>
+
+
     </LinearLayout>
 
     <LinearLayout

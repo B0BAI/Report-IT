@@ -5,50 +5,39 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.location.LocationManager;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.provider.MediaStore;
 import android.provider.Settings;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.FormBody;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
+import static me.bobaikato.app.report.Login.session;
 
 public class CategoryDetails extends AppCompatActivity {
 
-    private static final String URL = "https://www.report.lastdaysmusic.com/report/upload.php";
+
     private static Integer view_id;
     String picturePath;
     private Fonts fonts;
-    private ImageView image;
-    private TextView title, test_btn, details;
+    private ImageView camera_icon;
+    private TextView title, details, continue_btn;
     private LocationManager manager;
-    private String encoded_string, image_name = "myimageszzzz.jpg";
     private Bitmap bitmap;
     private Uri file_uri;
+    private Integer continue_btn_flag = 0;
+
 
     public static void setView_id(Integer view_id) {
         CategoryDetails.view_id = view_id;
@@ -66,9 +55,11 @@ public class CategoryDetails extends AppCompatActivity {
         fonts = new Fonts(getApplicationContext());
 
         title = (TextView) findViewById(R.id.report_title);
-        test_btn = (TextView) findViewById(R.id.testbtn);
         details = (TextView) findViewById(R.id.report_details);
-        image = (ImageView) findViewById(R.id.upload_camera);
+        camera_icon = (ImageView) findViewById(R.id.upload_camera);
+        continue_btn = (TextView) findViewById(R.id.continue_btn);
+        continue_btn.setVisibility(View.INVISIBLE);
+
         /*Custom font*/
         if (view_id == R.id.report_accident) {
             title.setText(getString(R.string.accident));
@@ -89,8 +80,28 @@ public class CategoryDetails extends AppCompatActivity {
         title.setTypeface(fonts.getCustom_font_1());
         details.setTypeface(fonts.getCustom_font());
 
+        if (savedInstanceState == null) {
 
-        image.setOnClickListener(new View.OnClickListener() {
+        }
+
+
+//        final ImagePopup imagePopup = new ImagePopup(this);
+//        imagePopup.setWindowHeight(800); // Optional
+//        imagePopup.setWindowWidth(800); // Optional
+//        imagePopup.setBackgroundColor(Color.BLACK);  // Optional
+//        imagePopup.setHideCloseIcon(true);  // Optional
+//        imagePopup.setImageOnClickClose(true);  // Optional
+//
+//
+//        camera_icon.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                /** Initiate Popup view **/
+//                imagePopup.initiatePopup(camera_icon.getDrawable());
+//            }
+//        });
+
+        camera_icon.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onClick(View v) {
@@ -101,7 +112,7 @@ public class CategoryDetails extends AppCompatActivity {
                         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                         intent.putExtra(MediaStore.EXTRA_OUTPUT, file_uri);
 
-                        // start the image capture Intent
+                        // start the camera_icon capture Intent
                         startActivityForResult(intent, 100);
 
                     } else {
@@ -110,18 +121,17 @@ public class CategoryDetails extends AppCompatActivity {
                 }
             }
         });
-
-
-        test_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new Action().execute();
-                Toast.makeText(getApplication(), "DONE UPLOADING", Toast.LENGTH_LONG).show();
-            }
-        });
-
     }
 
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState, outPersistentState);
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -130,7 +140,7 @@ public class CategoryDetails extends AppCompatActivity {
             file_uri = data.getData();
             bitmap = (Bitmap) data.getExtras().get("data");
 
-            // Cursor to get image uri to display
+            // Cursor to get camera_icon uri to display
 
             String[] filePathColumn = {MediaStore.Images.Media.DATA};
             Cursor cursor = getContentResolver().query(file_uri,
@@ -141,45 +151,38 @@ public class CategoryDetails extends AppCompatActivity {
             picturePath = cursor.getString(columnIndex);
             cursor.close();
 
-            bitmap = (Bitmap) data.getExtras().get("data");
+            //bitmap = (Bitmap) data.getExtras().get("data");
+            //setBitmap(bitmap);
 
-            //image.setImageBitmap(bitmap);
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+            byte[] byteFormat = stream.toByteArray();
+            // get the base 64 string
+            String imgString = Base64.encodeToString(byteFormat, Base64.NO_WRAP);
+            new Upload(imgString);
+            Toast.makeText(getApplication(), "PASSED", Toast.LENGTH_LONG).show();
+            camera_icon.setImageBitmap(bitmap);
 
-            encoded_string = encodeImage(picturePath);
-            Toast.makeText(CategoryDetails.this, picturePath, Toast.LENGTH_LONG).show();
+            //startActivity(new Intent(CategoryDetails.this, Summary.class));
+            continue_btn.setVisibility(View.VISIBLE);
+            continue_btn_flag = 1; //on
+            session.set_encoded_string(imgString); //set
+
         }
     }
 
-    private String encodeImage(String path) {
-        Toast.makeText(CategoryDetails.this, "I in", Toast.LENGTH_LONG).show();
-
-        bitmap = BitmapFactory.decodeFile(path);
-        ByteArrayOutputStream bao = new ByteArrayOutputStream();
-        //bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bao);
-        byte[] ba = bao.toByteArray();
-        encoded_string = Base64.encodeToString(ba, Base64.NO_WRAP);
-
-        Toast.makeText(CategoryDetails.this, "I OUT", Toast.LENGTH_LONG).show();
-        return encoded_string;
-    }
-
-    private void upload() {
-        // Image location URL
-        Log.e("path", "----------------" + picturePath);
-
-        // Image
-        bitmap = BitmapFactory.decodeFile(picturePath);
-        ByteArrayOutputStream bao = new ByteArrayOutputStream();
-        //bitmap.compress(Bitmap.CompressFormat.JPEG, 10, bao);
-        byte[] ba = bao.toByteArray();
-        encoded_string = Base64.encodeToString(ba, Base64.NO_WRAP);
-
-        Log.e("base64", "-----" + encoded_string);
-        Toast.makeText(CategoryDetails.this, encoded_string, Toast.LENGTH_LONG).show();
-        // Upload image to server
-        // new Action().execute();
-
-    }
+//    private String encodeImage(String path) {
+//        Toast.makeText(CategoryDetails.this, "I in", Toast.LENGTH_LONG).show();
+//
+//        bitmap = BitmapFactory.decodeFile(path);
+//        ByteArrayOutputStream bao = new ByteArrayOutputStream();
+//        //bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bao);
+//        byte[] ba = bao.toByteArray();
+//        encoded_string = Base64.encodeToString(ba, Base64.NO_WRAP);
+//
+//        Toast.makeText(CategoryDetails.this, "I OUT", Toast.LENGTH_LONG).show();
+//        return encoded_string;
+//    }
 
     private boolean checkGPS() {
         if (!manager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
@@ -196,66 +199,4 @@ public class CategoryDetails extends AppCompatActivity {
         }
     }
 
-    /*AsyncTask*/
-    private class Action extends AsyncTask {
-
-
-        @Override
-        protected void onPostExecute(Object o) {
-            super.onPostExecute(o);
-            Toast.makeText(CategoryDetails.this, "DONE!", Toast.LENGTH_SHORT).show();
-        }
-
-        @Override
-        protected Object doInBackground(Object[] params) {
-
-
-//            bitmap = BitmapFactory.decodeFile(file_uri.getPath());
-//            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-//            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-//            bitmap.recycle();
-//
-//
-//
-//            byte[] array = stream.toByteArray();
-//            encoded_string = Base64.encodeToString(array, 0);
-
-
-            OkHttpClient client = new OkHttpClient();
-            RequestBody formBody = new FormBody.Builder()
-                    .add("encoded_string", encoded_string)
-                    .add("image_name", image_name)
-                    .build();
-            Request request = new Request.Builder()
-                    .url(URL)
-                    .post(formBody)
-                    .build();
-
-            client.newCall(request).enqueue(new Callback() {
-                @Override
-                public void onFailure(Call call, IOException e) {
-                    //requestResponse = "0";
-                }
-
-                @Override
-                public void onResponse(Call call, Response response) throws IOException {
-
-                    String resStr = response.body().string();
-                    JSONObject json = null;
-                    try {
-                        json = new JSONObject(resStr);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                    try {
-                        json.getString("").trim();
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-            });
-
-            return null;
-        }
-    }
 }

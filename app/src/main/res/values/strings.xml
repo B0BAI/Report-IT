@@ -1,15 +1,12 @@
 <resources>
     <string name="app_name">Report IT</string>
-    <string name="already_have_an_account">Already have an Account ?</string>
     <string name="signup_msg">Create Account?</string>
     <string name="signup">Signup</string>
     <string name="login">Login</string>
     <string name="password">Password</string>
     <string name="username">Username</string>
-    <string name="title_activity_main">MainActivity</string>
     <string name="login_msg">Already have an Account?</string>
     <string name="email_address">Email Address</string>
-    <string name="mobile_number">Mobile Number</string>
     <string name="title_activity_home">Home</string>
     <string name="fire_outbreak">Fire Outbreak</string>
     <string name="accident">Accident</string>
@@ -37,4 +34,7 @@
     <string name="create_acc_success_msg">Account Created Successfully!</string>
     <string name="acct_create_fail_msg">Sorry! this User already exist.</string>
     <string name="accnt_create_error_msg">Sorry! an error occurred.</string>
+    <string name="report_summary">REPORT SUMMARY</string>
+    <string name="submit">Submit</string>
+    <string name="next">Continue</string>
 </resources>

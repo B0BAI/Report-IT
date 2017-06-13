@@ -138,7 +138,7 @@ public class Signup extends AppCompatActivity {
         protected void onPostExecute(Object o) {
             super.onPostExecute(o);
             String user_msg = null;
-
+            // Toast.makeText(Signup.this,"H E R E",Toast.LENGTH_SHORT).show();
             if (requestResponse.equals("1")) {
                 user_msg = getString(R.string.create_acc_success_msg);
             } else if (requestResponse.equals("0")) {
@@ -154,6 +154,8 @@ public class Signup extends AppCompatActivity {
                         public void run() {
                             if (requestResponse.equals("1")) {
                                 startActivity(new Intent(Signup.this, Login.class));
+                            } else {
+                                Toast.makeText(Signup.this, "FAILED", Toast.LENGTH_SHORT).show();
                             }
                         }
                     }, 1000);
@@ -177,24 +179,20 @@ public class Signup extends AppCompatActivity {
             client.newCall(request).enqueue(new Callback() {
                 @Override
                 public void onFailure(Call call, IOException e) {
-                    requestResponse = "0";
+
                 }
 
                 @Override
                 public void onResponse(Call call, Response response) throws IOException {
-
                     String resStr = response.body().string();
                     JSONObject json = null;
                     try {
                         json = new JSONObject(resStr);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                    try {
                         requestResponse = json.getString("message").trim();
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
+
                 }
             });
             return null;
