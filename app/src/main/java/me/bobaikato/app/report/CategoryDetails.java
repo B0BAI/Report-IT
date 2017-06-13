@@ -25,6 +25,9 @@ import com.ceylonlabs.imageviewpopup.ImagePopup;
 
 import java.io.ByteArrayOutputStream;
 
+import static me.bobaikato.app.report.Permissions.checkNetwork;
+import static me.bobaikato.app.report.Summary.set_sum_properties;
+
 public class CategoryDetails extends AppCompatActivity {
 
 
@@ -92,7 +95,7 @@ public class CategoryDetails extends AppCompatActivity {
         imagePopup.setWindowWidth(1000); // Optional
         imagePopup.setBackgroundColor(Color.BLACK);  // Optional
         imagePopup.setHideCloseIcon(false);  // Optional
-        imagePopup.setImageOnClickClose(true);  // Optional
+        imagePopup.setImageOnClickClose(false);  // Optional
 
 
         cam_shot.setOnClickListener(new View.OnClickListener() {
@@ -125,18 +128,27 @@ public class CategoryDetails extends AppCompatActivity {
                 }
             }
         });
+
+        continue_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (checkGPS()) {
+                    if (checkNetwork(findViewById(android.R.id.content), getApplicationContext())) {
+                        startActivity(new Intent(CategoryDetails.this, Summary.class));
+                    }
+                }
+            }
+        });
     }
 
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 100 && resultCode == RESULT_OK) {
-
             file_uri = data.getData();
             bitmap = (Bitmap) data.getExtras().get("data");
 
             // Cursor to get camera_icon uri to display
-
             String[] filePathColumn = {MediaStore.Images.Media.DATA};
             Cursor cursor = getContentResolver().query(file_uri,
                     filePathColumn, null, null, null);
@@ -154,11 +166,10 @@ public class CategoryDetails extends AppCompatActivity {
             byte[] byteFormat = stream.toByteArray();
             // get the base 64 string
             encoded_image = Base64.encodeToString(byteFormat, Base64.NO_WRAP);
-            new Upload(encoded_image);
+            // new Upload(encoded_image);
             cam_shot.setImageBitmap(bitmap);
-
-            //startActivity(new Intent(CategoryDetails.this, Summary.class));
             continue_btn.setVisibility(View.VISIBLE);
+            set_sum_properties(picturePath, encoded_image, bitmap);
         }
     }
 
@@ -166,7 +177,7 @@ public class CategoryDetails extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-
+        checkGPS();
     }
 
 

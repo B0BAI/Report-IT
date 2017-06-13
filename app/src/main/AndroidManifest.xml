@@ -35,12 +35,13 @@
         <activity android:name=".Signup" />
         <activity
             android:name=".Category"
-            android:label="@string/title_activity_home"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".CategoryDetails"
             android:screenOrientation="portrait" />
-        <activity android:name=".Summary"></activity>
+        <activity
+            android:name=".Summary"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
