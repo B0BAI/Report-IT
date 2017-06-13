@@ -10,6 +10,7 @@ import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -42,8 +43,9 @@ public class Summary extends AppCompatActivity {
     private Fonts fonts;
     private LocationManager manager;
     private LocationListener listener;
-    private ProgressDialog progressDialog;
     private ProgressDialog progress;
+    private MediaPlayer mediaPlayer;
+
 
     public static void set_sum_properties(String pic_path, String encoded_str, Bitmap bitmap) {
         picture_path = pic_path;
@@ -90,6 +92,9 @@ public class Summary extends AppCompatActivity {
         imagePopup.setHideCloseIcon(true);  // Optional
         imagePopup.setImageOnClickClose(true);  // Optional
 
+         /*Playing sound*/
+        mediaPlayer = MediaPlayer.create(this, R.raw.gps_notification);
+
         view_pic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -107,6 +112,7 @@ public class Summary extends AppCompatActivity {
                 gps_co_lat.setText("" + location.getLatitude());
                 gps_co_long.setText("" + location.getLongitude());
                 submitBtn.setVisibility(View.VISIBLE);//show button
+                mediaPlayer.start();
                 progress.dismiss();
             }
 
