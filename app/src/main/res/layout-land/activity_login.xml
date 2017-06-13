@@ -105,13 +105,14 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_marginBottom="50dp"
-            android:background="#000000"
+            android:background="@drawable/round_button_black"
             android:gravity="center"
             android:letterSpacing="0.2"
             android:onClick="userLogin"
             android:padding="16dp"
             android:text="@string/login"
             android:textColor="#FFFFFF"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
     </LinearLayout>

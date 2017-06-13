@@ -10,12 +10,11 @@ import android.provider.Settings;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ceylonlabs.imageviewpopup.ImagePopup;
-
-import java.io.File;
 
 
 public class Summary extends AppCompatActivity {
@@ -23,9 +22,9 @@ public class Summary extends AppCompatActivity {
     private static String picture_path;
     private static String encoded_string;
     private static Bitmap newbitmap;
-    private File imgFile;
     private ImagePopup imagePopup;
-    private TextView submitBtn;
+    private TextView submitBtn, report_sum_heading, gps_coordinate, cur_time, cur_date, user_id;
+    private EditText more_details;
     private Fonts fonts;
     private LocationManager manager;
 
@@ -44,14 +43,28 @@ public class Summary extends AppCompatActivity {
         fonts = new Fonts(getApplicationContext());
         checkGPS();
 
-        imgFile = new File(picture_path);
         report_pic = (ImageView) findViewById(R.id.camera_shot_summary);
         view_pic = (ImageView) findViewById(R.id.view_shot);
         report_pic.setImageBitmap(newbitmap);
         report_pic.setVisibility(View.INVISIBLE);
 
         submitBtn = (TextView) findViewById(R.id.submit_btn);
+        report_sum_heading = (TextView) findViewById(R.id.report_sum_header);
+        gps_coordinate = (TextView) findViewById(R.id.gps_co_ordinate);
+        cur_time = (TextView) findViewById(R.id.current_time);
+        cur_date = (TextView) findViewById(R.id.current_date);
+        user_id = (TextView) findViewById(R.id.user_id);
+        more_details = (EditText) findViewById(R.id.more_details);
+        /*set fonts*/
         submitBtn.setTypeface(fonts.getCustom_font_1());
+        report_sum_heading.setTypeface(fonts.getCustom_font_1());
+        gps_coordinate.setTypeface(fonts.getCustom_font());
+        cur_time.setTypeface(fonts.getCustom_font());
+        cur_date.setTypeface(fonts.getCustom_font());
+        user_id.setTypeface(fonts.getCustom_font());
+        more_details.setTypeface(fonts.getCustom_font());
+
+
         /*Image pop up*/
         imagePopup = new ImagePopup(this);
         imagePopup.setWindowHeight(1000); // Optional
