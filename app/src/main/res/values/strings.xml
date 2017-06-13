@@ -34,7 +34,7 @@
     <string name="create_acc_success_msg">Account Created Successfully!</string>
     <string name="acct_create_fail_msg">Sorry! this User already exist.</string>
     <string name="accnt_create_error_msg">Sorry! an error occurred.</string>
-    <string name="report_summary">REPORT SUMMARY</string>
+    <string name="report_summary">Report Summary</string>
     <string name="submit">Submit</string>
     <string name="next">Continue</string>
     <string name="click_to_view">Click to view</string>

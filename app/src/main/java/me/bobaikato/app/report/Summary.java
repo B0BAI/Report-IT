@@ -16,6 +16,11 @@ import android.widget.TextView;
 
 import com.ceylonlabs.imageviewpopup.ImagePopup;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import static me.bobaikato.app.report.Login.session;
+
 
 public class Summary extends AppCompatActivity {
     private static ImageView report_pic, view_pic;
@@ -58,20 +63,24 @@ public class Summary extends AppCompatActivity {
         /*set fonts*/
         submitBtn.setTypeface(fonts.getCustom_font_1());
         report_sum_heading.setTypeface(fonts.getCustom_font_1());
-        gps_coordinate.setTypeface(fonts.getCustom_font());
-        cur_time.setTypeface(fonts.getCustom_font());
-        cur_date.setTypeface(fonts.getCustom_font());
-        user_id.setTypeface(fonts.getCustom_font());
+        gps_coordinate.setTypeface(fonts.getCustom_font_1());
+        cur_time.setTypeface(fonts.getCustom_font_1());
+        cur_date.setTypeface(fonts.getCustom_font_1());
+        user_id.setTypeface(fonts.getCustom_font_1());
         more_details.setTypeface(fonts.getCustom_font());
-
 
         /*Image pop up*/
         imagePopup = new ImagePopup(this);
         imagePopup.setWindowHeight(1000); // Optional
         imagePopup.setWindowWidth(1000); // Optional
         imagePopup.setBackgroundColor(Color.WHITE);  // Optional
-        imagePopup.setHideCloseIcon(false);  // Optional
-        imagePopup.setImageOnClickClose(false);  // Optional
+        imagePopup.setHideCloseIcon(true);  // Optional
+        imagePopup.setImageOnClickClose(true);  // Optional
+
+        /*Set Variables*/
+        cur_time.setText(new SimpleDateFormat("hh:mm a").format(new Date()).toUpperCase());
+        cur_date.setText(new SimpleDateFormat("dd-MM-yyyy").format(new Date()));
+        user_id.setText(session.getIdentity().toUpperCase());
 
         /*Image Popup*/
         view_pic.setOnClickListener(new View.OnClickListener() {

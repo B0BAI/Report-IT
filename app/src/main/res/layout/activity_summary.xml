@@ -14,7 +14,7 @@
         android:letterSpacing="0.1"
         android:text="@string/report_summary"
         android:textColor="#000000"
-        android:textSize="30dp"
+        android:textSize="28dp"
         android:textStyle="bold" />
 
     <LinearLayout
@@ -56,7 +56,6 @@
                     android:textColor="#000000"
                     android:textColorHint="#000000"
                     android:textSize="18sp"
-                    android:textStyle="bold"
                     tools:ignore="RtlHardcoded,UnusedAttribute" />
             </LinearLayout>
 
@@ -90,7 +89,6 @@
                     android:textColor="#000000"
                     android:textColorHint="#000000"
                     android:textSize="18dp"
-                    android:textStyle="bold"
                     tools:ignore="RtlHardcoded,SpUsage" />
             </LinearLayout>
 
@@ -120,7 +118,6 @@
                     android:textColor="#000000"
                     android:textColorHint="#000000"
                     android:textSize="18dp"
-                    android:textStyle="bold"
                     tools:ignore="RtlHardcoded,SpUsage" />
             </LinearLayout>
 
@@ -134,7 +131,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/user_icon"
+                    android:src="@drawable/ppsn"
                     tools:ignore="ContentDescription" />
 
                 <TextView
@@ -149,7 +146,6 @@
                     android:textColor="#000000"
                     android:textColorHint="#000000"
                     android:textSize="18dp"
-                    android:textStyle="bold"
                     tools:ignore="RtlHardcoded,SpUsage" />
             </LinearLayout>
 
@@ -179,7 +175,6 @@
                     android:textColor="#000000"
                     android:textColorHint="#000000"
                     android:textSize="18dp"
-                    android:textStyle="bold"
                     tools:ignore="RtlHardcoded,SpUsage" />
 
             </LinearLayout>

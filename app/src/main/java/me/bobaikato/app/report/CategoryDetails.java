@@ -143,7 +143,7 @@ public class CategoryDetails extends AppCompatActivity {
             //setBitmap(bitmap);
 
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
             byte[] byteFormat = stream.toByteArray();
             // get the base 64 string
             encoded_image = Base64.encodeToString(byteFormat, Base64.NO_WRAP);

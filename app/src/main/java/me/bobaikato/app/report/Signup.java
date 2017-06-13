@@ -119,11 +119,6 @@ public class Signup extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
 
-            /*Reset Fields*/
-            email.setText("");
-            username.setText("");
-            password.setText("");
-            ppsnumber.setText("");
             /*
              * Progress Dialog for User Interaction
              */
@@ -140,12 +135,18 @@ public class Signup extends AppCompatActivity {
             String user_msg = null;
             // Toast.makeText(Signup.this,"H E R E",Toast.LENGTH_SHORT).show();
             if (requestResponse.equals("1")) {
+                  /*Reset Fields*/
+                email.setText("");
+                username.setText("");
+                password.setText("");
+                ppsnumber.setText("");
                 user_msg = getString(R.string.create_acc_success_msg);
             } else if (requestResponse.equals("0")) {
                 user_msg = getString(R.string.acct_create_fail_msg);
             } else if (requestResponse.equals("2")) {
                 user_msg = getString(R.string.accnt_create_error_msg);
             }
+
             progressDialog.dismiss();
             Toast.makeText(Signup.this, user_msg, Toast.LENGTH_SHORT).show();
                /*Delays*/
@@ -155,7 +156,7 @@ public class Signup extends AppCompatActivity {
                             if (requestResponse.equals("1")) {
                                 startActivity(new Intent(Signup.this, Login.class));
                             } else {
-                                Toast.makeText(Signup.this, "FAILED", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Signup.this, "REG. FAILED", Toast.LENGTH_SHORT).show();
                             }
                         }
                     }, 1000);
