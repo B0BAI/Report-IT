@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
@@ -20,6 +21,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ceylonlabs.imageviewpopup.ImagePopup;
+
 import java.io.ByteArrayOutputStream;
 
 public class CategoryDetails extends AppCompatActivity {
@@ -28,12 +31,13 @@ public class CategoryDetails extends AppCompatActivity {
     private static Integer view_id;
     String picturePath, encoded_image;
     private Fonts fonts;
-    private ImageView camera_icon;
+    private ImageView camera_icon, cam_shot;
     private TextView title, details, continue_btn;
     private LocationManager manager;
     private Bitmap bitmap;
     private Uri file_uri;
     private Session session;
+    private ImagePopup imagePopup;
 
 
     public static void setView_id(Integer view_id) {
@@ -54,6 +58,7 @@ public class CategoryDetails extends AppCompatActivity {
         title = (TextView) findViewById(R.id.report_title);
         details = (TextView) findViewById(R.id.report_details);
         camera_icon = (ImageView) findViewById(R.id.upload_camera);
+        cam_shot = (ImageView) findViewById(R.id.camera_shot);
         continue_btn = (TextView) findViewById(R.id.continue_btn);
         continue_btn.setVisibility(View.INVISIBLE);
 
@@ -82,21 +87,21 @@ public class CategoryDetails extends AppCompatActivity {
         }
 
 
-//        final ImagePopup imagePopup = new ImagePopup(this);
+        imagePopup = new ImagePopup(this);
 //        imagePopup.setWindowHeight(800); // Optional
 //        imagePopup.setWindowWidth(800); // Optional
-//        imagePopup.setBackgroundColor(Color.BLACK);  // Optional
-//        imagePopup.setHideCloseIcon(true);  // Optional
-//        imagePopup.setImageOnClickClose(true);  // Optional
-//
-//
-//        camera_icon.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                /** Initiate Popup view **/
-//                imagePopup.initiatePopup(camera_icon.getDrawable());
-//            }
-//        });
+        imagePopup.setBackgroundColor(Color.BLACK);  // Optional
+        imagePopup.setHideCloseIcon(false);  // Optional
+        imagePopup.setImageOnClickClose(true);  // Optional
+
+
+        cam_shot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                /** Initiate Popup view **/
+                imagePopup.initiatePopup(cam_shot.getDrawable());
+            }
+        });
 
         camera_icon.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.M)
@@ -148,25 +153,12 @@ public class CategoryDetails extends AppCompatActivity {
             // get the base 64 string
             encoded_image = Base64.encodeToString(byteFormat, Base64.NO_WRAP);
             new Upload(encoded_image);
-            camera_icon.setImageBitmap(bitmap);
+            cam_shot.setImageBitmap(bitmap);
 
             //startActivity(new Intent(CategoryDetails.this, Summary.class));
             continue_btn.setVisibility(View.VISIBLE);
         }
     }
-
-    //    private String encodeImage(String path) {
-//        Toast.makeText(CategoryDetails.this, "I in", Toast.LENGTH_LONG).show();
-//
-//        bitmap = BitmapFactory.decodeFile(path);
-//        ByteArrayOutputStream bao = new ByteArrayOutputStream();
-//        //bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bao);
-//        byte[] ba = bao.toByteArray();
-//        encoded_string = Base64.encodeToString(ba, Base64.NO_WRAP);
-//
-//        Toast.makeText(CategoryDetails.this, "I OUT", Toast.LENGTH_LONG).show();
-//        return encoded_string;
-//    }
 
 
     @Override

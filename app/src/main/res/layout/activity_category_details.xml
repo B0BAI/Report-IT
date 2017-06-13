@@ -9,7 +9,7 @@
         android:id="@+id/report_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="295dp"
+        android:layout_marginTop="220dp"
         android:gravity="center"
         android:letterSpacing="0.1"
         android:text=""
@@ -33,7 +33,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="140dp"
+                android:layout_marginTop="80dp"
                 android:gravity="center"
                 android:letterSpacing="0.1"
                 android:text="@string/cam_msg"
@@ -44,7 +44,7 @@
                 android:id="@+id/report_details"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="70dp"
+                android:layout_marginTop="55dp"
                 android:gravity="center"
                 android:letterSpacing="0.1"
                 android:textColor="#000"
@@ -57,7 +57,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="260dp"
+        android:layout_marginBottom="370dp"
         android:gravity="center">
 
         <ImageView
@@ -68,9 +68,27 @@
             tools:ignore="ContentDescription" />
     </LinearLayout>
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="370dp"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/camera_shot"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            tools:ignore="ContentDescription" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:gravity="bottom"
         android:orientation="vertical"
         android:paddingLeft="40dp"
@@ -81,7 +99,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:layout_marginBottom="30dp"
+            android:layout_marginBottom="7dp"
             android:background="@drawable/round_button"
             android:gravity="center"
             android:letterSpacing="0.2"
