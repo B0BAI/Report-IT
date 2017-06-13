@@ -82,7 +82,7 @@
         android:paddingRight="40dp">
 
         <TextView
-            android:id="@+id/continue_btn"
+            android:id="@+id/contn_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"

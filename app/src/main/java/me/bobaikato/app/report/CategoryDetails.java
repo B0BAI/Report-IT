@@ -31,8 +31,8 @@ public class CategoryDetails extends AppCompatActivity {
     private static Integer view_id;
     String picturePath, encoded_image;
     private Fonts fonts;
-    private ImageView camera_icon, cam_shot;
-    private TextView title, details, continue_btn, continueBTN;
+    private ImageView camera_icon;
+    private TextView title, details, continueBTN;
     private LocationManager manager;
     private Bitmap bitmap;
     private Uri file_uri;
@@ -57,9 +57,9 @@ public class CategoryDetails extends AppCompatActivity {
         title = (TextView) findViewById(R.id.report_title);
         details = (TextView) findViewById(R.id.report_details);
         camera_icon = (ImageView) findViewById(R.id.upload_camera);
-        continue_btn = (TextView) findViewById(R.id.continue_btn);
-        continueBTN = (TextView) findViewById(R.id.continue_btn);
-        continue_btn.setVisibility(View.INVISIBLE);
+        continueBTN = (TextView) findViewById(R.id.contn_btn);
+
+        continueBTN.setVisibility(View.INVISIBLE);
 
         /*Custom font*/
         if (view_id == R.id.report_accident) {
@@ -110,11 +110,11 @@ public class CategoryDetails extends AppCompatActivity {
             }
         });
 
-        continue_btn.setOnClickListener(new View.OnClickListener() {
+        continueBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (checkGPS()) {
-                    if (checkNetwork(findViewById(android.R.id.content), getApplicationContext())) {
+                    if (checkNetwork(v, getApplicationContext())) {
                         startActivity(new Intent(CategoryDetails.this, Summary.class));
                     }
                 }
@@ -148,7 +148,7 @@ public class CategoryDetails extends AppCompatActivity {
             // get the base 64 string
             encoded_image = Base64.encodeToString(byteFormat, Base64.NO_WRAP);
             // new Upload(encoded_image);
-            continue_btn.setVisibility(View.VISIBLE);
+            continueBTN.setVisibility(View.VISIBLE);
             set_sum_properties(picturePath, encoded_image, bitmap);
         }
     }

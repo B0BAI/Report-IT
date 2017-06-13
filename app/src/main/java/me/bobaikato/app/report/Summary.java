@@ -1,5 +1,6 @@
 package me.bobaikato.app.report;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -18,7 +19,7 @@ import java.io.File;
 
 
 public class Summary extends AppCompatActivity {
-    private static ImageView report_pic;
+    private static ImageView report_pic, view_pic;
     private static String picture_path;
     private static String encoded_string;
     private static Bitmap newbitmap;
@@ -38,12 +39,17 @@ public class Summary extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_summary);
+        manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
          /*Custom Font*/
         fonts = new Fonts(getApplicationContext());
+        checkGPS();
 
         imgFile = new File(picture_path);
         report_pic = (ImageView) findViewById(R.id.camera_shot_summary);
+        view_pic = (ImageView) findViewById(R.id.view_shot);
         report_pic.setImageBitmap(newbitmap);
+        report_pic.setVisibility(View.INVISIBLE);
+
         submitBtn = (TextView) findViewById(R.id.submit_btn);
         submitBtn.setTypeface(fonts.getCustom_font_1());
         /*Image pop up*/
@@ -55,13 +61,19 @@ public class Summary extends AppCompatActivity {
         imagePopup.setImageOnClickClose(false);  // Optional
 
         /*Image Popup*/
-        report_pic.setOnClickListener(new View.OnClickListener() {
+        view_pic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 /** Initiate Popup view **/
                 imagePopup.initiatePopup(report_pic.getDrawable());
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        checkGPS();
     }
 
     private boolean checkGPS() {

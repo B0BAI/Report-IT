@@ -9,12 +9,13 @@
         android:id="@+id/report_msg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="30dp"
         android:gravity="center"
         android:letterSpacing="0.1"
         android:text="@string/report_summary"
         android:textColor="#000000"
-        android:textSize="30dp" />
+        android:textSize="30dp"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,7 +27,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="65dp"
+            android:layout_marginBottom="60dp"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -40,16 +41,16 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/user_icon"
+                    android:src="@drawable/gps"
                     tools:ignore="ContentDescription" />
 
-                <EditText
-                    android:id="@+id/username"
+                <TextView
+                    android:id="@+id/gps_co_ordinate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:background="#00000000"
-                    android:hint="@string/username"
+                    android:hint="GPS Co-ordinate"
                     android:inputType="text"
                     android:letterSpacing="0.1"
                     android:textColor="#000000"
@@ -73,17 +74,17 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/lock_password"
+                    android:src="@drawable/time"
                     tools:ignore="ContentDescription" />
 
-                <EditText
-                    android:id="@+id/passwordw"
+                <TextView
+                    android:id="@+id/current_time"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:background="#00000000"
-                    android:hint="@string/password"
-                    android:inputType="textPassword"
+                    android:hint="Current time here"
+                    android:inputType="text"
                     android:letterSpacing="0.1"
                     android:textColor="#000000"
                     android:textColorHint="#000000"
@@ -102,17 +103,17 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/lock_password"
+                    android:src="@drawable/date"
                     tools:ignore="ContentDescription" />
 
-                <EditText
-                    android:id="@+id/passwsord"
+                <TextView
+                    android:id="@+id/current_date"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:background="#00000000"
-                    android:hint="@string/password"
-                    android:inputType="textPassword"
+                    android:hint="Current Date "
+                    android:inputType="text"
                     android:letterSpacing="0.1"
                     android:textColor="#000000"
                     android:textColorHint="#000000"
@@ -130,17 +131,17 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/lock_password"
+                    android:src="@drawable/user_icon"
                     tools:ignore="ContentDescription" />
 
-                <EditText
-                    android:id="@+id/password"
+                <TextView
+                    android:id="@+id/user_id"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:background="#00000000"
-                    android:hint="@string/password"
-                    android:inputType="textPassword"
+                    android:hint="User ID here"
+                    android:inputType="text"
                     android:letterSpacing="0.1"
                     android:textColor="#000000"
                     android:textColorHint="#000000"
@@ -159,7 +160,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/lock_password"
+                    android:src="@drawable/pen"
                     tools:ignore="ContentDescription" />
 
                 <EditText
@@ -169,7 +170,7 @@
                     android:layout_marginLeft="15dp"
                     android:background="#00000000"
                     android:hint="Add Details (Optional)"
-                    android:inputType="textPassword"
+                    android:inputType="text"
                     android:letterSpacing="0.1"
                     android:textColor="#000000"
                     android:textColorHint="#000000"
@@ -184,8 +185,6 @@
                 android:background="#4a5a71"></LinearLayout>
         </LinearLayout>
     </LinearLayout>
-
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -208,7 +207,7 @@
             android:padding="13dp"
             android:text="@string/submit"
             android:textColor="#FFFFFF"
-            android:textSize="15sp"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
     </LinearLayout>
@@ -219,11 +218,49 @@
         android:layout_marginTop="320dp"
         android:gravity="center">
 
+
         <ImageView
             android:id="@+id/camera_shot_summary"
             android:layout_width="110dp"
             android:layout_height="110dp"
-            android:src="@drawable/camera_icon"
             tools:ignore="ContentDescription" />
     </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="290dp"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/view_shot"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:src="@drawable/view_report_pic"
+            tools:ignore="ContentDescription" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="115dp"
+        android:gravity="bottom"
+        android:orientation="vertical"
+        android:paddingLeft="60dp"
+        android:paddingRight="60dp">
+
+        <TextView
+            android:id="@+id/user_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:letterSpacing="0.1"
+            android:text="@string/click_to_view"
+            android:textColor="#720326"
+            tools:targetApi="lollipop" />
+
+    </LinearLayout>
+
 </RelativeLayout>
