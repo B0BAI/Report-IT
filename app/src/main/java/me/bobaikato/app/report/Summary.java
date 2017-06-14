@@ -128,7 +128,7 @@ public class Summary extends AppCompatActivity {
         });
 
 
-          /*GPS*/
+          /*GPS */
         checkGPS();
         listener = new LocationListener() {
             @Override
