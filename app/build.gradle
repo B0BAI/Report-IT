@@ -17,7 +17,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
 }
+
+
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
@@ -30,8 +33,12 @@ dependencies {
     compile 'com.android.support:design:25.3.1'
     compile 'com.squareup.okhttp3:okhttp:3.6.0'
     compile 'com.github.chathuralakmal:AndroidImagePopup:1.0.7'
+    compile 'com.nineoldandroids:library:2.4.0'
+    compile 'com.github.sd6352051.niftydialogeffects:niftydialogeffects:1.0.0@aar'
     testCompile 'junit:junit:4.12'
 }
+
+
 
 
 

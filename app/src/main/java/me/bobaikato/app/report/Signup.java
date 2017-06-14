@@ -4,6 +4,7 @@ package me.bobaikato.app.report;
  * Author: Bobai Kato
  * Date: 6/2/17
  * Twitter, Instagram, Github, GitLab: @BobaiKato
+ * Email: bobai.Kato@gmail.com
  */
 
 import android.app.ProgressDialog;

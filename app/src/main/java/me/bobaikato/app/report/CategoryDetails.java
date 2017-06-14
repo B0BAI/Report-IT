@@ -1,4 +1,10 @@
 package me.bobaikato.app.report;
+/**
+ * Author: Bobai Kato
+ * Date: 6/13/17
+ * Twitter, Instagram, Github, GitLab: @BobaiKato
+ * Email: bobai.Kato@gmail.com
+ */
 
 import android.content.Context;
 import android.content.Intent;
@@ -23,6 +29,7 @@ import android.widget.Toast;
 import java.io.ByteArrayOutputStream;
 
 import static me.bobaikato.app.report.Permissions.checkNetwork;
+import static me.bobaikato.app.report.Summary.setCategory_id;
 import static me.bobaikato.app.report.Summary.set_sum_properties;
 
 public class CategoryDetails extends AppCompatActivity {
@@ -33,11 +40,10 @@ public class CategoryDetails extends AppCompatActivity {
     private Fonts fonts;
     private ImageView camera_icon;
     private TextView title, details, continueBTN;
-    private LocationManager manager;
+    private LocationManager manager = null;
     private Bitmap bitmap;
     private Uri file_uri;
     private Session session;
-
 
     public static void setView_id(Integer view_id) {
         CategoryDetails.view_id = view_id;
@@ -65,18 +71,23 @@ public class CategoryDetails extends AppCompatActivity {
         if (view_id == R.id.report_accident) {
             title.setText(getString(R.string.accident));
             details.setText(getString(R.string.accident_cat_det));
+            setCategory_id(0);
         } else if (view_id == R.id.report_crime) {
             title.setText(getString(R.string.crime));
             details.setText(getString(R.string.crime_cat_det));
+            setCategory_id(1);
         } else if (view_id == R.id.report_fire_ourbreak) {
             title.setText(getString(R.string.fire_outbreak));
             details.setText(getString(R.string.fire_outbreak_cat_det));
+            setCategory_id(2);
         } else if (view_id == R.id.report_garbage) {
             title.setText(getString(R.string.garbage));
             details.setText(getString(R.string.garbage_cat_det));
+            setCategory_id(3);
         } else if (view_id == R.id.report_natural_disaster) {
             title.setText(getString(R.string.natural_disaster));
             details.setText(getString(R.string.natural_disaster_cat_det));
+            setCategory_id(4);
         }
         title.setTypeface(fonts.getCustom_font_1());
         details.setTypeface(fonts.getCustom_font());
@@ -138,18 +149,15 @@ public class CategoryDetails extends AppCompatActivity {
             int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
             picturePath = cursor.getString(columnIndex);
             cursor.close();
-
-            //bitmap = (Bitmap) data.getExtras().get("data");
-            //setBitmap(bitmap);
-
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
             byte[] byteFormat = stream.toByteArray();
             // get the base 64 string
             encoded_image = Base64.encodeToString(byteFormat, Base64.NO_WRAP);
-            // new Upload(encoded_image);
             continueBTN.setVisibility(View.VISIBLE);
             set_sum_properties(picturePath, encoded_image, bitmap);
+
+
         }
     }
 

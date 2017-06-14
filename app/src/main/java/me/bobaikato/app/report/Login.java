@@ -3,6 +3,7 @@ package me.bobaikato.app.report;
  * Author: Bobai Kato
  * Date: 6/2/17
  * Twitter, Instagram, Github, GitLab: @BobaiKato
+ * Email: bobai.Kato@gmail.com
  */
 
 import android.Manifest;
@@ -145,6 +146,7 @@ public class Login extends AppCompatActivity {
             progressDialog = new ProgressDialog(Login.this,
                     R.style.AppTheme_Dark_Dialog);
             progressDialog.setIndeterminate(true);
+            progressDialog.setCancelable(false);
             progressDialog.setMessage(getString(R.string.authenticating));
             progressDialog.show();
         }

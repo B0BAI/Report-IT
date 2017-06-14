@@ -3,6 +3,15 @@
 
     <item
         is-multidex="true"
+        jar="/Users/bobaikato/.gradle/caches/modules-2/files-2.1/com.nineoldandroids/library/2.4.0/e9b63380f3a242dbdbf103a2355ad7e43bad17cb/library-2.4.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
+        <dex dex="/Users/bobaikato/Git/Report/app/build/intermediates/transforms/dex/debug/folders/1000/10/library-2.4.0_8423021f1e5e995dece69722972e3088936c52c2/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/Users/bobaikato/.android/build-cache/671f1d25f429236194b5f34161781cccb92e68f0/output/jars/classes.jar"
         jumboMode="true"
         optimize="true"
@@ -18,6 +27,15 @@
         revision="25.0.3"
         sha1="8242d016cc7f6eecbf6c06d3b7241b42c33b9a56">
         <dex dex="/Users/bobaikato/Git/Report/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_79d86ebff705267dfce4c6cdaecc2666c0ae90fc/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/bobaikato/.android/build-cache/fa0dadefd420828233e81d9a0874b84d0fd9b16a/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="f6e011916db951e72f3a2be65cfb864bf5408035">
+        <dex dex="/Users/bobaikato/Git/Report/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_b17030999ac6de28fa3c881a22ff9c66bdf49ea4/classes.dex" />
     </item>
     <item
         is-multidex="true"

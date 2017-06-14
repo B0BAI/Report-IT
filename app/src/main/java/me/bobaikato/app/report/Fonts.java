@@ -7,6 +7,7 @@ import android.graphics.Typeface;
  * Author: Bobai Kato
  * Date: 6/11/17
  * Twitter, Instagram, Github, GitLab: @BobaiKato
+ * Email: bobai.Kato@gmail.com
  */
 
 class Fonts {

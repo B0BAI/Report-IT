@@ -8,6 +8,7 @@ import android.preference.PreferenceManager;
  * Author: Bobai Kato
  * Date: 6/10/17
  * Twitter, Instagram, Github, GitLab: @BobaiKato
+ * Email: bobai.Kato@gmail.com
  */
 
 public class Session {

@@ -1,7 +1,14 @@
 package me.bobaikato.app.report;
+/**
+ * Author: Bobai Kato
+ * Date: 6/13/17
+ * Twitter, Instagram, Github, GitLab: @BobaiKato
+ * Email: bobai.Kato@gmail.com
+ */
 
 import android.Manifest;
 import android.content.Intent;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
@@ -17,6 +24,7 @@ import static me.bobaikato.app.report.Permissions.checkLocation;
 public class Category extends AppCompatActivity {
     TextView acccident, crime, fireOutbreak, garbage, naturalDisaster, msg, ppsno_id, logout;
     private Fonts fonts;
+    private LocationManager manager = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
