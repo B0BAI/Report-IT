@@ -114,9 +114,9 @@ public class Login extends AppCompatActivity {
         password_val = password.getText().toString();
 
         if (username_val.isEmpty() || username_val.length() == 0) {
-            Snackbar.make(view, "Username cannot be empty.", Snackbar.LENGTH_LONG).show();
+            Snackbar.make(view, R.string.empty_username_msg, Snackbar.LENGTH_LONG).show();
         } else if (password_val.isEmpty() || password_val.length() == 0) {
-            Snackbar.make(view, "Password cannot be empty.", Snackbar.LENGTH_LONG).show();
+            Snackbar.make(view, R.string.empty_password_msg, Snackbar.LENGTH_LONG).show();
         } else {
 
         /*Dialog*/

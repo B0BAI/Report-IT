@@ -41,7 +41,7 @@ import static me.bobaikato.app.report.Login.session;
 
 
 public class Summary extends AppCompatActivity {
-    private static String picture_path;
+    private static String picture_path, report_details;
     private static String encoded_string;
     private static Bitmap newbitmap;
     private static Integer category_id;
@@ -110,8 +110,6 @@ public class Summary extends AppCompatActivity {
 
         /*Image pop up*/
         imagePopup = new ImagePopup(Summary.this);
-//        imagePopup.setWindowHeight(1000); // Optional
-//        imagePopup.setWindowWidth(1000); // Optional
         imagePopup.setBackgroundColor(Color.WHITE);  // Optional
         imagePopup.setHideCloseIcon(true);  // Optional
         imagePopup.setImageOnClickClose(true);  // Optional
@@ -140,13 +138,14 @@ public class Summary extends AppCompatActivity {
                 submitBtn.setVisibility(View.VISIBLE);//show button
                 if (NOTIFICATION_FLAG == 0) {
                     mediaPlayer.start();
+                    ++NOTIFICATION_FLAG;
                 }
                 progressDialog.dismiss();
             }
 
             @Override
             public void onStatusChanged(String s, int i, Bundle bundle) {
-                Toast.makeText(Summary.this, "GPS Co-Ordinate updated.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Summary.this, R.string.gps_update_msg, Toast.LENGTH_SHORT).show();
                 ++NOTIFICATION_FLAG;
             }
 
@@ -171,21 +170,26 @@ public class Summary extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 manager.removeUpdates(listener);
-                new Upload(encoded_string, new SimpleDateFormat("hh:mm a").format(new Date()), new SimpleDateFormat("dd-MM-yyyy").format(new Date()), session.getIdentity(), longitude, latitude, category_id);
+                report_details = more_details.getText().toString().trim();
+                if ((report_details.length() < 1) || (report_details.isEmpty())) {
+                    report_details = "NULL";
+                    Toast.makeText(Summary.this, report_details, Toast.LENGTH_SHORT).show();
+                }
+                new Upload(encoded_string, new SimpleDateFormat("hh:mm a").format(new Date()), new SimpleDateFormat("dd-MM-yyyy").format(new Date()), session.getIdentity(), longitude, latitude, category_id, report_details);
 
                 /*RESET Fields*/
-                gps_co_long.setText("0.0.0.0.0");
-                gps_co_lat.setText("0.0.0.0.0");
-                cur_date.setText("0.0.0.0.0");
-                cur_time.setText("0.0.0.0.0");
-                user_id.setText("0.0.0.0.0");
-                more_details.setText("0.0.0.0.0");
+                gps_co_long.setText(" ");
+                gps_co_lat.setText(" ");
+                cur_date.setText(" ");
+                cur_time.setText(" ");
+                user_id.setText(" ");
+                more_details.setText("");
 
                 /*POP UP*/
                 dialogBuilder
-                        .withTitle("REPORT SENT")
+                        .withTitle(getString(R.string.report_sent))
                         .withDividerColor("#FFFFFFFF")
-                        .withMessage("Thank you for taking your time to do this.")
+                        .withMessage(getString(R.string.report_success_msg))
                         .withMessageColor("#FFFFFFFF")
                         .withDialogColor("#000000")
                         .withEffect(Newspager)
@@ -241,7 +245,7 @@ public class Summary extends AppCompatActivity {
         /*Dailog*/
         progressDialog.setIndeterminate(true);
         progressDialog.setCancelable(false);
-        progressDialog.setMessage("Finding your GPS Co-Ordinates...");
+        progressDialog.setMessage(getString(R.string.finding_gps_nsg));
         progressDialog.show();
 
         /*Checking GPS*/

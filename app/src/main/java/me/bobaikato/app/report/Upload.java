@@ -26,9 +26,10 @@ public class Upload {
     private String CURRENT_DATE;
     private String LONGITUDE;
     private String LATITUDE;
+    private String MORE_DETAILS;
 
 
-    Upload(String ENCODED_IMAGE, String CURRENT_TIME, String CURRENT_DATE, String PPSNO, String LONGITUDE, String LATITUDE, Integer CATEGORY_ID) {
+    Upload(String ENCODED_IMAGE, String CURRENT_TIME, String CURRENT_DATE, String PPSNO, String LONGITUDE, String LATITUDE, Integer CATEGORY_ID, String MORE_DETAILS) {
         this.ENCODED_IMAGE = ENCODED_IMAGE;
         this.CURRENT_TIME = CURRENT_TIME;
         this.CURRENT_DATE = CURRENT_DATE;
@@ -36,6 +37,7 @@ public class Upload {
         this.LATITUDE = LATITUDE;
         this.LONGITUDE = LONGITUDE;
         this.CATEGORY_ID = CATEGORY_ID;
+        this.MORE_DETAILS = MORE_DETAILS;
 
         new Action().execute();
         try {
@@ -60,6 +62,7 @@ public class Upload {
                     .add("current_date", CURRENT_DATE)
                     .add("longitude", LONGITUDE)
                     .add("latitude", LATITUDE)
+                    .add("info_details", MORE_DETAILS)
                     .build();
             Request request = new Request.Builder()
                     .url("https://www.report.lastdaysmusic.com/report/upload.php")

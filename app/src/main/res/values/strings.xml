@@ -40,4 +40,15 @@
     <string name="click_to_view">Click to view</string>
     <string name="longitude_co_ordinate">Longitude Co-Ordinate</string>
     <string name="latitude_co_ordinate">Latitude Co-Ordinate</string>
+    <string name="report_success_msg">Thank you for taking your time to do this.</string>
+    <string name="report_sent">REPORT SENT</string>
+    <string name="finding_gps_nsg">Finding your GPS Co-Ordinates...</string>
+    <string name="gps_update_msg">GPS Co-Ordinate updated.</string>
+    <string name="invalid_email">Email is invalid</string>
+    <string name="invalid_username">Username is invalid</string>
+    <string name="invalid_password">Password is invalid</string>
+    <string name="invalid_ppsno">PPS Number is invalid</string>
+    <string name="no_internet">No Internet Connection!</string>
+    <string name="empty_username_msg">Username cannot be empty.</string>
+    <string name="empty_password_msg">Password cannot be empty.</string>
 </resources>

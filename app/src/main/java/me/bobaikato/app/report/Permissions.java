@@ -19,7 +19,7 @@ class Permissions {
 
     /*Permissions Connection Check point*/
     protected static boolean checkNetwork(View view, final Context context) {
-        Snackbar snackBar = Snackbar.make(view, "No Internet Connection!", Snackbar.LENGTH_INDEFINITE);
+        Snackbar snackBar = Snackbar.make(view, R.string.no_internet, Snackbar.LENGTH_INDEFINITE);
         if (isNetworkAvailable(context) == false) {
             snackBar.setAction("RETRY", new View.OnClickListener() {
                 @Override

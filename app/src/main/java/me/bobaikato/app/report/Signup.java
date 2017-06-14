@@ -90,13 +90,13 @@ public class Signup extends AppCompatActivity {
 
 
                 if (email_val.isEmpty() || email_val.length() == 0 || email_val.equals("") || email_val == null) {
-                    Snackbar.make(v, "Email is invalid ", Snackbar.LENGTH_LONG).show();
+                    Snackbar.make(v, R.string.invalid_email, Snackbar.LENGTH_LONG).show();
                 } else if (username_val.isEmpty() || username_val.length() == 0 || username_val.equals("") || username_val == null) {
-                    Snackbar.make(v, "Username is invalid", Snackbar.LENGTH_LONG).show();
+                    Snackbar.make(v, R.string.invalid_username, Snackbar.LENGTH_LONG).show();
                 } else if (password_val.isEmpty() || password_val.length() == 0 || password_val.equals("") || password_val == null) {
-                    Snackbar.make(v, "Password is invalid", Snackbar.LENGTH_LONG).show();
+                    Snackbar.make(v, R.string.invalid_password, Snackbar.LENGTH_LONG).show();
                 } else if (ppsnumber_val.isEmpty() || ppsnumber_val.length() == 0 || ppsnumber_val.equals("") || ppsnumber_val == null) {
-                    Snackbar.make(v, "PPS Number is invalid", Snackbar.LENGTH_LONG).show();
+                    Snackbar.make(v, R.string.invalid_ppsno, Snackbar.LENGTH_LONG).show();
                 } else {
                     if (checkNetwork(findViewById(android.R.id.content), getApplicationContext())) {
                         new Action().execute();
