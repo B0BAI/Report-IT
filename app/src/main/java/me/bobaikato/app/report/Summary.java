@@ -1,5 +1,5 @@
 package me.bobaikato.app.report;
-/**
+/*
  * Author: Bobai Kato
  * Date: 6/13/17
  * Twitter, Instagram, Github, GitLab: @BobaiKato
@@ -41,11 +41,11 @@ import static me.bobaikato.app.report.Login.session;
 
 
 public class Summary extends AppCompatActivity {
-    private static ImageView report_pic, view_pic;
     private static String picture_path;
     private static String encoded_string;
     private static Bitmap newbitmap;
     private static Integer category_id;
+    private ImageView report_pic, view_pic;
     private ImagePopup imagePopup;
     private TextView submitBtn, report_sum_heading, gps_co_long, gps_co_lat, cur_time, cur_date, user_id;
     private EditText more_details;
@@ -122,7 +122,7 @@ public class Summary extends AppCompatActivity {
         view_pic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /** Initiate Popup view **/
+                /*Initiate Popup view */
                 imagePopup.initiatePopup(report_pic.getDrawable());
             }
         });
@@ -172,6 +172,15 @@ public class Summary extends AppCompatActivity {
             public void onClick(View v) {
                 manager.removeUpdates(listener);
                 new Upload(encoded_string, new SimpleDateFormat("hh:mm a").format(new Date()), new SimpleDateFormat("dd-MM-yyyy").format(new Date()), session.getIdentity(), longitude, latitude, category_id);
+
+                /*RESET Fields*/
+                gps_co_long.setText("0.0.0.0.0");
+                gps_co_lat.setText("0.0.0.0.0");
+                cur_date.setText("0.0.0.0.0");
+                cur_time.setText("0.0.0.0.0");
+                user_id.setText("0.0.0.0.0");
+                more_details.setText("0.0.0.0.0");
+
                 /*POP UP*/
                 dialogBuilder
                         .withTitle("REPORT SENT")
