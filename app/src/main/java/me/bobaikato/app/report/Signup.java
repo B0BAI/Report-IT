@@ -112,10 +112,7 @@ public class Signup extends AppCompatActivity {
     }
 
     private class Action extends AsyncTask {
-
         ProgressDialog dialog;
-
-
         @Override
         protected void onPreExecute() {
             super.onPreExecute();

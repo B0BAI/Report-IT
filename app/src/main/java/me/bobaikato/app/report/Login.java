@@ -56,8 +56,6 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
         session = new Session(getApplicationContext());
-
-
         handleSession();
 
         /*Check Location approval*/
@@ -66,7 +64,6 @@ public class Login extends AppCompatActivity {
                     new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                     MY_PERMISSIONS_REQUEST_LOCATION);
         }
-
         /*Custom Font*/
         fonts = new Fonts(getApplicationContext());
 

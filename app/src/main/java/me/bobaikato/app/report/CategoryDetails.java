@@ -6,6 +6,7 @@ package me.bobaikato.app.report;
  * Email: bobai.Kato@gmail.com
  */
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -19,6 +20,8 @@ import android.provider.MediaStore;
 import android.provider.Settings;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
 import android.view.View;
@@ -35,6 +38,7 @@ import static me.bobaikato.app.report.Summary.set_sum_properties;
 public class CategoryDetails extends AppCompatActivity {
 
 
+    public static final int MY_PERMISSIONS_REQUEST_CAMERA = 100;
     private static Integer view_id;
     String picturePath, encoded_image;
     private Fonts fonts;
@@ -48,6 +52,7 @@ public class CategoryDetails extends AppCompatActivity {
     public static void setView_id(Integer view_id) {
         CategoryDetails.view_id = view_id;
     }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,20 +107,27 @@ public class CategoryDetails extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onClick(View v) {
-                if (checkGPS()) {
-                    if (getApplicationContext().getPackageManager().hasSystemFeature(
-                            PackageManager.FEATURE_CAMERA)) {
-                        Bitmap bitmap = null;
-                        Uri file_uri = null;
-                        // Open default camera
-                        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                        intent.putExtra(MediaStore.EXTRA_OUTPUT, file_uri);
+                    /*Camera  Permission*/
+                if (ContextCompat.checkSelfPermission(CategoryDetails.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(CategoryDetails.this,
+                            new String[]{Manifest.permission.CAMERA},
+                            MY_PERMISSIONS_REQUEST_CAMERA);
+                    if (checkGPS()) {
+                        if (getApplicationContext().getPackageManager().hasSystemFeature(
+                                PackageManager.FEATURE_CAMERA)) {
+                            Bitmap bitmap = null;
+                            Uri file_uri = null;
+                            // Open default camera
+                            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                            intent.putExtra(MediaStore.EXTRA_OUTPUT, file_uri);
 
-                        // start the camera_icon capture Intent
-                        startActivityForResult(intent, 100);
+                            // start the camera_icon capture Intent
+                            startActivityForResult(intent, 100);
 
-                    } else {
-                        Toast.makeText(getApplication(), R.string.cam_support_msg, Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(getApplication(), R.string.cam_support_msg, Toast.LENGTH_LONG).show();
+
+                        }
                     }
                 }
             }

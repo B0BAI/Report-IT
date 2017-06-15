@@ -38,6 +38,7 @@ import java.util.Date;
 
 import static com.gitonway.lee.niftymodaldialogeffects.lib.Effectstype.Newspager;
 import static me.bobaikato.app.report.Login.session;
+import static me.bobaikato.app.report.Permissions.checkLocation;
 
 
 public class Summary extends AppCompatActivity {
@@ -81,7 +82,6 @@ public class Summary extends AppCompatActivity {
         dialogBuilder = NiftyDialogBuilder.getInstance(this);
         progressDialog = new ProgressDialog(Summary.this,
                 R.style.AppTheme_Dark_Dialog);
-
          /*Custom Font*/
         fonts = new Fonts(getApplicationContext());
         report_pic = (ImageView) findViewById(R.id.camera_shot_summary);
@@ -124,7 +124,6 @@ public class Summary extends AppCompatActivity {
                 imagePopup.initiatePopup(report_pic.getDrawable());
             }
         });
-
 
           /*GPS */
         checkGPS();
@@ -169,6 +168,12 @@ public class Summary extends AppCompatActivity {
         submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                       /*Check Location approval*/
+                if (!checkLocation(getApplicationContext())) {
+                    ActivityCompat.requestPermissions(Summary.this,
+                            new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                            99);
+                }
                 manager.removeUpdates(listener);
                 report_details = more_details.getText().toString().trim();
                 if ((report_details.length() < 1) || (report_details.isEmpty())) {
@@ -188,10 +193,10 @@ public class Summary extends AppCompatActivity {
                 /*POP UP*/
                 dialogBuilder
                         .withTitle(getString(R.string.report_sent))
-                        .withDividerColor("#FFFFFFFF")
+                        .withDividerColor("#FFFFFF")
                         .withMessage(getString(R.string.report_success_msg))
-                        .withMessageColor("#FFFFFFFF")
-                        .withDialogColor("#000000")
+                        .withMessageColor("#FFFFFF")
+                        .withDialogColor(R.color.black)
                         .withEffect(Newspager)
                         .isCancelableOnTouchOutside(false)
                         .show();
@@ -226,6 +231,7 @@ public class Summary extends AppCompatActivity {
     }
 
     private boolean checkGPS() {
+
         if (!manager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             Snackbar snackBar = Snackbar.make(findViewById(android.R.id.content), R.string.gps_msg, Snackbar.LENGTH_INDEFINITE);
             snackBar.setAction("TURN ON", new View.OnClickListener() {
@@ -256,6 +262,6 @@ public class Summary extends AppCompatActivity {
             return;
         }
         // this code won't execute IF permissions are not allowed, because in the line above there is return statement.
-        manager.requestLocationUpdates("gps", 5000, 0, listener);
+        manager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 0, listener);
     }
 }
