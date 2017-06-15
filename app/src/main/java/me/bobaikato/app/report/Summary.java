@@ -163,7 +163,7 @@ public class Summary extends AppCompatActivity {
         cur_time.setText(new SimpleDateFormat("hh:mm a").format(new Date()).toUpperCase());
         cur_date.setText(new SimpleDateFormat("dd-MM-yyyy").format(new Date()));
         user_id.setText(session.getIdentity().toUpperCase());
-        startGPS();
+        // startGPS();
 
         submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -183,12 +183,12 @@ public class Summary extends AppCompatActivity {
                 new Upload(encoded_string, new SimpleDateFormat("hh:mm a").format(new Date()), new SimpleDateFormat("dd-MM-yyyy").format(new Date()), session.getIdentity(), longitude, latitude, category_id, report_details);
 
                 /*RESET Fields*/
-                gps_co_long.setText(" ");
-                gps_co_lat.setText(" ");
-                cur_date.setText(" ");
-                cur_time.setText(" ");
-                user_id.setText(" ");
-                more_details.setText("");
+                gps_co_long.setText(" * * * * *");
+                gps_co_lat.setText(" * * * * *");
+                cur_date.setText(" * * * * *");
+                cur_time.setText(" * * * * *");
+                user_id.setText(" * * * * *");
+                more_details.setText(" * * * * *");
 
                 /*POP UP*/
                 dialogBuilder
