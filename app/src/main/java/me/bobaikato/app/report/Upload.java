@@ -17,7 +17,7 @@ import okhttp3.Response;
  * Email: bobai.Kato@gmail.com
  */
 
-public class Upload {
+class Upload {
 
     private String ENCODED_IMAGE;
     private String CURRENT_TIME;
@@ -27,9 +27,10 @@ public class Upload {
     private String LONGITUDE;
     private String LATITUDE;
     private String MORE_DETAILS;
+    private String ADDRESS;
 
 
-    Upload(String ENCODED_IMAGE, String CURRENT_TIME, String CURRENT_DATE, String PPSNO, String LONGITUDE, String LATITUDE, Integer CATEGORY_ID, String MORE_DETAILS) {
+    Upload(String ENCODED_IMAGE, String CURRENT_TIME, String CURRENT_DATE, String PPSNO, String LONGITUDE, String LATITUDE, Integer CATEGORY_ID, String MORE_DETAILS, String ADDRESS) {
         this.ENCODED_IMAGE = ENCODED_IMAGE;
         this.CURRENT_TIME = CURRENT_TIME;
         this.CURRENT_DATE = CURRENT_DATE;
@@ -38,6 +39,7 @@ public class Upload {
         this.LONGITUDE = LONGITUDE;
         this.CATEGORY_ID = CATEGORY_ID;
         this.MORE_DETAILS = MORE_DETAILS;
+        this.ADDRESS = ADDRESS;
 
         new Action().execute();
         try {
@@ -63,6 +65,7 @@ public class Upload {
                     .add("longitude", LONGITUDE)
                     .add("latitude", LATITUDE)
                     .add("info_details", MORE_DETAILS)
+                    .add("address", ADDRESS)
                     .build();
             Request request = new Request.Builder()
                     .url("https://www.report.lastdaysmusic.com/report/upload.php")

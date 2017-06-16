@@ -17,6 +17,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.media.MediaPlayer;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -33,8 +34,17 @@ import android.widget.Toast;
 import com.ceylonlabs.imageviewpopup.ImagePopup;
 import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 import static com.gitonway.lee.niftymodaldialogeffects.lib.Effectstype.Newspager;
 import static me.bobaikato.app.report.Login.session;
@@ -46,9 +56,10 @@ public class Summary extends AppCompatActivity {
     private static String encoded_string;
     private static Bitmap newbitmap;
     private static Integer category_id;
+    private static String URL = null;
     private ImageView report_pic, view_pic;
     private ImagePopup imagePopup;
-    private TextView submitBtn, report_sum_heading, gps_co_long, gps_co_lat, cur_time, cur_date, user_id;
+    private TextView submitBtn, report_address, report_sum_heading, gps_codinate, cur_time, cur_date, user_id;
     private EditText more_details;
     private Fonts fonts;
     private LocationManager manager;
@@ -58,6 +69,7 @@ public class Summary extends AppCompatActivity {
     private String longitude, latitude;
     private NiftyDialogBuilder dialogBuilder;
     private ProgressDialog progressDialog;
+    private String address;
 
 
     public static void setCategory_id(Integer category_id) {
@@ -92,20 +104,20 @@ public class Summary extends AppCompatActivity {
         submitBtn = (TextView) findViewById(R.id.submit_btn);
         submitBtn.setVisibility(View.INVISIBLE);//hide button
         report_sum_heading = (TextView) findViewById(R.id.report_sum_header);
-        gps_co_long = (TextView) findViewById(R.id.gps_long);
-        gps_co_lat = (TextView) findViewById(R.id.gps_lat);
+        gps_codinate = (TextView) findViewById(R.id.gps_lat);
         cur_time = (TextView) findViewById(R.id.current_time);
         cur_date = (TextView) findViewById(R.id.current_date);
         user_id = (TextView) findViewById(R.id.user_id);
+        report_address = (TextView) findViewById(R.id.report_address);
         more_details = (EditText) findViewById(R.id.more_details);
         /*set fonts*/
         submitBtn.setTypeface(fonts.getCustom_font_1());
         report_sum_heading.setTypeface(fonts.getCustom_font_1());
-        gps_co_long.setTypeface(fonts.getCustom_font_1());
-        gps_co_lat.setTypeface(fonts.getCustom_font_1());
+        gps_codinate.setTypeface(fonts.getCustom_font_1());
         cur_time.setTypeface(fonts.getCustom_font_1());
         cur_date.setTypeface(fonts.getCustom_font_1());
         user_id.setTypeface(fonts.getCustom_font_1());
+        report_address.setTypeface(fonts.getCustom_font_1());
         more_details.setTypeface(fonts.getCustom_font());
 
         /*Image pop up*/
@@ -132,20 +144,30 @@ public class Summary extends AppCompatActivity {
             public void onLocationChanged(Location location) {
                 latitude = "" + location.getLatitude();
                 longitude = "" + location.getLongitude();
-                gps_co_lat.setText(latitude);
-                gps_co_long.setText(longitude);
-                submitBtn.setVisibility(View.VISIBLE);//show button
+                gps_codinate.setText(longitude + ", " + latitude);
+
                 if (NOTIFICATION_FLAG == 0) {
                     mediaPlayer.start();
                     ++NOTIFICATION_FLAG;
                 }
-                progressDialog.dismiss();
+                new Action().execute();
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
 
             @Override
             public void onStatusChanged(String s, int i, Bundle bundle) {
                 Toast.makeText(Summary.this, R.string.gps_update_msg, Toast.LENGTH_SHORT).show();
                 ++NOTIFICATION_FLAG;
+                new Action().execute();
+                try {
+                    Thread.sleep(1500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
 
             @Override
@@ -163,7 +185,7 @@ public class Summary extends AppCompatActivity {
         cur_time.setText(new SimpleDateFormat("hh:mm a").format(new Date()).toUpperCase());
         cur_date.setText(new SimpleDateFormat("dd-MM-yyyy").format(new Date()));
         user_id.setText(session.getIdentity().toUpperCase());
-        // startGPS();
+        startGPS();
 
         submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -180,15 +202,16 @@ public class Summary extends AppCompatActivity {
                     report_details = "NULL";
                     Toast.makeText(Summary.this, report_details, Toast.LENGTH_SHORT).show();
                 }
-                new Upload(encoded_string, new SimpleDateFormat("hh:mm a").format(new Date()), new SimpleDateFormat("dd-MM-yyyy").format(new Date()), session.getIdentity(), longitude, latitude, category_id, report_details);
+                new Upload(encoded_string, new SimpleDateFormat("hh:mm a").format(new Date()), new SimpleDateFormat("dd-MM-yyyy").format(new Date()), session.getIdentity(), longitude, latitude, category_id, report_details, address);
 
                 /*RESET Fields*/
-                gps_co_long.setText(" * * * * *");
-                gps_co_lat.setText(" * * * * *");
-                cur_date.setText(" * * * * *");
-                cur_time.setText(" * * * * *");
-                user_id.setText(" * * * * *");
-                more_details.setText(" * * * * *");
+
+                gps_codinate.setText(" * * * * * * *");
+                cur_date.setText(" * * * * * * *");
+                cur_time.setText(" * * * * * * *");
+                user_id.setText(" * * * * * * *");
+                more_details.setText(" * * * * * * *");
+                report_address.setText(" * * * * * * *");
 
                 /*POP UP*/
                 dialogBuilder
@@ -213,6 +236,13 @@ public class Summary extends AppCompatActivity {
     }
 
     @Override
+    protected void onPause() {
+        super.onPause();
+        manager.removeUpdates(listener);
+    }
+
+
+    @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
                                            @NonNull int[] grantResults) {
         switch (requestCode) {
@@ -231,7 +261,6 @@ public class Summary extends AppCompatActivity {
     }
 
     private boolean checkGPS() {
-
         if (!manager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             Snackbar snackBar = Snackbar.make(findViewById(android.R.id.content), R.string.gps_msg, Snackbar.LENGTH_INDEFINITE);
             snackBar.setAction("TURN ON", new View.OnClickListener() {
@@ -245,7 +274,6 @@ public class Summary extends AppCompatActivity {
             return true;
         }
     }
-
 
     private void startGPS() {
         /*Dailog*/
@@ -263,5 +291,51 @@ public class Summary extends AppCompatActivity {
         }
         // this code won't execute IF permissions are not allowed, because in the line above there is return statement.
         manager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 0, listener);
+    }
+
+
+    private class Action extends AsyncTask {
+        ProgressDialog dialog;
+
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            URL = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + latitude + "," + longitude + "&key=AIzaSyCmewO09gXfOzLyzXX9Kl3QDXx9kdYwCYI";
+        }
+
+        @Override
+        protected void onPostExecute(Object o) {
+            super.onPostExecute(o);
+                   /*Delays*/
+            report_address.setText(address);
+            submitBtn.setVisibility(View.VISIBLE);//show button
+            progressDialog.dismiss();
+        }
+
+        @Override
+        protected Object doInBackground(Object[] params) {
+
+            OkHttpClient client = new OkHttpClient();
+            Request request = new Request.Builder()
+                    .url(URL)
+                    .build();
+            Response responses = null;
+
+            try {
+                responses = client.newCall(request).execute();
+
+                String jsonData = responses.body().string();
+                JSONObject Jobject = new JSONObject(jsonData);
+                JSONArray Jarray = Jobject.getJSONArray("results");
+                JSONObject object = Jarray.getJSONObject(0);
+                address = object.getString("formatted_address");
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
     }
 }

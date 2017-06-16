@@ -132,7 +132,6 @@ public class Login extends AppCompatActivity {
     private class Action extends AsyncTask {
         ProgressDialog dialog;
 
-
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -198,8 +197,8 @@ public class Login extends AppCompatActivity {
                         jsonarray = new JSONArray(resStr);
                         ppsno_JSON = jsonarray.getJSONObject(0);
                         user_Type_JSON = jsonarray.getJSONObject(0);
-                        type_resp = user_Type_JSON.getString("type").toString();
-                        ppsno_resp = ppsno_JSON.getString("ppsno").toString();
+                        type_resp = user_Type_JSON.getString("type");
+                        ppsno_resp = ppsno_JSON.getString("ppsno");
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }

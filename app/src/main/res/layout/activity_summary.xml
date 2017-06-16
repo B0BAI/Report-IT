@@ -14,57 +14,29 @@
         android:letterSpacing="0.1"
         android:text="@string/report_summary"
         android:textColor="#000000"
-        android:textSize="28dp"
+        android:textSize="28sp"
         android:textStyle="bold" />
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:paddingLeft="20dp">
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_marginBottom="30dp"
+        android:gravity="center">
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="55dp"
+            android:layout_marginBottom="65dp"
             android:gravity="center"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="16dp">
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/gps"
-                    tools:ignore="ContentDescription" />
-
-                <TextView
-                    android:id="@+id/gps_long"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:background="#00000000"
-                    android:hint="@string/longitude_co_ordinate"
-                    android:inputType="text"
-                    android:letterSpacing="0.1"
-                    android:textColor="#000000"
-                    android:textColorHint="#000000"
-                    android:textSize="18sp"
-                    tools:ignore="RtlHardcoded,UnusedAttribute" />
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="16dp">
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="20dp"
@@ -79,7 +51,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:background="#00000000"
-                    android:hint="@string/latitude_co_ordinate"
+                    android:hint="@string/gps_co_ordinate"
                     android:inputType="text"
                     android:letterSpacing="0.1"
                     android:textColor="#000000"
@@ -97,8 +69,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="16dp">
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="20dp"
@@ -126,8 +99,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="16dp">
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="20dp"
@@ -154,8 +128,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="16dp">
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="20dp"
@@ -179,12 +154,43 @@
                     tools:ignore="RtlHardcoded,SpUsage" />
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/address"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:id="@+id/report_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:background="#00000000"
+                    android:hint="@string/report_address"
+                    android:inputType="textMultiLine"
+                    android:letterSpacing="0.1"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="18dp"
+                    tools:ignore="RtlHardcoded,SpUsage" />
+
+            </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="16dp">
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="20dp"
@@ -199,7 +205,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:background="#00000000"
-                    android:hint="Add Details (Optional)"
+                    android:hint="@string/add_details_optional"
                     android:inputType="textMultiLine"
                     android:letterSpacing="0.1"
                     android:textColor="#000000"
@@ -208,6 +214,7 @@
                     tools:ignore="RtlHardcoded,SpUsage" />
 
             </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
