@@ -22,9 +22,11 @@ import static me.bobaikato.app.report.Login.session;
 import static me.bobaikato.app.report.Permissions.checkLocation;
 
 public class Category extends AppCompatActivity {
+
     private TextView accident, crime, fireOutbreak, garbage, naturalDisaster, msg, ppsno_id, logout;
     private Fonts fonts;
     private LocationManager manager = null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

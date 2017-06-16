@@ -10,8 +10,9 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="205bf954-0002-41c7-a171-1af961c4697a" name="Default" comment="Created shared preference for the user type and little code clean up.">
+    <list default="true" id="205bf954-0002-41c7-a171-1af961c4697a" name="Default" comment="Merge!">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/me/bobaikato/app/report/Category.java" afterPath="$PROJECT_DIR$/app/src/main/java/me/bobaikato/app/report/Category.java" />
     </list>
     <ignored path="Report.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -80,10 +81,10 @@
       <file leaf-file-name="Category.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/me/bobaikato/app/report/Category.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="870">
-              <caret line="58" column="25" selection-start-line="58" selection-start-column="25" selection-end-line="58" selection-end-column="25" />
+            <state relative-caret-position="360">
+              <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
               <folding>
-                <element signature="e#3381#3408#0" expanded="true" />
+                <element signature="e#3383#3410#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -179,7 +180,7 @@
       <GitPushTagMode />
     </option>
     <push-targets>
-      <push-target-info repo="$PROJECT_DIR$" source="master" target-remote="origin" target-branch="master" />
+      <push-target-info repo="$PROJECT_DIR$" source="master" target-remote="origin" target-branch="admin-side" />
     </push-targets>
   </component>
   <component name="GradleLocalSettings">
@@ -3302,7 +3303,14 @@
       <option name="project" value="LOCAL" />
       <updated>1497618779913</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="Merge!">
+      <created>1497618908220</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1497618908220</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TodoView">
@@ -3382,7 +3390,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
-    <MESSAGE value="Created Font Class. Change the way custom fonts are used." />
     <MESSAGE value="Refactor Login to support different type of users." />
     <MESSAGE value="Set up image upload (WORKS) :D" />
     <MESSAGE value="Disabled LandScape view for the Category details :(" />
@@ -3407,7 +3414,8 @@
     <MESSAGE value="Added textMultiLine for Input type in report details" />
     <MESSAGE value="Added Exact address extraction from GPS co-ordinates and little clean up." />
     <MESSAGE value="Created shared preference for the user type and little code clean up." />
-    <option name="LAST_COMMIT_MESSAGE" value="Created shared preference for the user type and little code clean up." />
+    <MESSAGE value="Merge!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge!" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -3793,10 +3801,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/me/bobaikato/app/report/Category.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="870">
-          <caret line="58" column="25" selection-start-line="58" selection-start-column="25" selection-end-line="58" selection-end-column="25" />
+        <state relative-caret-position="360">
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
           <folding>
-            <element signature="e#3381#3408#0" expanded="true" />
+            <element signature="e#3383#3410#0" expanded="true" />
           </folding>
         </state>
       </provider>
