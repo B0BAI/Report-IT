@@ -184,7 +184,7 @@ public class Summary extends AppCompatActivity {
         /*Set Variables*/
         cur_time.setText(new SimpleDateFormat("hh:mm a").format(new Date()).toUpperCase());
         cur_date.setText(new SimpleDateFormat("dd-MM-yyyy").format(new Date()));
-        user_id.setText(session.getIdentity().toUpperCase());
+        user_id.setText(session.getPPSNO().toUpperCase());
         startGPS();
 
         submitBtn.setOnClickListener(new View.OnClickListener() {
@@ -202,7 +202,7 @@ public class Summary extends AppCompatActivity {
                     report_details = "NULL";
                     Toast.makeText(Summary.this, report_details, Toast.LENGTH_SHORT).show();
                 }
-                new Upload(encoded_string, new SimpleDateFormat("hh:mm a").format(new Date()), new SimpleDateFormat("dd-MM-yyyy").format(new Date()), session.getIdentity(), longitude, latitude, category_id, report_details, address);
+                new Upload(encoded_string, new SimpleDateFormat("hh:mm a").format(new Date()), new SimpleDateFormat("dd-MM-yyyy").format(new Date()), session.getPPSNO(), longitude, latitude, category_id, report_details, address);
 
                 /*RESET Fields*/
 

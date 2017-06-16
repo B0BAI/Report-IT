@@ -14,6 +14,7 @@ import android.preference.PreferenceManager;
 public class Session {
 
     String ppsno = null;
+    String user_type = null;
     private SharedPreferences sharedPreferences;
 
     public Session(Context context) {
@@ -25,21 +26,32 @@ public class Session {
     }
 
     /*Login*/
-    public void logout(String ppsno) {
+    public void logout(String ppsno, String user_type) {
         sharedPreferences.edit().remove(ppsno).commit();
+        sharedPreferences.edit().remove(user_type).commit();
     }
 
-    public String getIdentity() {
+    public String getPPSNO() {
         this.ppsno = sharedPreferences.getString("ppsno", "");
         return ppsno;
     }
 
-    public boolean isIdentity() {
+    public String getUser_type() {
+        this.user_type = sharedPreferences.getString("user_type", "");
+        return user_type;
+    }
+
+    public boolean isPPSNO() {
         return sharedPreferences.contains("ppsno");
     }
 
-    public void setIdentity(String ppsno) {
+    public boolean isUser_type() {
+        return sharedPreferences.contains("user_type");
+    }
+
+    public void setIdentity(String ppsno, String user_type) {
         sharedPreferences.edit().putString("ppsno", ppsno).commit();
+        sharedPreferences.edit().putString("user_type", user_type).commit();
     }
 
 

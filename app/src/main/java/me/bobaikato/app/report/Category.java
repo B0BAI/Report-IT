@@ -22,7 +22,7 @@ import static me.bobaikato.app.report.Login.session;
 import static me.bobaikato.app.report.Permissions.checkLocation;
 
 public class Category extends AppCompatActivity {
-    TextView acccident, crime, fireOutbreak, garbage, naturalDisaster, msg, ppsno_id, logout;
+    private TextView accident, crime, fireOutbreak, garbage, naturalDisaster, msg, ppsno_id, logout;
     private Fonts fonts;
     private LocationManager manager = null;
 
@@ -38,7 +38,7 @@ public class Category extends AppCompatActivity {
         /*Custom font*/
         fonts = new Fonts(getApplicationContext());
 
-        acccident = (TextView) findViewById(R.id.report_accident);
+        accident = (TextView) findViewById(R.id.report_accident);
         crime = (TextView) findViewById(R.id.report_crime);
         fireOutbreak = (TextView) findViewById(R.id.report_fire_ourbreak);
         garbage = (TextView) findViewById(R.id.report_garbage);
@@ -48,7 +48,7 @@ public class Category extends AppCompatActivity {
         logout = (TextView) findViewById(R.id.logout);
 
         /*Set Custom Font*/
-        acccident.setTypeface(fonts.getCustom_font());
+        accident.setTypeface(fonts.getCustom_font());
         crime.setTypeface(fonts.getCustom_font());
         fireOutbreak.setTypeface(fonts.getCustom_font());
         garbage.setTypeface(fonts.getCustom_font());
@@ -56,12 +56,12 @@ public class Category extends AppCompatActivity {
         msg.setTypeface(fonts.getCustom_font_1());
         logout.setTypeface(fonts.getCustom_font_1());
         ppsno_id.setTypeface(fonts.getCustom_font());
-        ppsno_id.setText(getString(R.string.id) + session.getIdentity().toUpperCase());
+        ppsno_id.setText(session.getUser_type().toUpperCase() + " | " + session.getPPSNO().toUpperCase());
         /*Logout*/
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                session.logout("ppsno");
+                session.logout("ppsno", "user_type");
                 startActivity(new Intent(Category.this, Login.class));
                 Toast.makeText(Category.this, R.string.logout_msg, Toast.LENGTH_LONG).show();
             }
@@ -71,7 +71,7 @@ public class Category extends AppCompatActivity {
     /*Handle session Redirect*/
     private void handleSession() {
         /*Check Session and redirect to Category*/
-        if (!session.isIdentity()) {
+        if (!session.isPPSNO()) {
             startActivity(new Intent(Category.this, Login.class));
         }
     }

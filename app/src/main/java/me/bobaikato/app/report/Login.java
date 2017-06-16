@@ -48,7 +48,7 @@ public class Login extends AppCompatActivity {
     private Fonts fonts;
     private JSONArray jsonarray;
     private String ppsno_resp = null;
-    private String type_resp = null;
+    private String user_type = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,7 +100,7 @@ public class Login extends AppCompatActivity {
     /*Handle session Redirect*/
     private void handleSession() {
         /*Check Session and redirect to Category*/
-        if (session.isIdentity()) {
+        if (session.isPPSNO()) {
             startActivity(new Intent(Login.this, Category.class));
         }
     }
@@ -157,7 +157,7 @@ public class Login extends AppCompatActivity {
                             progressDialog.dismiss();
                             if (!ppsno_resp.equals(getString(R.string.invalid))) {
                                 /*Set pref*/
-                                session.setIdentity(ppsno_resp);
+                                session.setIdentity(ppsno_resp, user_type);
                                 /*Reset Field*/
                                 username.setText("");
                                 password.setText("");
@@ -175,8 +175,8 @@ public class Login extends AppCompatActivity {
 
             OkHttpClient client = new OkHttpClient();
             RequestBody formBody = new FormBody.Builder()
-                    .add("username", username_val)
-                    .add("password", password_val)
+                    .add("username", username_val.toLowerCase())
+                    .add("password", password_val.toLowerCase())
                     .build();
             Request request = new Request.Builder()
                     .url(URL)
@@ -197,7 +197,7 @@ public class Login extends AppCompatActivity {
                         jsonarray = new JSONArray(resStr);
                         ppsno_JSON = jsonarray.getJSONObject(0);
                         user_Type_JSON = jsonarray.getJSONObject(0);
-                        type_resp = user_Type_JSON.getString("type");
+                        user_type = user_Type_JSON.getString("type");
                         ppsno_resp = ppsno_JSON.getString("ppsno");
                     } catch (JSONException e) {
                         e.printStackTrace();

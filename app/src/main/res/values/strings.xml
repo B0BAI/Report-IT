@@ -12,7 +12,6 @@
     <string name="accident">Accident</string>
     <string name="garbage">Garbage</string>
     <string name="crime">Crime</string>
-    <string name="id">ID:  </string>
     <string name="natural_disaster">Natural Disaster</string>
     <string name="home_msg">Select Required Report</string>
     <string name="cam_msg">Take a Picture</string>

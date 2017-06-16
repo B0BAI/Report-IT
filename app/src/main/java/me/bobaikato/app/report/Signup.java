@@ -83,10 +83,10 @@ public class Signup extends AppCompatActivity {
             public void onClick(View v) {
 
                 /*Values*/
-                username_val = username.getText().toString().trim();
+                username_val = username.getText().toString().trim().toLowerCase();
                 password_val = password.getText().toString();
-                email_val = email.getText().toString().trim();
-                ppsnumber_val = ppsnumber.getText().toString().trim();
+                email_val = email.getText().toString().trim().toLowerCase();
+                ppsnumber_val = ppsnumber.getText().toString().trim().toLowerCase();
 
 
                 if (email_val.isEmpty() || email_val.length() == 0 || email_val.equals("") || email_val == null) {
