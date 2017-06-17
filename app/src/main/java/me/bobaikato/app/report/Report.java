@@ -17,8 +17,7 @@ import okhttp3.Response;
  * Email: bobai.Kato@gmail.com
  */
 
-class Upload {
-
+class Report {
     private String ENCODED_IMAGE;
     private String CURRENT_TIME;
     private Integer CATEGORY_ID;
@@ -30,7 +29,7 @@ class Upload {
     private String ADDRESS;
 
 
-    Upload(String ENCODED_IMAGE, String CURRENT_TIME, String CURRENT_DATE, String PPSNO, String LONGITUDE, String LATITUDE, Integer CATEGORY_ID, String MORE_DETAILS, String ADDRESS) {
+    Report(String ENCODED_IMAGE, String CURRENT_TIME, String CURRENT_DATE, String PPSNO, String LONGITUDE, String LATITUDE, Integer CATEGORY_ID, String MORE_DETAILS, String ADDRESS) {
         this.ENCODED_IMAGE = ENCODED_IMAGE;
         this.CURRENT_TIME = CURRENT_TIME;
         this.CURRENT_DATE = CURRENT_DATE;

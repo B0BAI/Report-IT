@@ -51,4 +51,6 @@
     <string name="empty_password_msg">Password cannot be empty.</string>
     <string name="report_address">Report Address</string>
     <string name="add_details_optional">Add Details (Optional)</string>
+    <string name="time_format">hh:mm a</string>
+    <string name="date_format">dd-MM-yyyy</string>
 </resources>

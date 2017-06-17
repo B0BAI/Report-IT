@@ -29,7 +29,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.ceylonlabs.imageviewpopup.ImagePopup;
 import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder;
@@ -76,7 +75,7 @@ public class Summary extends AppCompatActivity {
         Summary.category_id = category_id;
     }
 
-//            new Upload(encoded_image);
+//            new Report(encoded_image);
 
     public static void set_sum_properties(String pic_path, String encoded_str, Bitmap bitmap) {
         picture_path = pic_path;
@@ -85,7 +84,7 @@ public class Summary extends AppCompatActivity {
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@NonNull Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_summary);
         manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -160,7 +159,7 @@ public class Summary extends AppCompatActivity {
 
             @Override
             public void onStatusChanged(String s, int i, Bundle bundle) {
-                Toast.makeText(Summary.this, R.string.gps_update_msg, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(Summary.this, R.string.gps_update_msg, Toast.LENGTH_SHORT).show();
                 ++NOTIFICATION_FLAG;
                 new Action().execute();
                 try {
@@ -182,8 +181,8 @@ public class Summary extends AppCompatActivity {
         };
 
         /*Set Variables*/
-        cur_time.setText(new SimpleDateFormat("hh:mm a").format(new Date()).toUpperCase());
-        cur_date.setText(new SimpleDateFormat("dd-MM-yyyy").format(new Date()));
+        cur_time.setText(new SimpleDateFormat(getString(R.string.time_format)).format(new Date()).toUpperCase());
+        cur_date.setText(new SimpleDateFormat(getString(R.string.date_format)).format(new Date()));
         user_id.setText(session.getPPSNO().toUpperCase());
         startGPS();
 
@@ -200,18 +199,17 @@ public class Summary extends AppCompatActivity {
                 report_details = more_details.getText().toString().trim();
                 if ((report_details.length() < 1) || (report_details.isEmpty())) {
                     report_details = "NULL";
-                    Toast.makeText(Summary.this, report_details, Toast.LENGTH_SHORT).show();
                 }
-                new Upload(encoded_string, new SimpleDateFormat("hh:mm a").format(new Date()), new SimpleDateFormat("dd-MM-yyyy").format(new Date()), session.getPPSNO(), longitude, latitude, category_id, report_details, address);
+                new Report(encoded_string, new SimpleDateFormat(getString(R.string.time_format)).format(new Date()), new SimpleDateFormat(getString(R.string.date_format)).format(new Date()), session.getPPSNO(), longitude, latitude, category_id, report_details, address);
 
                 /*RESET Fields*/
 
-                gps_codinate.setText(" * * * * * * *");
-                cur_date.setText(" * * * * * * *");
-                cur_time.setText(" * * * * * * *");
-                user_id.setText(" * * * * * * *");
-                more_details.setText(" * * * * * * *");
-                report_address.setText(" * * * * * * *");
+                gps_codinate.setText("-0.000000");
+                cur_date.setText("00:00");
+                cur_time.setText("00-00-0000");
+                user_id.setText("00000000000");
+                more_details.setText("00000000000");
+                report_address.setText("00000000000");
 
                 /*POP UP*/
                 dialogBuilder
@@ -228,6 +226,7 @@ public class Summary extends AppCompatActivity {
                         new Runnable() {
                             public void run() {
                                 dialogBuilder.dismiss();
+                                finish();//kill the activity totaly
                                 startActivity(new Intent(Summary.this, Category.class));
                             }
                         }, 5000);
@@ -243,8 +242,7 @@ public class Summary extends AppCompatActivity {
 
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         switch (requestCode) {
             case 10:
                 startGPS();
@@ -290,14 +288,11 @@ public class Summary extends AppCompatActivity {
             return;
         }
         // this code won't execute IF permissions are not allowed, because in the line above there is return statement.
-        manager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 0, listener);
+        manager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1500, 0, listener);
     }
 
 
     private class Action extends AsyncTask {
-        ProgressDialog dialog;
-
-
         @Override
         protected void onPreExecute() {
             super.onPreExecute();

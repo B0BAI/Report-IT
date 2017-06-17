@@ -23,9 +23,10 @@ import static me.bobaikato.app.report.Permissions.checkLocation;
 
 public class Category extends AppCompatActivity {
 
-    private TextView accident, crime, fireOutbreak, garbage, naturalDisaster, msg, ppsno_id, logout;
+    private TextView accident, crime, fire_out_break, garbage, natural_Disaster, msg, ppsno_id, logout;
     private Fonts fonts;
     private LocationManager manager = null;
+
 
 
     @Override
@@ -42,9 +43,9 @@ public class Category extends AppCompatActivity {
 
         accident = (TextView) findViewById(R.id.report_accident);
         crime = (TextView) findViewById(R.id.report_crime);
-        fireOutbreak = (TextView) findViewById(R.id.report_fire_ourbreak);
+        fire_out_break = (TextView) findViewById(R.id.report_fire_ourbreak);
         garbage = (TextView) findViewById(R.id.report_garbage);
-        naturalDisaster = (TextView) findViewById(R.id.report_natural_disaster);
+        natural_Disaster = (TextView) findViewById(R.id.report_natural_disaster);
         msg = (TextView) findViewById(R.id.report_msg);
         ppsno_id = (TextView) findViewById(R.id.ppsno_id);
         logout = (TextView) findViewById(R.id.logout);
@@ -52,9 +53,9 @@ public class Category extends AppCompatActivity {
         /*Set Custom Font*/
         accident.setTypeface(fonts.getCustom_font());
         crime.setTypeface(fonts.getCustom_font());
-        fireOutbreak.setTypeface(fonts.getCustom_font());
+        fire_out_break.setTypeface(fonts.getCustom_font());
         garbage.setTypeface(fonts.getCustom_font());
-        naturalDisaster.setTypeface(fonts.getCustom_font());
+        natural_Disaster.setTypeface(fonts.getCustom_font());
         msg.setTypeface(fonts.getCustom_font_1());
         logout.setTypeface(fonts.getCustom_font_1());
         ppsno_id.setTypeface(fonts.getCustom_font());
