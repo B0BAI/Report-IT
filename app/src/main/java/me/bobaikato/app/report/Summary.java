@@ -87,6 +87,7 @@ public class Summary extends AppCompatActivity {
     protected void onCreate(@NonNull Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_summary);
+        overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
         manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
         /*DIALOGUE & POP UP*/

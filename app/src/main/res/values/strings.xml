@@ -53,4 +53,5 @@
     <string name="add_details_optional">Add Details (Optional)</string>
     <string name="time_format">hh:mm a</string>
     <string name="date_format">dd-MM-yyyy</string>
+    <string name="title_activity_maps">Map</string>
 </resources>

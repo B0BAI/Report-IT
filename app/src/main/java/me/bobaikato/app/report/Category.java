@@ -33,7 +33,7 @@ public class Category extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
-        overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
+        //overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
         handleSession();
         /*Check Location*/
         locationCheck();
@@ -64,7 +64,7 @@ public class Category extends AppCompatActivity {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                session.logout("ppsno", "user_type");
+                session.logout("ppsno", "user_type", "cat_id");
                 startActivity(new Intent(Category.this, Login.class));
                 Toast.makeText(Category.this, R.string.logout_msg, Toast.LENGTH_LONG).show();
             }

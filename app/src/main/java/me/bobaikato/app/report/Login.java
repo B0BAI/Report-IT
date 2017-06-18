@@ -49,6 +49,7 @@ public class Login extends AppCompatActivity {
     private JSONArray jsonarray;
     private String ppsno_resp = null;
     private String user_type = null;
+    private String cat_id = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,7 +102,11 @@ public class Login extends AppCompatActivity {
     private void handleSession() {
         /*Check Session and redirect to Category*/
         if (session.isPPSNO()) {
-            startActivity(new Intent(Login.this, Category.class));
+            if (session.getUser_type().toLowerCase().equals("regular")) {
+                startActivity(new Intent(Login.this, Category.class));
+            } else {
+                startActivity(new Intent(Login.this, ReportList.class));
+            }
         }
     }
 
@@ -135,7 +140,6 @@ public class Login extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-
             /*
              * Progress Dialog for User Interaction
              */
@@ -157,11 +161,11 @@ public class Login extends AppCompatActivity {
                             progressDialog.dismiss();
                             if (!ppsno_resp.equals(getString(R.string.invalid))) {
                                 /*Set pref*/
-                                session.setIdentity(ppsno_resp, user_type);
+                                session.setIdentity(ppsno_resp, user_type, cat_id);
                                 /*Reset Field*/
                                 username.setText("");
                                 password.setText("");
-                                startActivity(new Intent(Login.this, Category.class));
+                                handleSession();
                                 Toast.makeText(Login.this, R.string.login_success_msg, Toast.LENGTH_LONG).show();
                             } else {
                                 Toast.makeText(Login.this, R.string.login_failed_msg, Toast.LENGTH_SHORT).show();
@@ -191,14 +195,16 @@ public class Login extends AppCompatActivity {
 
                 @Override
                 public void onResponse(Call call, Response response) throws IOException {
-                    JSONObject ppsno_JSON, user_Type_JSON;
+                    JSONObject ppsno_JSON, user_Type_JSON, cat_id_JSON;
                     String resStr = response.body().string();
                     try {
                         jsonarray = new JSONArray(resStr);
                         ppsno_JSON = jsonarray.getJSONObject(0);
                         user_Type_JSON = jsonarray.getJSONObject(0);
+                        cat_id_JSON = jsonarray.getJSONObject(0);
                         user_type = user_Type_JSON.getString("type");
                         ppsno_resp = ppsno_JSON.getString("ppsno");
+                        cat_id = cat_id_JSON.getString("id");
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -207,5 +213,4 @@ public class Login extends AppCompatActivity {
             return null;
         }
     }
-
 }

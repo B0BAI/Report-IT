@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:paddingBottom="10dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/custom_report_details"
+        android:padding="3dp">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:scaleType="fitStart"
+            android:src="@drawable/view_image" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@+id/imageView"
+            android:layout_toRightOf="@+id/imageView"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/report_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ericsson Software Campus, Garrankesh, Athlone, Co. Westmeath, Ireland"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/report_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/news_addresss"
+
+                android:layout_marginTop="8dp"
+                android:text="14-06-2017" />
+
+            <TextView
+                android:id="@+id/report_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/report_addresss"
+                android:layout_marginLeft="100dp"
+                android:layout_marginTop="-20dp"
+                android:text="00:00 PM" />
+
+            <ImageView
+                android:id="@+id/map_pin"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="220dp"
+                android:layout_marginTop="-30dp"
+                android:scaleType="fitStart"
+                android:src="@drawable/pin" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

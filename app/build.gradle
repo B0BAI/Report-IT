@@ -35,8 +35,13 @@ dependencies {
     compile 'com.github.chathuralakmal:AndroidImagePopup:1.0.7'
     compile 'com.nineoldandroids:library:2.4.0'
     compile 'com.github.sd6352051.niftydialogeffects:niftydialogeffects:1.0.0@aar'
+    compile 'com.google.android.gms:play-services-maps:11.0.1'
+    compile 'com.google.android.gms:play-services:11.0.1'
     testCompile 'junit:junit:4.12'
 }
+
+
+
 
 
 

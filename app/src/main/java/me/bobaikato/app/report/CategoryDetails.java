@@ -139,6 +139,7 @@ public class CategoryDetails extends AppCompatActivity {
                 if (checkGPS()) {
                     if (checkNetwork(v, getApplicationContext())) {
                         startActivity(new Intent(CategoryDetails.this, Summary.class));
+                        finish();
                     }
                 }
             }
@@ -168,8 +169,6 @@ public class CategoryDetails extends AppCompatActivity {
             encoded_image = Base64.encodeToString(byteFormat, Base64.NO_WRAP);
             continueBTN.setVisibility(View.VISIBLE);
             set_sum_properties(picturePath, encoded_image, bitmap);
-
-
         }
     }
 
