@@ -95,14 +95,6 @@ public class ReportList extends AppCompatActivity {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-        /*Refresh*/
-        new android.os.Handler().postDelayed(
-                new Runnable() {
-                    public void run() {
-                        startActivity(new Intent(ReportList.this, ReportList.class));
-                    }
-                }, 10000);
     }
 
 
