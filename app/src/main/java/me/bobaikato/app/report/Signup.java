@@ -131,7 +131,7 @@ public class Signup extends AppCompatActivity {
         protected void onPostExecute(Object o) {
             super.onPostExecute(o);
             String user_msg = null;
-            // Toast.makeText(Signup.this,"H E R E",Toast.LENGTH_SHORT).show();
+            //Toast.makeText(Signup.this,"H E R E",Toast.LENGTH_SHORT).show();
             if (requestResponse.equals("1")) {
                   /*Reset Fields*/
                 email.setText("");
