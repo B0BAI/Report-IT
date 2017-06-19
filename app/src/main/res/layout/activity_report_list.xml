@@ -1,66 +1,241 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+<?xml version="1.0" encoding="utf-8"?><!--suppress ALL -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:background="#000000">
 
-    android:paddingBottom="10dp">
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/custom_report_details"
-        android:padding="3dp">
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:scaleType="fitStart"
-            android:src="@drawable/view_image" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="4dp">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_toEndOf="@+id/imageView"
-            android:layout_toRightOf="@+id/imageView"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/report_add"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Ericsson Software Campus, Garrankesh, Athlone, Co. Westmeath, Ireland"
-                android:textSize="16sp" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:background="#fff"
+                android:elevation="8dp"
+                android:padding="10dp">
 
-            <TextView
-                android:id="@+id/report_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/news_addresss"
+                <TextView
+                    android:id="@+id/address_1"
+                    android:layout_width="260dp"
+                    android:layout_height="wrap_content"
+                    android:text="Lorem Ipsum Dolor Amet, Consectetur Adipiscing Elit Ipsum Dolor Amet"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
-                android:layout_marginTop="8dp"
-                android:text="14-06-2017" />
+                <TextView
+                    android:id="@+id/date_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/address_1"
+                    android:layout_marginTop="20dp"
+                    android:text="14-06-2017" />
 
-            <TextView
-                android:id="@+id/report_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/report_addresss"
-                android:layout_marginLeft="100dp"
-                android:layout_marginTop="-20dp"
-                android:text="00:00 PM" />
+                <TextView
+                    android:id="@+id/time_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/address_1"
+                    android:layout_marginLeft="100dp"
+                    android:layout_marginTop="20dp"
+                    android:text="33 min ago" />
 
-            <ImageView
-                android:id="@+id/map_pin"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_marginLeft="220dp"
-                android:layout_marginTop="-30dp"
-                android:scaleType="fitStart"
-                android:src="@drawable/pin" />
+                <ImageView
+                    android:id="@+id/image_1"
+                    android:layout_width="140dp"
+                    android:layout_height="90dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@+id/address_1"
+                    android:onClick="showReportImage"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/view_image" />
+
+                <ImageView
+                    android:id="@+id/pin_1"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="-50dp"
+                    android:layout_marginTop="60dp"
+                    android:layout_toRightOf="@+id/address_1"
+                    android:onClick="showOnMap"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/pin" />
+
+                <ImageView
+                    android:id="@+id/hide_1"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="-50dp"
+                    android:layout_marginTop="60dp"
+                    android:layout_toRightOf="@+id/address_3"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/pin" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginTop="10dp"
+                android:background="#fff"
+                android:elevation="8dp"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/address_2"
+                    android:layout_width="260dp"
+                    android:layout_height="wrap_content"
+                    android:text="Lorem Ipsum Dolor Amet, Consectetur Adipiscing Elit Ipsum Dolor Amet"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/date_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/address_2"
+                    android:layout_marginTop="20dp"
+                    android:text="14-06-2017" />
+
+                <TextView
+                    android:id="@+id/time_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/address_2"
+                    android:layout_marginLeft="100dp"
+                    android:layout_marginTop="20dp"
+                    android:text="33 min ago" />
+
+                <ImageView
+                    android:id="@+id/image_2"
+                    android:layout_width="140dp"
+                    android:layout_height="90dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@+id/address_2"
+                    android:onClick="showReportImage"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/view_image" />
+
+                <ImageView
+                    android:id="@+id/pin_2"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="-50dp"
+                    android:layout_marginTop="60dp"
+                    android:layout_toRightOf="@+id/address_2"
+                    android:onClick="showOnMap"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/pin" />
+
+                <ImageView
+                    android:id="@+id/hide_2"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="-50dp"
+                    android:layout_marginTop="60dp"
+                    android:layout_toRightOf="@+id/address_3"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/pin" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginTop="10dp"
+                android:background="#fff"
+                android:elevation="8dp"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/address_3"
+                    android:layout_width="260dp"
+                    android:layout_height="wrap_content"
+                    android:text="Lorem Ipsum Dolor Amet, Consectetur Adipiscing Elit Ipsum Dolor Amet"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/date_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/address_3"
+                    android:layout_marginTop="20dp"
+                    android:text="14-06-2017" />
+
+                <TextView
+                    android:id="@+id/time_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/address_3"
+                    android:layout_marginLeft="100dp"
+                    android:layout_marginTop="20dp"
+                    android:text="33 min ago" />
+
+                <ImageView
+                    android:id="@+id/image_3"
+                    android:layout_width="140dp"
+                    android:layout_height="90dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@+id/address_3"
+                    android:onClick="showReportImage"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/view_image" />
+
+                <ImageView
+                    android:id="@+id/pin_3"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="-50dp"
+                    android:layout_marginTop="60dp"
+                    android:layout_toRightOf="@+id/address_3"
+                    android:onClick="showOnMap"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/pin" />
+
+                <ImageView
+                    android:id="@+id/hide_3"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="-50dp"
+                    android:layout_marginTop="60dp"
+                    android:layout_toRightOf="@+id/address_3"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/pin" />
+
+
+            </RelativeLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/logout1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginBottom="0dp"
+                    android:background="@drawable/round_button_red"
+                    android:gravity="center"
+                    android:letterSpacing="0.2"
+                    android:onClick="setReportCategoryDetails"
+                    android:padding="12dp"
+                    android:text="@string/logout"
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
         </LinearLayout>
-    </LinearLayout>
-</RelativeLayout>
+
+
+    </ScrollView>
+</LinearLayout>

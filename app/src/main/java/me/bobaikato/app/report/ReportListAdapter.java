@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Author: Bobai Kato
@@ -16,14 +16,13 @@ import java.util.List;
  */
 
 public class ReportListAdapter extends ArrayAdapter<Report> {
+    private ArrayList<Report> reports;
 
-    private List<Report> reports;
-
-
-    public ReportListAdapter(Context context, int resource, List<Report> objects) {
+    public ReportListAdapter(Context context, int resource, ArrayList<Report> objects) {
         super(context, resource, objects);
         reports = objects;
     }
+
 
 
     @Override
@@ -33,9 +32,10 @@ public class ReportListAdapter extends ArrayAdapter<Report> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.mr_chooser_list_item, parent, false);
         }
         Report report = reports.get(position);
+        //TextView address = (TextView) convertView.findViewById(R.id.report_add);
 
-
-        return super.getView(position, convertView, parent);
+        //address.setText(report.getADDRESS());
+        return convertView;
 
     }
 }

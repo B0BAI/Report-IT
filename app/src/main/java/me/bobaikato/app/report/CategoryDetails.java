@@ -76,7 +76,7 @@ public class CategoryDetails extends AppCompatActivity {
         if (view_id == R.id.report_accident) {
             title.setText(getString(R.string.accident));
             details.setText(getString(R.string.accident_cat_det));
-            setCategory_id(0);
+            setCategory_id(4);
         } else if (view_id == R.id.report_crime) {
             title.setText(getString(R.string.crime));
             details.setText(getString(R.string.crime_cat_det));
@@ -97,10 +97,6 @@ public class CategoryDetails extends AppCompatActivity {
         title.setTypeface(fonts.getCustom_font_1());
         details.setTypeface(fonts.getCustom_font());
         continueBTN.setTypeface(fonts.getCustom_font_1());
-
-        if (savedInstanceState == null) {
-
-        }
 
 
         camera_icon.setOnClickListener(new View.OnClickListener() {
