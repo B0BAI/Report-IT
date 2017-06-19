@@ -289,7 +289,7 @@ public class Summary extends AppCompatActivity {
             return;
         }
         // this code won't execute IF permissions are not allowed, because in the line above there is return statement.
-        manager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1500, 0, listener);
+        manager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 4000, 0, listener);
     }
 
 

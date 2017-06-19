@@ -38,7 +38,7 @@ public class ReportList extends AppCompatActivity {
     private String address, time, date, longitude, latitude, url, user, category, details;
     private JSONObject user_ppsno_JSON, time_JSON, date_JSON, long_JSON, lat_JSON, cat_name_JSON, details_JSON, address_JSON, image_url_JSON;
 
-    private TextView logout, add0, add1, add2, date0, date1, date2, time0, time1, time2;
+    private TextView logout, add0, add1, add2, date0, date1, date2, time0, time1, time2, admin_title;
     private ImageView hide1, hide2, hide3;
     private ImagePopup imagePopup;
 
@@ -88,6 +88,10 @@ public class ReportList extends AppCompatActivity {
         hide1.setVisibility(View.INVISIBLE);
         hide2.setVisibility(View.INVISIBLE);
         hide3.setVisibility(View.INVISIBLE);
+
+        admin_title = (TextView) findViewById(R.id.admin_title);
+        admin_title.setText(session.getUser_type().toUpperCase() + " OFFICIAL");
+
 
         new Action().execute();
         try {
@@ -174,10 +178,10 @@ public class ReportList extends AppCompatActivity {
             date2.setText(reportList.get(2).getCURRENT_DATE());
 
             /*LOAD IMAGE*/
-              /*Load Image*/
             Picasso.with(getApplicationContext()).load(reportList.get(0).getIMAGE_URL()).into(hide1);
             Picasso.with(getApplicationContext()).load(reportList.get(1).getIMAGE_URL()).into(hide2);
             Picasso.with(getApplicationContext()).load(reportList.get(2).getIMAGE_URL()).into(hide3);
+
 
         }
 

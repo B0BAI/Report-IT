@@ -3,16 +3,37 @@
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
     android:background="#000000">
+    
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="4dp">
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/dark_red"
+                android:elevation="8dp"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/admin_title"
+                    android:layout_width="260dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="TITLE HERE"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"

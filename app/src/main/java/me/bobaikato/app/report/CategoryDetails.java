@@ -76,7 +76,7 @@ public class CategoryDetails extends AppCompatActivity {
         if (view_id == R.id.report_accident) {
             title.setText(getString(R.string.accident));
             details.setText(getString(R.string.accident_cat_det));
-            setCategory_id(4);
+            setCategory_id(5);
         } else if (view_id == R.id.report_crime) {
             title.setText(getString(R.string.crime));
             details.setText(getString(R.string.crime_cat_det));
