@@ -130,7 +130,7 @@ class Report {
                     .add("address", ADDRESS)
                     .build();
             Request request = new Request.Builder()
-                    .url("https://www.report.lastdaysmusic.com/report/upload.php")
+                    .url("https://www.report.lastday****sic.com/report/upload.php")
                     .post(formBody)
                     .build();
             Response responses = null;
