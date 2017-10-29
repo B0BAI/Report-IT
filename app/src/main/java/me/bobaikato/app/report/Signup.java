@@ -34,7 +34,7 @@ import okhttp3.Response;
 import static me.bobaikato.app.report.Permissions.checkNetwork;
 
 public class Signup extends AppCompatActivity {
-    private static final String URL = "https://www.report.lastdaysmusic.com/user/signup.php";
+    private static final String URL = "https://www.report.lastd*****ic.com/user/signup.php";
     private EditText email, ppsnumber, password, username;
     private TextView login_msg, signup, login;
     private String requestResponse;
