@@ -38,7 +38,7 @@ import static me.bobaikato.app.report.Permissions.checkNetwork;
 
 public class Login extends AppCompatActivity {
     private static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
-    private static final String URL = "https://www.report.lastdaysmusic.com/user/login.php";
+    private static final String URL = "https://www.report.lastd***sic.com/user/login.php";
     public static Session session;
     private EditText password, username;
     private TextView signup_msg, login, signup;
