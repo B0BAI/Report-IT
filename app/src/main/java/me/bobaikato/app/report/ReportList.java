@@ -31,7 +31,7 @@ import static me.bobaikato.app.report.Login.session;
 import static me.bobaikato.app.report.Maps.setIDs;
 
 public class ReportList extends AppCompatActivity {
-    private static final String URL = " https://www.report.lastdaysmusic.com/report/list.php";
+    private static final String URL = " https://www.report.lastd*****sic.com/report/list.php";
     public static List<Report> reportList;
     private JSONArray jsonarray;
     private String response_String;
