@@ -1,7 +1,6 @@
 ## REPORT IT
 
-
-Reporting System — An environment base application for reporting unlikely events to agencies for immediate response. This project was aimed to add a level of safety to communities, enabling anyone to easily alert unlikely incidence to his/her immediate community and make reports directly to the responsible agency with real time evidence and location. Incidents include ‘Accident, Crime, Fire Outbreak, Garbage and Natural Disaster’.
+An environment based application for reporting unlikely events to agencies for immediate response. This project was aimed to add a level of safety to communities, enabling anyone to easily reports unlikely incidence directly to the responsible agency with real-time evidence and location. Incidents include ‘Accident, Crime, Fire Outbreak, Garbage and Natural Disaster’.
 
 
 ## UI
